@@ -82,7 +82,7 @@ const Hero = () => {
         <div
           className="flex sm:gap-6 gap-4 absolute 
       -bottom-[6%] sm:left-[10%]
-      max-sm: px-6
+      max-sm: px-6 z-10
       "
         >
           {shoes.map((image, index) => (
