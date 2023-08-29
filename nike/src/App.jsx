@@ -18,7 +18,7 @@ const App = () => {
           <Hero />
       </section>
 
-      <section className="padding">
+      <section className="padding bg-pale-blue">
           <PopularProducts />
       </section>
 
@@ -26,7 +26,7 @@ const App = () => {
           <SuperQuality />
       </section>
 
-      <section className="padding-x py-10">
+      <section className="padding-x py-10 bg-pale-blue">
           <Services />
       </section>
 
