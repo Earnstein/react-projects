@@ -1,4 +1,3 @@
-import { arrowRight } from "../assets/icons";
 import { offer } from "../assets/images";
 import Button from "../components/Button";
 
@@ -36,9 +35,9 @@ const SpecialOffer = () => {
           desires, surpassing the loftiest expectations. Your journey with us is
           nothing short of exceptional.
         </p>
-        <div className="mt-12 flex gap-4">
-          <Button label="Shop now" iconURL={arrowRight}/>
-          <Button label="View details" 
+        <div className="mt-12 flex flex-wrap gap-6">
+          <Button label="View details"/>
+          <Button label="Learn more" 
           backgroundColor="bg-white"
           borderColor="border-slate-grey"
           textColor="text-slate-grey"/>
