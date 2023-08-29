@@ -1,4 +1,4 @@
-import ReviewCard from "../components/ReviewCard";
+import { ReviewCard } from "../components";
 import { reviews } from "../constants";
 
 const CustomersReview = () => {
@@ -20,7 +20,7 @@ const CustomersReview = () => {
       <div className="flex flex-1 mt-24 justify-evenly 
       items-center max-lg:flex-col gap-12">
           {reviews.map((review) => (
-           <ReviewCard 
+           <ReviewCard
            key={review.customerName}
            imgURL={review.imgURL}
            customerName={review.customerName}

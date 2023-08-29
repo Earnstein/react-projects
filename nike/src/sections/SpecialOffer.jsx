@@ -1,5 +1,6 @@
 import { offer } from "../assets/images";
-import Button from "../components/Button";
+import { Button } from "../components";
+
 
 const SpecialOffer = () => {
   return (
