@@ -34,6 +34,18 @@ async function httpGetUserFriends(req, res) {
   }
 };
 
+async function httpGetAllUsers(req, res) {
+  try {
+    const allUsers = await User.find();
+
+    res.status(200).json(allUsers);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message
+    })
+  }
+};
+
 /* UPDATE */
 
 async function httpAddRemoveFriend(req, res) {
@@ -68,4 +80,4 @@ async function httpAddRemoveFriend(req, res) {
   }
 };
 
-export { httpGetUser, httpGetUserFriends, httpAddRemoveFriend };
+export { httpGetUser, httpGetUserFriends, httpAddRemoveFriend, httpGetAllUsers };
