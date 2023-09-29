@@ -118,7 +118,7 @@ const Form = () => {
         <form onSubmit={handleSubmit}>
           <Box
             display="grid"
-            gap="20px"
+            gap="10px"
             gridTemplateColumns="repeat(4, minmax(0, 1fr))"
             sx={{
               "& > div": {
@@ -175,7 +175,7 @@ const Form = () => {
                 <Box
                   gridColumn="span 4"
                   border={`1px solid ${palette.neutral.medium}`}
-                  borderRadius={5}
+                  borderRadius="4px"
                   p="1rem"
                 >
                   <Dropzone
@@ -193,7 +193,7 @@ const Form = () => {
                       >
                         <input {...getInputProps()} />
                         {!values.picture ? (
-                          <p>Add pictures here </p>
+                          <p>Add picture here </p>
                         ) : (
                           <FlexBetween>
                             <Typography>
