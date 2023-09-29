@@ -21,10 +21,10 @@ const LoginPage = () => {
       </Box>
 
       <Box
-      width={isNonMobileScreen ? "50%" : "94%"}
+      width={isNonMobileScreen ? "40%" : "94%"}
       p="1rem"
       m="2rem auto"
-      borderRadius="1.5rem"
+      borderRadius="4px"
       backgroundColor={theme.palette.background.alt}
       >
         <Typography fontWeight="500" marginBottom="1.5rem" variant="h5" sx={!isSmaillMobileScreen && {textAlign: "center"}} 
