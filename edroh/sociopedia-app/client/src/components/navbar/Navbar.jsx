@@ -23,9 +23,9 @@ import {
 } from "@mui/icons-material";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setMode, setLogout } from "../../state/index.js";
+import { setMode, setLogout } from "@/state/index";
 import { useNavigate } from "react-router-dom";
-import FlexBetween from "../FlexBetween.jsx";
+import FlexBetween from "@/components/FlexBetween";
 import { dark } from "@mui/material/styles/createPalette";
 
 const Navbar = () => {
