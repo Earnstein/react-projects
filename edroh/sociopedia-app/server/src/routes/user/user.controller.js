@@ -12,7 +12,7 @@ async function httpGetUser(req, res) {
       message: error.message,
     });
   }
-};
+}
 
 async function httpGetUserFriends(req, res) {
   try {
@@ -32,7 +32,7 @@ async function httpGetUserFriends(req, res) {
       message: error.message,
     });
   }
-};
+}
 
 async function httpGetAllUsers(req, res) {
   try {
@@ -41,10 +41,10 @@ async function httpGetAllUsers(req, res) {
     res.status(200).json(allUsers);
   } catch (error) {
     res.status(404).json({
-      message: error.message
-    })
+      message: error.message,
+    });
   }
-};
+}
 
 /* UPDATE */
 
@@ -52,32 +52,37 @@ async function httpAddRemoveFriend(req, res) {
   try {
     const { id, friendId } = req.params;
     const user = await User.findById(id);
-    const friend  = await User.findById(friendId);
+    const friend = await User.findById(friendId);
 
-    if (user.friends.includes(friendId)){
-        user.friends = user.friends.filter((id) => id !== friendId)
-        friend.friends = friend.friends.filter((id) => id !== id)
-    } else{
-        user.friends.push(friendId);
-        friend.friends.push(id);
+    if (user.friends.includes(friendId)) {
+      user.friends = user.friends.filter((id) => id !== friendId);
+      friend.friends = friend.friends.filter((id) => id !== id);
+    } else {
+      user.friends.push(friendId);
+      friend.friends.push(id);
     }
     await user.save();
     await friend.save();
 
     const allFriends = await Promise.all(
-        user.friends.map((id) => User.findById(id))
-      );
-      const formattedFriends = allFriends.map(
-        ({ _id, firstName, lastName, occupation, location, picturePath }) => {
-          return { _id, firstName, lastName, occupation, location, picturePath };
-        }
-      );
-      res.status(200).json(formattedFriends);
+      user.friends.map((id) => User.findById(id))
+    );
+    const formattedFriends = allFriends.map(
+      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
+        return { _id, firstName, lastName, occupation, location, picturePath };
+      }
+    );
+    res.status(200).json(formattedFriends);
   } catch (error) {
     res.status(404).json({
-        message: error.message
-    })
+      message: error.message,
+    });
   }
-};
+}
 
-export { httpGetUser, httpGetUserFriends, httpAddRemoveFriend, httpGetAllUsers };
+export {
+  httpGetUser,
+  httpGetUserFriends,
+  httpAddRemoveFriend,
+  httpGetAllUsers,
+};

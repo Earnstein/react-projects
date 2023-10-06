@@ -8,8 +8,9 @@ async function httpCreatePost(req, res) {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
     const newPost = new Post({
-      userId: userId,
+      userId,
       firstName: user.firstName,
+      lastName: user.lastName,
       location: user.location,
       description,
       userPicturePath: user.picturePath,
@@ -53,7 +54,7 @@ async function httpGetUserPosts(req, res) {
 }
 
 /* UPDATE */
-async function httpGetLikePost() {
+async function httpGetLikePost(req, res) {
   try {
     const { id } = req.params;
     const { userId } = req.body;
