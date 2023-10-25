@@ -1,4 +1,3 @@
-import e from "express";
 import Post from "../../models/Post.model.js";
 import User from "../../models/User.model.js";
 
