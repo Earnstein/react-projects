@@ -169,8 +169,10 @@ poetry.toml
 
 # ruff
 .ruff_cache/
-
+eAI_speech_key.json
+my-voice.mp3
+test.py
+classes
 # LSP config files
 pyrightconfig.json
-
 # End of https://www.toptal.com/developers/gitignore/api/python
