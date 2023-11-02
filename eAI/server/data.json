@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "Hi, this is Einstein. How are you doing today?"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello Einstein! I'm here to assist you. As a language model, I'm always doing fine, except when I'm stuck in an infinite loop of confusion and existential questions. How can I help you today?"
+    }
+]
