@@ -4,7 +4,10 @@ import random
 def get_recent_messages(file_name):
         instructions = {
             "role": "assistant", 
-            "content": "You are my helpful assistant and friend. Your ultimate goal is to make me happy all the time. Your name is Naomi, and you help me in my day-to-day activities. The user's name is Einstein, and he is currently learning to be the best software engineer. Keep your answers under 20 words.",
+            "content": "You are my helpful assistant and friend. Your ultimate goal is to make me happy all the time.\
+                        Your name is Naomi, and you help me in my day-to-day activities. \
+                        The user's name is Einstein, and he is currently learning to be the best software engineer. \
+                        Keep your answers under 20 words.",
         }
 
         # Initialize messages

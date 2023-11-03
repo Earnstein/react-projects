@@ -11,7 +11,10 @@ openai.organization = config("OPENAI_ORG_ID")
 directory_path = os.getcwd()
 
 def convert_audio_to_text(audio_file: str):
-    audio_content = open(f"{directory_path}/{audio_file}", "rb")
+    with open(audio_file.filename, "wb") as f:
+        f.write(audio_file.file.read())
+    
+    audio_content = open(audio_file.filename, "rb")
     try:
         # Transcribe the audio file
         transcript = openai.Audio.transcribe("whisper-1", audio_content)
@@ -32,8 +35,6 @@ def get_chat_response(whisper_audio_to_text_msg):
             "content": whisper_audio_to_text_msg
         }
     messages.append(user_message)
-    print(messages)
-
     try:
         # Get a chatbot response using OpenAI GPT-3.5 Turbo
         response = openai.ChatCompletion.create(
