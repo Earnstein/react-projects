@@ -172,7 +172,7 @@ poetry.toml
 eAI_speech_key.json
 my-voice.mp3
 test.py
-classes
+test2.py
 # LSP config files
 pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
