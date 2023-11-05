@@ -8,6 +8,8 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5050;
 
 
+
+//connections and listeners
 const startserver = async  () => {
   await mongoConnect();
   await mongoDisconnect();
@@ -15,6 +17,5 @@ const startserver = async  () => {
     console.log(`Server is listening on port ${PORT}`)
   });
 }
-//connections and listeners
 
 startserver();
