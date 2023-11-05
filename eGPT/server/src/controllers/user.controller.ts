@@ -6,7 +6,11 @@ import { createToken } from "../utils/auth.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
 // Middleware for handling HTTP GET request to fetch all users
-async function httpGetAllUsers(req: Request, res: Response, next: NextFunction) {
+async function httpGetAllUsers(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     // Retrieve a list of all users from the database
     const allUser = await getAllUser();
@@ -67,11 +71,16 @@ async function httpUserLogin(req: Request, res: Response, next: NextFunction) {
     // Verify the provided password against the stored password hash
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
-      return res.status(403).json({ message: "Incorrect password" });
+      return res.status(401).json({ message: "Incorrect password" });
     }
 
     // Clear any previous cookies in the user's browser before setting a new one
-    res.clearCookie(COOKIE_NAME);
+    res.clearCookie(COOKIE_NAME, {
+      domain: "localhost",
+      path: "/",
+      httpOnly: true,
+      signed: true,
+    });
 
     // Generate a JWT token for the user's authentication
     const token = createToken(user._id.toString(), user.email, "7d");
