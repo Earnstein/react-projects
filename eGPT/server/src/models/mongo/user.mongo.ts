@@ -1,7 +1,7 @@
 import User from "../schema/user.mongo.js"
 
 
-async function createNewUSer(name, email, password) {
+async function createNewUser(name, email, password) {
     const user = new User({name, email, password});
     const savedUser = await user.save();
     return savedUser;
@@ -16,5 +16,5 @@ async function getAllUser() {
 
 export {
     getAllUser,
-    createNewUSer
+    createNewUser
 }
