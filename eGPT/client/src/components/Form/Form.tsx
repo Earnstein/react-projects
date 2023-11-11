@@ -1,68 +1,50 @@
-import { useState } from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { LoginOutlined } from "@mui/icons-material";
 import * as yup from "yup";
 import { Formik, FormikHelpers } from "formik";
+import { useAuth } from "@/states/AuthContext.js";
+import { toast } from "react-hot-toast";
+import { useState } from "react";
 
-// form values interface
+
+
 interface FormValues {
-  name: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 // yup validation schemas
-const registerSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("Invalid email").required("required"),
-  password: yup
-    .string()
-    .required("required")
-    .min(7, "Password must be at least 7 characters"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "password must match")
-    .required("required"),
-});
 
 const loginSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
   email: yup.string().email("Invalid email").required("required"),
   password: yup.string().required("required"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "password must match")
-    .required("required"),
 });
 
-const initialValuesRegister: FormValues = {
-  name: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
 const initialValuesLogin: FormValues = {
-  name: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
+
 const Form = () => {
+  const [isLoading, setisLoading] = useState(true);
+  const auth = useAuth();
   // Define the submit handler function
-  const handleFormSubmit = (
+  const handleFormSubmit = async (
     values: FormValues,
-    { setSubmitting }: FormikHelpers<FormValues>
+    { resetForm }: FormikHelpers<FormValues>
   ) => {
     // Your form submission logic here
-    console.log(values);
-    setSubmitting(false);
+    const { email, password } = values;
+    try {
+      await auth?.login(email.toLowerCase(), password);
+      {isLoading ?  toast.loading("Signing In", {id: "1"}) : "" }
+      toast.success("Signed In Successfully", {id: "1"})
+      resetForm();
+    } catch (error) {
+      console.log(error)
+      setisLoading(false)
+      toast.error("Signing In failed")
+    }
   };
 
   return (
@@ -78,8 +60,6 @@ const Form = () => {
         handleBlur,
         handleChange,
         handleSubmit,
-        setFieldValue,
-        resetForm,
       }) => (
         <form
           style={{
@@ -88,6 +68,9 @@ const Form = () => {
             boxShadow: "10px 10px 20px #000",
             borderRadius: "10px",
             border: "none",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
           onSubmit={handleSubmit}
         >
@@ -96,27 +79,29 @@ const Form = () => {
               display="flex"
               flexDirection="column"
               gap={2}
-              width={{md:"400px", sm:"200px"}}
-              height={{md:"400px"}}
+              width={{ md: "25vw", sm: "50vw", xs: "60vw" }}
+              height={{ md: "44vh" }}
               p={1}
               mx="auto"
             >
               {
                 <>
-                  <Typography mb={4} fontSize="20px">LOGIN</Typography>
+                  <Typography mb={4} fontSize="20px">
+                    LOGIN
+                  </Typography>
 
                   <TextField
                     label="Email"
                     value={values.email}
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    name="name"
+                    name="email"
                     error={Boolean(touched.email) && Boolean(errors.email)}
                     helperText={touched.email && touched.email}
                     InputLabelProps={{ style: { color: "whitesmoke" } }}
                     InputProps={{
                       style: {
-                        borderRadius: 10,
+                        borderRadius: 4,
                         fontSize: "16px",
                         color: "whitesmoke",
                       },
@@ -134,7 +119,7 @@ const Form = () => {
                     value={values.password}
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    name="name"
+                    name="password"
                     error={
                       Boolean(touched.password) && Boolean(errors.password)
                     }
@@ -142,7 +127,7 @@ const Form = () => {
                     InputLabelProps={{ style: { color: "whitesmoke" } }}
                     InputProps={{
                       style: {
-                        borderRadius: 10,
+                        borderRadius: 4,
                         fontSize: "16px",
                         color: "whitesmoke",
                       },
@@ -155,11 +140,22 @@ const Form = () => {
                     }}
                   />
                   <Button
-                    sx={{px: 2, py: 2, bgcolor: "#00fffc" , mt:2, borderRadius:2, ": hover":{
-                      bgcolor:"white",
-                    }}}
+                    sx={{
+                      px: 2,
+                      py: 2,
+                      bgcolor: "#00fffc",
+                      mt: 2,
+                      borderRadius: 1,
+                      ": hover": {
+                        bgcolor: "white",
+                      },
+                    }}
+                    type="submit"
+                    endIcon={<LoginOutlined />}
                   >
-                    <Typography color="black" fontSize="14px">Login</Typography>
+                    <Typography color="black" fontSize="14px">
+                      Login
+                    </Typography>
                   </Button>
                 </>
               }

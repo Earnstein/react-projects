@@ -12,6 +12,9 @@ const Header = () => {
           display: "Flex",
           justifyContent: "space-between",
           alignItems: "center",
+          maxWidth:"1400px",
+          width:"100%",
+          margin:"0 auto"
         }}
       >
         <Logo />

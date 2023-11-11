@@ -5,17 +5,17 @@ import Form from "@/components/Form/Form.js";
 const Login = () => {
   return (
     <Box
-      height="100%"
       display="flex"
       flex={1}
-      justifyContent="space-between"
-      m={{ md: "8px 0", sm: "32px 0" }}
-      p="16px 48px"
+      justifyContent={{md:"space-between", sm:"center", xs:"center"}}
+      m="0 auto"
+      maxWidth="1400px"
+      minHeight="82vh"
     >
       <Box
         display={{ md: "flex", sm: "none", xs: "none" }}
-        width="600px"
-        height="600px"
+        width="650px"
+        height="650px"
         justifyContent="center"
         p={2}
       >
@@ -24,7 +24,6 @@ const Login = () => {
 
       <Box
         display="flex"
-        flex={{ xs: 1, md: 0.5 }}
         justifyContent="center"
         alignItems="center"
         p={2}

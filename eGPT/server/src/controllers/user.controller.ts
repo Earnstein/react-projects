@@ -47,8 +47,9 @@ async function httpUserSignUp(req: Request, res: Response, next: NextFunction) {
 
     // Respond with a 201 Created status and the user's ID
     res.status(201).json({
-      message: "User created successfully",
-      id: newUser._id.toString(),
+      message: "created",
+      name: newUser.name,
+      email: newUser.email,
     });
   } catch (error) {
     console.log(error);
@@ -98,10 +99,11 @@ async function httpUserLogin(req: Request, res: Response, next: NextFunction) {
       signed: true,
     });
 
-    // Respond with a 201 Created status and the user's ID
-    res.status(201).json({
-      message: "Login successful",
-      id: user._id.toString(),
+    // Respond with a 200 status and the user's ID
+    res.status(200).json({
+      message: "OK",
+      name: user.name,
+      email: user.email,
     });
   } catch (error) {
     console.log(error);

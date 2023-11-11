@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState, useEffect, useContext } from "react"
+import { userLogin } from "./Requests.js";
 
 type User = {
     name: string;
@@ -27,7 +28,11 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
 
     // reducers or state functions
     const login = async (email: string, password:string) => {
-
+        const data = await userLogin(email, password)
+        if (data){
+            setUSer({name: data.name, email: data.email});
+            setIsLoggedIn(true)
+        }
     };
 
     const signup =async (name:string, email:string, password:string) => {

@@ -9,10 +9,9 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #05101c;
+  background: #08192b;
   color: #ffffffcc;
   font-family: "Roboto Slab", serif;
-  height: 100vh;
 }
 
 .image-inverted{

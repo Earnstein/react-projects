@@ -3,7 +3,6 @@ import { Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 const Logo = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:768px)");
-  console.log(isNonMobileScreens);
   return (
     <div
       style={{

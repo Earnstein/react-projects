@@ -7,7 +7,7 @@ type Props = {
   bg: string;
   text: string;
   textColor: string;
-  onClick: () => Promise<void> | null;
+  onClick?: () => Promise<void> | null;
 };
 const NavbarLink = ({ to, bg, textColor, text }: Props) => {
   const isNonMobileScreens = useMediaQuery("(min-width:768px)");
