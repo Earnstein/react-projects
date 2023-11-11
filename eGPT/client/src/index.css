@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;800&family=Work+Sans&display=swap');
 
+
+::-webkit-scrollbar{
+  display: none;
+}
 html,
 body{
   margin: 0;
@@ -8,4 +12,9 @@ body{
   background: #05101c;
   color: #ffffffcc;
   font-family: "Roboto Slab", serif;
+  height: 100vh;
+}
+
+.image-inverted{
+  filter: invert(100%);
 }
