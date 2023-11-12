@@ -29,6 +29,7 @@ class TTS:
         input = {"text": self.text}
         response = client.synthesize_speech(input=input, voice=voice, audio_config=audio_config)
 
+        return response.audio_content
         # save the audio file 
-        with open("output.mp3", "wb") as out_file:
-            out_file.write(response.audio_content)
+        # with open("output.mp3", "wb") as out_file:
+        #     out_file.write(response.audio_content)

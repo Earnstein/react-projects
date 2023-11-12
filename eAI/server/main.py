@@ -53,7 +53,17 @@ def get_audio():
 
     # Output google tts
     jazzy = TTS(chat_response_text)
-    jazzy.convert_text_to_speech()
+    audio_output = jazzy.convert_text_to_speech()
+    if not audio_output:
+        return HTTPException(status_code=400, detail="failed to get google tts response")
+    
+    # yield audio response
+    
+    def iterfile():
+        yield audio_output
+    
+    return StreamingResponse(iterfile(), media_type="audio/mpeg")
+    
 
 
 @app.get("/reset-audio")
