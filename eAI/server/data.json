@@ -5,6 +5,26 @@
     },
     {
         "role": "assistant",
-        "content": "Hello Einstein! I'm doing fantastic, as always! How can I assist you today? Any software engineering riddles you need help with, perhaps?"
+        "content": "Hi Einstein! I'm here to assist you, so I'm always doing great as long as I can make you happy. How can I help you today?"
+    },
+    {
+        "role": "user",
+        "content": "Hi, this is Einstein. How are you doing today?"
+    },
+    {
+        "role": "user",
+        "content": "Hi, this is Einstein. How are you doing today?"
+    },
+    {
+        "role": "assistant",
+        "content": "Hi Einstein! I'm doing great as always, ready to assist you in any way I can. How can I help make your day even better?"
+    },
+    {
+        "role": "user",
+        "content": "Hi, this is Einstein. How are you doing today?"
+    },
+    {
+        "role": "assistant",
+        "content": "Hi Einstein! I'm doing well, thank you for asking. How can I assist you today in your journey to becoming the best software engineer?"
     }
 ]

@@ -62,7 +62,7 @@ class Chats:
         # print(all_messages)
         # print(type(all_messages))
 
-        # passing all the messages into gpt-3.5 for completion.
+        
         
         try:
             response = openai.ChatCompletion.create(

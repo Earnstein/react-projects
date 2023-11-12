@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from decouple  import config
 from classes.openai_requests import AudioConverter, Chats
 from classes.database import Model
+from classes.google_tts import TTS
 
 
 app = FastAPI()
@@ -48,9 +49,23 @@ def get_audio():
     chat_response_text = chatgpt.get_chat_response()
 
     # save whisper text and chatgpt response to database
-
     database.save_msg_to_database(audio_input, chat_response_text)
-    print(chat_response_text)
+
+    # Output google tts
+    jazzy = TTS(chat_response_text)
+    jazzy.convert_text_to_speech()
+
+
+@app.get("/reset-audio")
+def reset():
+    database = Model("data.json")
+    database.reset_messages()
+    return {"message": "audio has been reset"}
+
+
+
+
+
 
 # @app.post("/post-audio/")
 # def post_audio(file: UploadFile = File(...)):

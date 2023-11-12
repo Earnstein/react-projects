@@ -2,20 +2,30 @@ import json
 
 
 class Model:
-    def __init__(self, filename) -> None:
+    def __init__(self, filename):
         self.filename = filename
     
-    def get_recent_message(self):        
+    def get_recent_message(self):
+        instructions = {
+        "role": "assistant", 
+            "content": "You are my helpful assistant and friend. Your ultimate goal is to make me happy all the time.\
+                 Your name is Naomi, and you help me in my day-to-day activities.\
+                 The user's name is Einstein, and he is currently learning to be the best software engineer.\
+                 Keep your answers under 40 words.",
+    }
+
+        # Initialize messages
+        messages = [instructions]        
         # Get the last 5 messages
         try:
             with open(self.filename) as file:
                 data = json.load(file)
-            return data
+                messages.extend(data[-5:])
         except FileNotFoundError:
             return []
         except Exception as e:
             print(e)
-
+        return messages
 
     def save_msg_to_database(self, req_msg, res_msg):
         prev_messages = self.get_recent_message()[1:]
