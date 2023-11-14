@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,17 +33,23 @@ async def home():
     return{"message": "homepage"}
 
 
-@app.get("/get-audio")
-def get_audio():
+@app.post("/api/v1/post-audio")
+async def get_audio(file: UploadFile=File(...)):
     # Initialise database
     database = Model("data.json")
 
-    # This would be dynamic soon as mp3 file would be coming from frontend
-    whisper = AudioConverter("my-voice.mp3")
+    # Getting audio file from frontend
+    with open(file.filename, "wb") as buffer:
+        buffer.write(file.file.read())
+    
+    audio_file = open(file.filename, "rb")
+    
+    whisper = AudioConverter(audio_file)
     audio_input = whisper.convert_audio_to_text()
 
     if not audio_input:
         return HTTPException(status_code=400, detail="failed to get audio input")
+
 
     chatgpt = Chats(audio_input)
 
@@ -58,25 +65,16 @@ def get_audio():
         return HTTPException(status_code=400, detail="failed to get google tts response")
     
     # yield audio response
-    
+
     def iterfile():
         yield audio_output
     
-    return StreamingResponse(iterfile(), media_type="audio/mpeg")
+    return StreamingResponse(iterfile(), media_type="application/octet-stream")
     
 
 
-@app.get("/reset-audio")
+@app.get("/api/v1/reset-audio")
 def reset():
     database = Model("data.json")
     database.reset_messages()
     return {"message": "audio has been reset"}
-
-
-
-
-
-
-# @app.post("/post-audio/")
-# def post_audio(file: UploadFile = File(...)):
-#     return{"message": "post endpoint"}

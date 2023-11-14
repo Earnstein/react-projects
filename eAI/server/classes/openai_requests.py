@@ -24,10 +24,9 @@ class AudioConverter:
             str: Transcribed text from the audio.
         """
         try:
-            with open(self.filename, "rb") as audio_content:
-                transcript = openai.Audio.transcribe("whisper-1", audio_content)
-                response_text = transcript["text"]
-                return response_text
+            transcript = openai.Audio.transcribe("whisper-1", self.filename)
+            response_text = transcript["text"]
+            return response_text
         except openai.error.OpenAIError as e:
             print(f"An error occurred: {e}")
             return None
