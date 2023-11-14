@@ -7,11 +7,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ::-webkit-scrollbar{
+  display: none;
+} */
+
 html,
-body,
-.app {
+body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100%;
   box-sizing: border-box;
-  background: #DEDBE9;
+  background: #eeecf8;
 }
