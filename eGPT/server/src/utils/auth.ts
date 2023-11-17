@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { promisify } from "util";
 import { COOKIE_NAME } from "./constants.js";
 
 function createToken(id: string, email: string, expiresIn) {
@@ -11,6 +12,8 @@ function createToken(id: string, email: string, expiresIn) {
 }
 
 // to verify if user has a set cookie
+
+const verifyAsync = promisify(jwt.verify.bind(jwt))
 async function verifyToken(req: Request, res: Response, next: NextFunction) {
   const token = await req.signedCookies[`${COOKIE_NAME}`];
   const authCondition = !token || token.trim() === "";
@@ -18,19 +21,13 @@ async function verifyToken(req: Request, res: Response, next: NextFunction) {
   if (authCondition) {
     return res.status(401).json({ message: "token not received" });
   }
-
-  return new Promise<void>((resolve, reject) => {
-    return jwt.verify(token, process.env.JWT_SECRET, (error, success) => {
-      if (error) {
-        reject(error.message);
-        return res.status(401).json({ message: "Token Expired" });
-      } else {
-        resolve();
-        res.locals.jwtData = success;
-        return next();
-      }
-    });
-  });
+  try {
+    const decoded = await verifyAsync(token, process.env.JWT_SECRET);
+    res.locals.jwtData = decoded;
+    return next();
+  } catch (error) {
+    return res.status(401).json({ message: "Token Expired" });
+  }
 }
 
 export { createToken, verifyToken };

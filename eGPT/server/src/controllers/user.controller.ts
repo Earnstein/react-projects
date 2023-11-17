@@ -6,11 +6,7 @@ import { createToken } from "../utils/auth.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
 // Middleware for handling HTTP GET request to fetch all users
-async function httpGetAllUsers(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+async function httpGetAllUsers(req: Request, res: Response, next: NextFunction) {
   try {
     // Retrieve a list of all users from the database
     const allUser = await getAllUser();
@@ -21,7 +17,6 @@ async function httpGetAllUsers(
       allUser,
     });
   } catch (error) {
-    console.log(error);
     // Handle errors and respond with a 400 Bad Request status
     res.status(400).json({ message: "Error", error: error.message });
   }
@@ -52,7 +47,6 @@ async function httpUserSignUp(req: Request, res: Response, next: NextFunction) {
       email: newUser.email,
     });
   } catch (error) {
-    console.log(error);
     // Handle errors and respond with a 400 Bad Request status
     res.status(400).json({ message: "Error", error: error.message });
   }
@@ -106,10 +100,35 @@ async function httpUserLogin(req: Request, res: Response, next: NextFunction) {
       email: user.email,
     });
   } catch (error) {
-    console.log(error);
     // Handle errors and respond with a 400 Bad Request status
     res.status(400).json({ message: "Error", error: error.message });
   }
 }
 
-export { httpGetAllUsers, httpUserSignUp, httpUserLogin };
+// Middleware for handling HTTP POST request to log in an existing user
+async function httpVerifyUser(req: Request, res: Response, next: NextFunction) {
+  try {
+
+    // Check if the user token carries an id and use it to find user
+    const user = await User.findById(res.locals.jwtData.id);
+    if (!user) {
+      return res.status(401).json({ message: "User not registered OR Invalid token" });
+    }
+
+    if (user._id.toString() !== res.locals.jwtData.id){
+        res.status(401).json({"message": "User id didn't match"})
+    }// Middleware for handling HTTP POST request to log in an existing user
+
+    // Respond with a 200 status and the user's ID
+    res.status(200).json({
+      message: "OK",
+      name: user.name,
+      email: user.email,
+    });
+  } catch (error) {
+    // Handle errors and respond with a 400 Bad Request status
+    res.status(400).json({ message: "Error", error: error.message });
+  }
+}
+
+export { httpGetAllUsers, httpUserSignUp, httpUserLogin, httpVerifyUser };
