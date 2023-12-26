@@ -4,6 +4,7 @@ import Logo from "@/assets/images/logo.svg";
 import { cn } from "@/utils";
 import { useState } from "react";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
@@ -18,21 +19,19 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <div className="sm:flex sm:gap-4 hidden">
             <Button
-              to="/login"
               className={cn(
                 " text-sm border rounded-sm font-medium font-montserrat transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none active:text-indigo-500"
               )}
             >
-              Login
+              <Link to="/login"> Login</Link>
             </Button>
 
             <Button
-              to="/register"
               className={cn(
                 " text-sm border rounded-sm font-medium font-montserrat transition-all duration-250 border-indigo-600 text-indigo-600 bg-transparent hover:bg-indigo-600 hover:text-white focus:outline-none active:text-indigo-500"
               )}
             >
-              Register
+              <Link to="/register"> Register</Link>
             </Button>
           </div>
 

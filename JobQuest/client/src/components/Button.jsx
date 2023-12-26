@@ -1,14 +1,15 @@
 import { cn } from "@/utils";
-import { Link } from "react-router-dom";
 
-const Button = ({ to, children, className }) => {
+
+const Button = ({children, className, type }) => {
+  const btnType = type || ""
   return (
-    <Link
+    <button
       className={cn("inline-block px-12 py-3", className)}
-      to={to}
+      type={btnType}
     >
       {children}
-    </Link>
+    </button>
   );
 };
 

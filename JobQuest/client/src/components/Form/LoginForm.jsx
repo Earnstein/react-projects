@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import Button from "../Button";
 import * as yup from "yup";
 import { Formik } from "formik";
+import Input from "./Input";
 
 const loginSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),
-  password: yup
-    .string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Required"),
+  password: yup.string().required("Required"),
 });
 
 const initialValuesLogin = {
@@ -39,47 +37,25 @@ const LoginForm = () => {
         handleSubmit,
       }) => (
         <form onSubmit={handleSubmit} className={cn("grid grid-cols-6 gap-6")}>
-          <div className="col-span-6">
-            <label className="label-style" htmlFor="Email">
-              Email
-            </label>
-            <input
-              className={cn(
-                "input-style focus:outline-none focus:shadow-outline shadow-sm placeholder:font-palanquin focus:border-indigo-300 focus:border-1",
-                touched.email && errors.email && "border-red-500"
-              )}
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="email"
-              placeholder="email"
-              required
-            />
-            {touched.email && errors.email && (
-              <div className="text-red-500 text-sm mt-1">{errors.email}</div>
-            )}
-          </div>
-          <div className="col-span-6">
-            <label className="label-style" htmlFor="password">
-              Password
-            </label>
-            <input
-              className={cn(
-                "input-style focus:outline-none focus:shadow-outline focus:border-indigo-300 focus:border-1 shadow-sm placeholder:font-palanquin",
-                touched.password && errors.password && "border-red-500"
-              )}
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="password"
-              placeholder="Password"
-              name="password"
-              required
-            />
-            {touched.password && errors.password && (
-              <div className="text-red-500 text-sm mt-1">{errors.password}</div>
-            )}
-          </div>
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.email && errors.email}
+          />
+
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.password && errors.password}
+          />
 
           <div className="col-span-6 flex justify-center items-center sm:flex-row sm:items-center sm:gap-4 font-montserrat">
             <Button
