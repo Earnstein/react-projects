@@ -13,7 +13,7 @@ const Landing = () => {
       <LandingPageNavbar />
       <section
         id="home"
-        className="md:flex md:justify-between md:items-center md:h-[80vh] gap-16 container mx-auto"
+        className="md:flex md:justify-between md:items-center md:h-[80vh] gap-16 container mx-auto mb-8"
       >
         {/* IMAGE SECTION */}
         <div className="md:order-2 flex justify-center basis-3/5">
@@ -37,7 +37,7 @@ const Landing = () => {
         {/* main section*/}
         <div className="z-30 basis-2/5 px-4 mb-4 sm:mb-0">
           {/*headings*/}
-          <div>
+          <div className={cn("flex flex-col justify-center md:items-start items-center")}>
             <h2
               className={cn(
                 "text-3xl font-bold md:text-6xl text-center md:text-start font-playfair"
@@ -45,7 +45,7 @@ const Landing = () => {
             >
               Job <span className="text-indigo-300">Tracking</span> Application
             </h2>
-            <p className="text-sm leading-normal my-4 text-center md:text-start ont-montserrat tracking-normal md:text-large font-normal">
+            <p className="text-normal leading-normal my-4 text-center md:text-start ont-montserrat tracking-normal font-normal max-w-[80%]">
               Welcome to my personal job application journey!. This Application
               Tracker is designed to make career aspirations a reality. Tailor
               your path, celebrate your achievements, and conquer challenges –
@@ -57,7 +57,7 @@ const Landing = () => {
           <Link className="flex justify-center md:justify-start" to="/login">
             <Button
               className={cn(
-                "mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
+                "inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
               )}
             >
               Get Started Today

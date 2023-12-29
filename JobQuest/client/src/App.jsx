@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         children:[
           {
-            index:true,
+            index: true,
             element:<Addjob/>
           },
           {

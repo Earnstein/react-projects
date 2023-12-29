@@ -12,7 +12,7 @@ const NotFound = () => {
         </h1>
 
         <p className="mt-4 text-gray-500 font-opensans">
-          We can't find that page.
+          We can&apos;t find that page.
         </p>
       </div>
 

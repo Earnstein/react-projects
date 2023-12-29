@@ -57,8 +57,8 @@ body {
     'a b f'
     'd e f'
     'd e f';
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
-  grid-template-rows: repeat(6, minmax(84px, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-rows: repeat(6, minmax(82px, 1fr));
 }
 
 .grid-layout-small-screen{
@@ -128,15 +128,6 @@ body {
   .text {
     margin-bottom: 1.5rem;
     max-width: 40em;
-  }
-
-  .link {
-    text-decoration: none;
-  }
-
-  .ul {
-    list-style-type: none;
-    padding: 0;
   }
 }
 
@@ -297,13 +288,3 @@ button:disabled {
   animation: spinner 0.6s linear infinite;
 }
 
-.dashboard{
-  display: grid;
-  grid-template-columns: 2 1fr;
-}
-
-@media (min-width: 1000px) {
-  .dashboard{
-    grid-template-columns: auto 1fr;
-  }
-}

@@ -1,39 +1,27 @@
 import { cn } from "@/utils";
-import Logo from "@/assets/images/logo.svg";
-import Button from "./Button";
+import { motion } from "framer-motion";
+import NavLinks from "./NavLinks";
+
 
 const BigSideBar = () => {
-  const sidebarcontainer = "bg-white min-h-screen w-64 -ml-64 transition duration-300 ease-out";
-  const showsider = "ml-0";
-  const showsidebar = false;
+ 
   return (
-    <aside className={cn("hidden md:block shadow-shadow-4 overflow-hidden")}>
+    <motion.aside
+      className={cn(
+        "hidden md:flex basis-1/6 border-r-2 border-e min-h-screen"
+      )}
+    >
       <div
-        className={
-          showsidebar
-            ? `${sidebarcontainer}`
-            : `${sidebarcontainer} ${showsider} `
-        }
+        className={cn(
+          "relative flex flex-col items-center duration-300 ease-out pt-10 px-10"
+        )}
       >
-        <div className="content sticky top-0">
-          <header className="h-20 flex items-center pl-10">
-            <Button>
-              <img
-                src={Logo}
-                alt="Nav-Logo"
-                className={cn("w-28 h-12 md:h-16")}
-              />
-            </Button>
-            <nav className="pt-8 flex flex-col">
-              <Button className="flex items-center">
-                logo
-              </Button>
-              <p>link</p>
-            </nav>
-          </header>
-        </div>
+        <span className="absolute top-8 left-8 grid h-10 w-24 place-content-center rounded-lg bg-white text-xs text-gray-600">
+          L
+        </span>
+        <NavLinks/>
       </div>
-    </aside>
+    </motion.aside>
   );
 };
 
