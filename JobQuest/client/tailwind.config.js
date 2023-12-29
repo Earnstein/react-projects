@@ -7,13 +7,13 @@ export default {
       xs: ["0.7em", "8px"],
       sm: ["0.875rem", "12px"],
       base: ["clamp(0.875rem, 1.5vw, 1.5rem)", "19.5px"],
-      lg: ["clamp(1rem, 2vw, 2rem)", "21.94px"],
+      lg: ["clamp(1.5rem, 2vw, 2.5rem)", "21.94px"],
       xl: ["clamp(1.25rem, 2.5vw, 2.5rem)", "24.38px"],
       "2xl": ["clamp(1.5rem, 3vw, 3rem)", "29.26px"],
       "3xl": ["clamp(2rem, 3vw, 5rem)", "30px"],
       "normal": ["16px", "20px"],
       "large": ["20px", "24px"],
-      "6xl":["70px", "56px"]
+      "6xl":["64px", "56px"]
     },
     extend: {
       fontFamily: {

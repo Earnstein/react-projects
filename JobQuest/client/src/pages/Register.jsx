@@ -17,7 +17,7 @@ const RegistrationPage = () => {
 
       {/* Form Section */}
       <div className="w-full flex flex-1 md:flex-[0.4] items-center justify-center px-4">
-        <div className="w-full max-w-md shadow-2xl padding-l rounded-sm">
+        <div className="w-full max-w-md shadow-2xl padding rounded-sm">
           <h2 className="sm:text-xl text-lg title mb-8 font-playfair">
             Sign Up
           </h2>
@@ -25,7 +25,7 @@ const RegistrationPage = () => {
           <Button
             className={cn(
               "col-span-4 flex justify-center items-center gap-4 justify-self-center w-full bg-white text-blue-500 font-bold py-2 px-4 shadow-sm font-palanquin rounded focus:outline-none focus:shadow-outline hover:opacity-80",
-              "mb-4"
+              "mb-4 btn shadow-shadow-1"
             )}
             type="button"
           >

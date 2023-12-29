@@ -1,49 +1,71 @@
 import Button from "@/components/Button.jsx";
 import jobImage from "@/assets/images/Job.svg";
 import { cn } from "@/utils";
+import LandingPageNavbar from "@/components/LandingPageNavbar";
+import useMediaQuery from "../hooks/useMediaQuery";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
+
   return (
-    <section className="container">
-      <div
-        className={cn(
-          " mt-8 gap-16 w-full  padding-l flex flex-col flex-1 sm:flex-row m justify-center d:justify-between items-center"
-        )}
+    <>
+      <LandingPageNavbar />
+      <section
+        id="home"
+        className="md:flex md:justify-between md:items-center md:h-[80vh] gap-16 container mx-auto"
       >
-        <div className="max-w-md sm:order-2 basis-2/5">
-          <img
-            alt="JobImage"
-            src={jobImage}
-            className=" object-cover hover:filter hover:saturate-200 transition duration-500 z-10 w-full"
-          />
+        {/* IMAGE SECTION */}
+        <div className="md:order-2 flex justify-center basis-3/5">
+          {isAboveMediumScreens ? (
+            <div className={`relative`}>
+              <img
+                className="max-w-[400px] md:max-w-[460px]"
+                src={jobImage}
+                alt="profile"
+              />
+            </div>
+          ) : (
+            <img
+              className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full
+              max-w-[400px] md:max-w-[420px] mt-24 mb-8 px-4 sm:px-0"
+              src={jobImage}
+              alt="profile"
+            />
+          )}
         </div>
-        <div className="sm:order-1 basis-3/5 flex flex-col justify-center items-center sm:justify-start sm:items-start">
-          <h2 className={cn("text-3xl font-bold sm:text-6xl text-center sm:text-start font-playfair")}>
-            Job <span className="text-indigo-300">Tracking</span> Application
-          </h2>
+        {/* main section*/}
+        <div className="z-30 basis-2/5 px-4 mb-4 sm:mb-0">
+          {/*headings*/}
+          <div>
+            <h2
+              className={cn(
+                "text-3xl font-bold md:text-6xl text-center md:text-start font-playfair"
+              )}
+            >
+              Job <span className="text-indigo-300">Tracking</span> Application
+            </h2>
+            <p className="text-sm leading-normal my-4 text-center md:text-start ont-montserrat tracking-normal md:text-large font-normal">
+              Welcome to my personal job application journey!. This Application
+              Tracker is designed to make career aspirations a reality. Tailor
+              your path, celebrate your achievements, and conquer challenges –
+              all in one place.
+            </p>
+          </div>
 
-          <p
-            className={cn(
-              "max-w-[480px] mt-4 sm:mt-8 text-gray-600 text-center sm:text-start font-montserrat tracking-normal text-normal sm:text-large font-normal"
-            )}
-          >
-            Welcome to my personal job application journey!. This Application
-            Tracker is designed to make career aspirations a reality. Tailor
-            your path, celebrate your achievements, and conquer challenges – all
-            in one place.
-          </p>
-
-          <Button
-            to="/login"
-            className={cn(
-              "mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
-            )}
-          >
-            Get Started Today
-          </Button>
+          {/*call to actions*/}
+          <Link className="flex justify-center md:justify-start" to="/login">
+            <Button
+              className={cn(
+                "mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
+              )}
+            >
+              Get Started Today
+            </Button>
+          </Link>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

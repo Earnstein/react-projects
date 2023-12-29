@@ -1,63 +1,29 @@
-import Button from "@/components/Button.jsx";
-import { FaHamburger } from "react-icons/fa";
-import Logo from "@/assets/images/logo.svg";
 import { cn } from "@/utils";
-import { useState } from "react";
-import useMediaQuery from "@/hooks/useMediaQuery";
-import { Link } from "react-router-dom";
+import Button from "./Button";
+import { FaAlignLeft } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isMenuToggled, setIsMenuToggled] = useState(false);
-  const isAboveSmallScreens = useMediaQuery("(min-width:768px)");
   return (
-    <header className="shadow-md sticky">
-      <div className="container flex h-20 justify-between items-center gap-8 padding">
-        <Button className="block" to="/">
-          <img src={Logo} alt="Nav-Logo" className={cn("w-28 h-12 md:h-16")} />
+    <header className="bg-white h-20 shadow-shadow-1 md:sticky flex justify-center items-center md:top-0 w-full">
+      <nav className="flex justify-between items-center w-4/5">
+        <Button
+          className={cn(
+            "flex items-center bg-transparent border-transparent text-[1.25rem] text-indigo-500 cursor-pointer p-0"
+          )}
+        >
+          <FaAlignLeft className="w-full h-full" />
         </Button>
 
-        <div className="flex items-center gap-4">
-          <div className="sm:flex sm:gap-4 hidden">
-            <Button
-              className={cn(
-                " text-sm border rounded-sm font-medium font-montserrat transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none active:text-indigo-500"
-              )}
-            >
-              <Link to="/login"> Login</Link>
-            </Button>
+        <h2 className={cn("font-montserrat text-sm sm:text-xl")}>dashboard</h2>
 
-            <Button
-              className={cn(
-                " text-sm border rounded-sm font-medium font-montserrat transition-all duration-250 border-indigo-600 text-indigo-600 bg-transparent hover:bg-indigo-600 hover:text-white focus:outline-none active:text-indigo-500"
-              )}
-            >
-              <Link to="/register"> Register</Link>
-            </Button>
-          </div>
-
-          <button
-            className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
-            onClick={() => setIsMenuToggled(!isMenuToggled)}
-          >
-            <span className="sr-only">Toggle menu</span>
-            <FaHamburger className="h-5 w-5" />
-          </button>
-
-          {/* MOBILE NAVBAR      */}
-          {!isAboveSmallScreens && isMenuToggled && (
-            <div className="fixed right-0 top-0 bg-blue-100 h-full w-[300px] max-[425px]:w-[200px]">
-              <div className="flex justify-end p-8">
-                <button
-                  className="rounded-full bg-red p-2"
-                  onClick={() => setIsMenuToggled(!isMenuToggled)}
-                >
-                  <FaHamburger className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
+        <Button
+          className={cn(
+            "p-2 text-sm border rounded-sm font-medium font-montserrat transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none active:text-indigo-500 btn"
           )}
-        </div>
-      </div>
+        >
+        toggle
+        </Button>
+      </nav>
     </header>
   );
 };

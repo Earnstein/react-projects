@@ -7,32 +7,33 @@ const Input = ({
   value,
   onChange,
   onBlur,
-  error
-}) => (
-  <div
-    className={`col-span-6 sm:col-span-${
-      type === "firstName" || type === "lastName" ? "3" : "6"
-    }`}
-  >
-    <label className="label-style" htmlFor={name}>
-      {label}
-    </label>
-    <input
-      className={cn(
-        "input-style focus:outline-none focus:shadow-outline focus:border-indigo-300 focus:border-1 shadow-sm placeholder:font-palanquin",
-        error && "border-red-500"
-      )}
-      id={name}
-      type={type}
-      placeholder={label === "Confirm Password" ? "Password" : label}
-      name={name}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      required
-    />
-    {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
-  </div>
-);
+  error,
+  styles
+}) => {
+  return (
+    <div
+      className={cn(`col-span-6 ${styles}`)}
+    >
+      <label className="label-style" htmlFor={name}>
+        {label}
+      </label>
+      <input
+        className={cn(
+          "input-style focus:outline-none focus:shadow-outline focus:border-indigo-300 focus:border-1 shadow-sm placeholder:font-palanquin",
+          error && "border-red-500"
+        )}
+        id={name}
+        type={type}
+        placeholder={label === "Confirm Password" ? "Password" : label}
+        name={name}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        required
+      />
+      {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
+    </div>
+  );
+};
 
 export default Input;

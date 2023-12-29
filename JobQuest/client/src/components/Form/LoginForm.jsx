@@ -36,7 +36,7 @@ const LoginForm = () => {
         handleChange,
         handleSubmit,
       }) => (
-        <form onSubmit={handleSubmit} className={cn("grid grid-cols-6 gap-6")}>
+        <form onSubmit={handleSubmit} className={cn("grid grid-cols-6 gap-4")}>
           <Input
             label="Email"
             name="email"
@@ -60,7 +60,7 @@ const LoginForm = () => {
           <div className="col-span-6 flex justify-center items-center sm:flex-row sm:items-center sm:gap-4 font-montserrat">
             <Button
               className={cn(
-                " inline-block px-12 py-3 text-sm border shrink-0 rounded-sm font-medium transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none active:text-indigo-500"
+                " inline-block px-12 py-3 text-sm border shrink-0 rounded-sm font-medium transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none active:text-indigo-500 btn"
               )}
               type="submit"
             >

@@ -15,7 +15,7 @@ const Login = () => {
 
       {/* Form Section */}
       <div className="w-full flex flex-1 md:flex-[0.4] items-center justify-center px-4">
-        <div className="w-full max-w-md shadow-2xl padding-l rounded-sm">
+        <div className="w-full max-w-md shadow-2xl padding rounded-sm">
           <h2 className="sm:text-xl text-lg title mb-8 font-playfair">Login</h2>
 
           <LoginForm />
