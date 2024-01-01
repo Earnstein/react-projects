@@ -12,13 +12,14 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   return (
     <header>
       <nav className={` ${navBarBg} z-40 w-full fixed top-0 py-6`}>
-        <div className="flex items-center justify-between m-auto w-5/6">
-          <h4 className="font-playfair text-4xl font-bold">DB</h4>
+        <div className="flex items-center justify-between mx-auto w-5/6">
+          <h4 className="font-playfair text-3xl sm:text-4xl font-bold">DB</h4>
           {/* Desktop nav*/}
           {isAboveSmallScreens ? (
-            <div className="flex justify-between gap-14 font-opensans text-sm font-semibold">
+            <div className="flex justify-between gap-8 font-opensans text-sm font-semibold relative ">
               {navLinks.map((link) => (
                 <Link
+                  isTopOfPage={isTopOfPage}
                   key={link.page}
                   page={link.href}
                   selectedPage={selectedPage}
@@ -37,7 +38,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
           {/* MOBILE MENU POPUP*/}
           {!isAboveSmallScreens && isMenuToggled && (
-            <div className="fixed right-0 top-0 bg-blue h-full w-[300px] max-[425px]:w-[200px]">
+           <>
+           <div
+            className="fixed top-0 right-0 w-full h-full bg-black/80 pt-10 flex justify-center"
+            onClick={() => setIsMenuToggled(!isMenuToggled)}
+          >
+             <div className="bg-blue h-4/5 w-[90%] z-50">
               {/*close icon */}
               <div className="flex justify-end p-8">
                 <button
@@ -62,6 +68,10 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 ))}
               </div>
             </div>
+          </div>
+          
+           </>
+            
           )}
         </div>
       </nav>

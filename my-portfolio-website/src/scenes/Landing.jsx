@@ -13,13 +13,13 @@ const Landing = ({ setSelectedPage }) => {
   return (
     <section
       id="home"
-      className="md:flex md:justify-between md:items-center md:min-h-screen gap-16 py-10 container mx-auto"
+      className="md:flex md:justify-between md:items-center md:min-h-screen py-10 container mx-auto"
     >
       {/* IMAGE SECTION */}
       <div className="md:order-2 flex justify-center basis-3/5 z-10 mt-16 md:mt-32 group">
         {isAboveMediumScreens ? (
           <div
-            className={`relative z-0 ml-20 before:absolute before:mt-4 before:-top-20 before:-left-20 before:rounded-t-full before:w-full before:max-w-[400px] before:h-full before:border-2 before:border-blue before:z-[-1] ${
+            className={`relative z-0 sm:ml-20 ml-0 before:absolute before:mt-4 before:-top-20 before:-left-20 before:rounded-t-full before:w-full before:max-w-[400px] before:h-full before:border-2 before:border-blue before:z-[-1] ${
               isImageHover
                 ? "before:hover:border-red before:transition before:duration-500"
                 : ""
@@ -28,8 +28,8 @@ const Landing = ({ setSelectedPage }) => {
             onMouseLeave={() => setIsImageHover(false)}
           >
             <img
-              className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full
-              max-w-[400px] md:max-w-[420px]"
+              className="hover:filter hover:saturate-200 transition duration-500 z-10
+              max-w-sm"
               src={profileImg}
               alt="profile"
             />
@@ -37,14 +37,14 @@ const Landing = ({ setSelectedPage }) => {
         ) : (
           <img
             className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full
-              max-w-[400px] md:max-w-[420px] mt-24 mb-8"
+              max-w-sm mt-10"
             src={profileImg}
             alt="profile"
           />
         )}
       </div>
       {/* main section*/}
-      <div className="z-30 basis-2/5 mt-12 md:mt-32">
+      <div className="z-30 basis-2/5 mt-10 md:mt-32">
         {/*headings*/}
         <motion.div
           initial="hidden"
@@ -68,7 +68,7 @@ const Landing = ({ setSelectedPage }) => {
               Bakare
             </span>
           </p>
-          <p className="text-sm leading-normal mt-10 mb-8 text-center md:text-start">
+          <p className="text-sm leading-normal mt-10 mb-8 text-center md:text-start font-palanquin">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
             voluptatibus obcaecati, asperiores eveniet culpa officiis
             numquam error itaque tempore excepturi dicta vel. Eius?
