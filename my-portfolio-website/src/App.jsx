@@ -5,6 +5,7 @@ import DotGroup from "./scenes/DotGroup";
 import Landing from "./scenes/Landing";
 import MySkills from "./scenes/MySkills";
 import Navbar from "./scenes/Navbar";
+import Projects from "./scenes/Projects";
 
 const App = () => {
   const [selectedPage, setSelectedPage] = useState("home");
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <main className="app bg-deep-blue">
 
-      <section id="Navbar">
+      <section>
         <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
@@ -37,7 +38,7 @@ const App = () => {
         />
       </section>
 
-      <section className="w-5/6 mx-auto md:h-full">
+      <section className="max-container md:h-full">
           {isAboveMediumScreens && <DotGroup
           selectedPage={selectedPage}
           setSelectedPage={setSelectedPage}
@@ -45,8 +46,13 @@ const App = () => {
         <Landing setSelectedPage={setSelectedPage}/>
       </section>
       <LineGradient/>
-      <div className="w-5/6 mx-auto md:h-full">
+      <div className="max-container md:h-full">
             <MySkills/>
+      </div>
+
+      <LineGradient/>
+      <div className="max-container">
+            <Projects/>
       </div>
     </main>
   )
