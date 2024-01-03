@@ -22,23 +22,16 @@ async function httpGetAllUsers(req: Request, res: Response, next: NextFunction) 
   }
 }
 
-// Middleware for handling HTTP POST request to sign up a new user
 async function httpUserSignUp(req: Request, res: Response, next: NextFunction) {
   try {
     const { name, email, password } = req.body;
-
-    // Check if a user with the same email already exists in the database
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already in use" });
     }
 
-    // Generate a salt and hash the user's password for security
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-
     // Create a new user with the provided details
-    const newUser = await createNewUser(name, email, hashedPassword);
+    const newUser = await createNewUser(name, email, password);
 
     // Respond with a 201 Created status and the user's ID
     res.status(201).json({
