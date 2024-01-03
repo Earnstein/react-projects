@@ -13,7 +13,8 @@ function createToken(id: string, email: string, expiresIn) {
 
 // to verify if user has a set cookie
 
-const verifyAsync = promisify(jwt.verify.bind(jwt))
+const verifyAsync = promisify(jwt.verify.bind(jwt));
+
 async function verifyToken(req: Request, res: Response, next: NextFunction) {
   const token = await req.signedCookies[`${COOKIE_NAME}`];
   const authCondition = !token || token.trim() === "";
