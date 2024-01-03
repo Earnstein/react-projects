@@ -9,11 +9,11 @@ const validate = (validations: ValidationChain[]) => {
                 break;
             }
         }
-        const errors = validationResult(req); // validationResults provides the result of all the validations done on the request body
+        const errors = validationResult(req);
         if (errors.isEmpty()){
             return next();
         }
-        res.status(422).json({message: "invalid user details", errors: errors.array()}); // 422  status code implies request could not be processed further.
+        res.status(422).json({message: "invalid user details", errors: errors.array()});
     };
 };
 
@@ -31,9 +31,13 @@ const signupValidator = [
     ...loginValidator,
 ]
 
+const chatValidator = [
+    body("message").notEmpty().withMessage("Message is required"),
+]
 
 export {
     validate,
     signupValidator,
-    loginValidator
+    loginValidator,
+    chatValidator
 }
