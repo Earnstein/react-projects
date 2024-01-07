@@ -10,7 +10,7 @@ const Link = ({ page, selectedPage, setSelectedPage, isTopOfPage }) => {
       className={`${
         selectedPage === lowerCasePage ? "text-yellow hover:text-white" : ""
       } 
-        transition duration-500 font-opensans relative before:absolute
+        transition duration-500 font-playfair relative before:absolute
         before:w-0 before:h-[2px] before:bg-blue before:top-full before:left-0
         after:absolute
         after:w-0 after:h-[2px] after:bg-red after:top-full after:right-0 

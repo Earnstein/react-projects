@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import LineGradient from "./components/LineGradient";
 import useMediaQuery from "./hooks/useMediaQuery";
+import Contact from "./scenes/Contact";
 import DotGroup from "./scenes/DotGroup";
 import Landing from "./scenes/Landing";
 import MySkills from "./scenes/MySkills";
@@ -53,6 +54,11 @@ const App = () => {
       <LineGradient/>
       <div className="max-container">
             <Projects/>
+      </div>
+
+      <LineGradient/>
+      <div className="max-container md:h-screen">
+            <Contact/>
       </div>
     </main>
   )

@@ -1,11 +1,10 @@
-import { facebook, instagram, linkedin, twitter, project1, project2, project3, project4, project5, project6, project7 } from "../assets/images";
+import { facebook, instagram, linkedin, twitter, project1, project2, project3, project4 } from "../assets/images";
 
 export  const navLinks = [
     { page: "Home", href: "Home" },
     { page: "Skills", href: "Skills" },
     { page: "Projects", href: "Projects" },
-    { page: "Testimonials", href: "Testimonials" },
-    { page: "Contacts", href: "Contacts" },
+    { page: "Contact", href: "Contact" },
   ];
 
   export const socialMedia = [
@@ -21,7 +20,4 @@ export const projects = [
   { title: "Project 2", image: project2},
   { title: "Project 3",image: project3},
   { title: "Project 4", image:project4},
-  // { title: "Project 5", image: project5},
-  // { title: "Project 6", image: project6},
-  // { title: "Project 7",image: project7}
 ];

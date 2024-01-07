@@ -22,11 +22,12 @@ const Project = ({ title, image }) => {
       <div
         className="absolute inset-0 h-full w-full opacity-0
              hover:opacity-90 transition-all duration-500 ease-linear bg-grey
-             z-30 flex flex-col justify-center items-center
+             z-30 flex flex-col justify-center items-center px-2 text-sm text-center
+             font-palanquin
              "
       >
-        <h2 className="title text-black"> {title}</h2>
-        <p className="mt-2 text-black font-montserrat text-center">
+        <h2 className="title text-black font-playfair"> {title}</h2>
+        <p className="mt-2 text-black  text-center">
           Lorem ipsum dolor sit amet consectetu
         </p>
       </div>
@@ -68,7 +69,7 @@ const Projects = () => {
       {/*PROJECTS*/}
       <div className="flex justify-center items-center">
         <motion.div
-          className="sm:grid md:grid-cols-3 sm:grid-cols-2 py-10 px-24 gap-2"
+          className="sm:grid md:grid-cols-3 sm:grid-cols-2 py-10 px-24 gap-1"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}

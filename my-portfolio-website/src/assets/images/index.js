@@ -16,6 +16,7 @@ import project6 from "./project-6.jpeg";
 import project7 from "./project-7.jpeg";
 import skillsImg from "./skills-image.png";
 import twitter from "./twitter.png";
+import myImg from "./my-image.png";
 
 export {
     brush,
@@ -23,6 +24,7 @@ export {
     facebook,
     instagram,
     linkedin,
+    myImg,
     person1,
     person2,
     person3,

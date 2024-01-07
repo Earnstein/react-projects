@@ -40,10 +40,10 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
           {!isAboveSmallScreens && isMenuToggled && (
            <>
            <div
-            className="fixed top-0 right-0 w-full h-full bg-black/80 pt-10 flex justify-center"
+            className="fixed top-0 right-0 w-full h-full bg-black/90  flex justify-center"
             onClick={() => setIsMenuToggled(!isMenuToggled)}
           >
-             <div className="bg-blue h-4/5 w-[90%] z-50">
+             <div className="bg-slate-800 h-4/5 w-[90%] z-50 mt-16">
               {/*close icon */}
               <div className="flex justify-end p-8">
                 <button
@@ -56,7 +56,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
               {/* MENU ITEMS */}
               <div
                 className="flex flex-col items-center justify-center 
-              gap-10 text-xl leading-normal text-deep-blue font-bold mt-16"
+              gap-8 text-xl leading-normal text-white font-bold mt-16"
               >
                 {navLinks.map((link) => (
                   <Link

@@ -31,7 +31,6 @@ const MySkills = () => {
           </p>
           <LineGradient
             width="w-1/3"
-            styles="transition-all duration-500 hover:w-[40%]"
           />
           <p className="mt-4 max-w-sm">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam

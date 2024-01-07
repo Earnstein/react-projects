@@ -9,7 +9,6 @@ const Landing = ({ setSelectedPage }) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [isImageHover, setIsImageHover] = useState(false);
 
-
   return (
     <section
       id="home"
@@ -44,22 +43,20 @@ const Landing = ({ setSelectedPage }) => {
         )}
       </div>
       {/* main section*/}
-      <div className="z-30 basis-2/5 mt-10 md:mt-32">
+      <div className="z-30 basis-2/5 mt-24 md:mt-32">
         {/*headings*/}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          transition={{duration: 1}}
+          transition={{ duration: 1 }}
           variants={{
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-
         >
-          
-          <p className="text-[64px] wide:text-6xl font-playfair z-10 text-center md:text-start">
-            Damilola {""}
+          <h1 className="text-4xl md:text-5xl font-playfair z-10 text-center md:text-start">
+           I&apos;m Damilola {""}
             <span
               className="xs:relative xs:text-deep-blue xs:font-semibold z-20
                 xs:before:content-brush before:absolute before:-left-[40px] before:mt-6 before:-top-[150px]
@@ -67,57 +64,58 @@ const Landing = ({ setSelectedPage }) => {
             >
               Bakare
             </span>
-          </p>
-          <p className="text-sm leading-normal mt-10 mb-8 text-center md:text-start font-palanquin">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
-            voluptatibus obcaecati, asperiores eveniet culpa officiis
-            numquam error itaque tempore excepturi dicta vel. Eius?
+          </h1>
+          <p className="text-xl sm:text-2xl mt-4 mb-8 text-center md:text-start font-montserrat">
+            Full Stack <span className="text-gradient-rainblue">Developer</span>
           </p>
         </motion.div>
 
         {/*call to actions*/}
         <motion.div
-          className="flex mt-5 justify-center md:justify-start"
+          className="flex mt-4 justify-center md:justify-start"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          transition={{delay: 0.2, duration: 0.5}}
+          transition={{ delay: 0.2, duration: 0.5 }}
           variants={{
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
         >
           <AnchorLink
-          className="bg-gradient-rainblue text-deep-blue rounded-sm py-3 px-7
+            className="bg-gradient-rainblue text-deep-blue rounded-sm py-3 px-7
           font-semibold hover:bg-blue hover:text-white transition duration-500"
-          onClick={() => setSelectedPage("contact")}
-          href="#contact"
+            onClick={() => setSelectedPage("contact")}
+            href="#contact"
           >
             Contact me
-            </AnchorLink>
-            <AnchorLink
-          className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5"
-          onClick={() => setSelectedPage("contact")}
-          href="#contact"
+          </AnchorLink>
+          <AnchorLink
+            className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5"
+            onClick={() => setSelectedPage("contact")}
+            href="#contact"
           >
-           <div className="bg-deep-blue hover:text-red transition
-           duration-500 max-[320px]:px-6 w-full h-full flex items-center justify-center font-playfair px-10">
+            <div
+              className="bg-deep-blue hover:text-red transition
+           duration-500 max-[320px]:px-6 w-full h-full flex items-center justify-center font-playfair px-10"
+            >
               Let&apos;s talk.
-           </div>
-            </AnchorLink>
+            </div>
+          </AnchorLink>
         </motion.div>
 
         <motion.div
-        className="flex mt-4 justify-center md:justify-start"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{delay: 0.2, duration: 0.5}}
-        variants={{
-        hidden: { opacity: 0, x: -50 },
-        visible: { opacity: 1, x: 0 },
-        }}>
-          <SocialMediaIcon/>
+          className="flex mt-4 justify-center md:justify-start"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <SocialMediaIcon />
         </motion.div>
       </div>
     </section>
