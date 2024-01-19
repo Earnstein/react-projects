@@ -1,7 +1,8 @@
-import Button from "@/components/Button.jsx";
+
 import Logo from "@/assets/images/logo.svg";
 import { cn } from "@/utils";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const LandingPageNavbar = () => {
   return (

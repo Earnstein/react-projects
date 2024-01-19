@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
 import LottieComponent from "@/components/LottieComponent.js";
-import Form from "@/components/Form/Form.js";
+import LoginForm from "@/components/Form/LoginForm.js";
 
 const Login = () => {
   return (
     <Box
       display="flex"
-      flex={1}
       justifyContent={{md:"space-between", sm:"center", xs:"center"}}
       m="0 auto"
+      alignItems="center"
       maxWidth="1400px"
       minHeight="82vh"
     >
@@ -26,9 +26,8 @@ const Login = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        p={2}
       >
-        <Form />
+        <LoginForm />
       </Box>
     </Box>
   );

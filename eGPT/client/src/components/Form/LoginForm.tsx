@@ -6,8 +6,6 @@ import { useAuth } from "@/states/AuthContext.js";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 
-
-
 interface FormValues {
   email: string;
   password: string;
@@ -25,25 +23,28 @@ const initialValuesLogin: FormValues = {
   password: "",
 };
 
-const Form = () => {
+const LoginForm = () => {
   const [isLoading, setisLoading] = useState(true);
   const auth = useAuth();
-  // Define the submit handler function
+
+  //  SUBMIT HANDLER
   const handleFormSubmit = async (
     values: FormValues,
     { resetForm }: FormikHelpers<FormValues>
   ) => {
-    // Your form submission logic here
+    // FORM SUBMISSION LOGIC HERE
     const { email, password } = values;
     try {
       await auth?.login(email.toLowerCase(), password);
-      {isLoading ?  toast.loading("Signing In", {id: "1"}) : "" }
-      toast.success("Signed In Successfully", {id: "1"})
+      {
+        isLoading ? toast.loading("Signing In", { id: "1" }) : "";
+      }
+      toast.success("Signed In Successfully", { id: "1" });
       resetForm();
     } catch (error) {
-      console.log(error)
-      setisLoading(false)
-      toast.error("Signing In failed")
+      console.log(error);
+      setisLoading(false);
+      toast.error("Signing In failed");
     }
   };
 
@@ -63,11 +64,9 @@ const Form = () => {
       }) => (
         <form
           style={{
-            margin: "0 auto",
             padding: "30px",
             boxShadow: "10px 10px 20px #000",
             borderRadius: "10px",
-            border: "none",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -79,7 +78,7 @@ const Form = () => {
               display="flex"
               flexDirection="column"
               gap={2}
-              width={{ md: "25vw", sm: "50vw", xs: "60vw" }}
+              width={{ md: "25vw", sm: "50vw", xs: "70vw" }}
               height={{ md: "44vh" }}
               p={1}
               mx="auto"
@@ -167,4 +166,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default LoginForm;

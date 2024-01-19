@@ -1,5 +1,4 @@
 import { cn } from "@/utils";
-import Button from "../Button";
 import { FaTimes } from "react-icons/fa";
 import Logo from "@/assets/images/logo.svg";
 import { useDashBoardContext } from "@/store/dashboard-context";
@@ -16,25 +15,23 @@ const SmallSideBar = () => {
           )}
         >
           <div className="content bg-white/90 w-4/5 h-[90vh] rounded-sm px-8 py-16 relative flex items-center flex-col">
-            <Button
+            <button
               onClick={toggleSidebar}
               className={
-                "close-btn absolute top-3 left-3 bg-transparent border-transparent text-[1.5rem] text-red-dark cursor-pointer "
+                "close-btn absolute top-8 left-16 bg-transparent border-transparent text-[1.5rem] text-red-dark cursor-pointer hover:bg-transparent "
               }
             >
               <FaTimes />
-            </Button>
-            <header>
-              <Button>
-                <img
-                  src={Logo}
-                  alt="Nav-Logo"
-                  className={cn("w-28 h-12 md:h-16")}
-                />
-              </Button>
+            </button>
+            <div className="flex flex-col items-center ">
+              <img
+                src={Logo}
+                alt="Nav-Logo"
+                className={cn("w-28 h-12 md:h-16")}
+              />
 
-              <NavLinks/>
-            </header>
+              <NavLinks />
+            </div>
           </div>
         </div>
       )}

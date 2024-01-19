@@ -1,7 +1,7 @@
 import useMediaQuery from "@/hooks/useMediaQuery"
-
 const Admin = () => {
   const isMobileScreen = useMediaQuery("(min-width: 1000px)")
+  
   return (
     <div className={`${isMobileScreen ? 'grid-layout' : 'grid-layout-small-screen '} px-8 pt-4`}>
       <div className="a bg-white">Admin</div>

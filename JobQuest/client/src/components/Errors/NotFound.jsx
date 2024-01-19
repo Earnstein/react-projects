@@ -1,6 +1,7 @@
-import Button from "@/components/Button";
+
 import { cn } from "@/utils";
 import ErrorImg from "@/assets/images/error.svg"
+import { Button } from "../ui/button";
 const NotFound = () => {
   return (
     <div className="grid h-screen place-content-center px-4">

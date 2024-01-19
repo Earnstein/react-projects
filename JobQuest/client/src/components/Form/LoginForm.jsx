@@ -1,9 +1,9 @@
 import { cn } from "@/utils";
 import { Link } from "react-router-dom";
-import Button from "../Button";
 import * as yup from "yup";
 import { Formik } from "formik";
 import Input from "./Input";
+import { Button } from "../ui/button";
 
 const loginSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),
@@ -17,7 +17,6 @@ const initialValuesLogin = {
 
 const LoginForm = () => {
   const handleFormSubmit = async (values, { resetForm }) => {
-    // FORM SUBMISSION LOGIC HERE
     console.log(values);
     resetForm();
   };
@@ -60,7 +59,7 @@ const LoginForm = () => {
           <div className="col-span-6 flex justify-center items-center sm:flex-row sm:items-center sm:gap-4 font-montserrat">
             <Button
               className={cn(
-                " inline-block px-12 py-3 text-sm border shrink-0 rounded-sm font-medium transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none active:text-indigo-500 btn"
+                " text-sm border shrink-0 rounded-sm font-medium transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none active:text-indigo-500 btn"
               )}
               type="submit"
             >

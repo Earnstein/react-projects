@@ -34,22 +34,21 @@ const Dashboard = () => {
         logout,
       }}
     >
-      <motion.main
-       initial={{ x: 100, opacity: 0 }}
-       animate={{ x: 0, opacity: 1 }}
-       exit={{ x: 100, opacity: 0 }}
-       transition={{ duration: 0.5 }}
-      className={cn("flex")}>
+      <main className={cn("flex")}>
         <BigSideBar />
         <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 100, opacity: 0 }}
+          transition={{ duration: 0.5 }}
           className="grow"
         >
           <Navbar />
-          <div className={cn("mx-auto py-8")}>
+          <div className={cn("mx-auto py-4")}>
             <Outlet />
           </div>
         </motion.div>
-      </motion.main>
+      </main>
     </DashBoardContext.Provider>
   );
 };

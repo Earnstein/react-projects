@@ -11,6 +11,8 @@ type User = {
   name: string;
   email: string;
 };
+
+
 type UserAuth = {
   isLoggedIn: boolean;
   user: User | null;

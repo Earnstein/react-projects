@@ -1,5 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Dashboard, ErrorPage, Home, Landing, Login, Register, Addjob, Stats, Alljobs, Admin, Profile } from "./pages";
+import {
+  Dashboard,
+  ErrorPage,
+  Home,
+  Landing,
+  Login,
+  Register,
+  Addjob,
+  Stats,
+  Alljobs,
+  Admin,
+  Profile,
+} from "./pages";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const router = createBrowserRouter([
   {
@@ -22,36 +35,39 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
-        children:[
+        children: [
           {
             index: true,
-            element:<Addjob/>
+            element: <Addjob />,
           },
           {
-            path:"stats",
-            element:<Stats/>
+            path: "stats",
+            element: <Stats />,
           },
           {
-            path:"all-jobs",
-            element: <Alljobs/>,
+            path: "all-jobs",
+            element: <Alljobs />,
           },
           {
-            path:"profile",
-            element:<Profile/>
+            path: "profile",
+            element: <Profile />,
           },
           {
-            path:"admin",
-            element:<Admin/>
-          }
-        ]
+            path: "admin",
+            element: <Admin />,
+          },
+        ],
       },
     ],
   },
 ]);
 
 const App = () => {
-  
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 };
 
 export default App;

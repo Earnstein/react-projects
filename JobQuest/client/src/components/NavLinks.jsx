@@ -12,7 +12,7 @@ const NavLinks = () => {
           whileHover={{ translateX: 20, color: "#fff" }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className={cn(
-            " text-gray-500 hover:bg-indigo-500 hover:rounded-md gap-8 heading font-palanquin"
+            " text-gray-500 hover:bg-purple-500 hover:rounded-md gap-8 heading font-palanquin"
           )}
         >
           <NavLink

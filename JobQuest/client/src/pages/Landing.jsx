@@ -1,9 +1,9 @@
-import Button from "@/components/Button.jsx";
 import jobImage from "@/assets/images/Job.svg";
 import { cn } from "@/utils";
 import LandingPageNavbar from "@/components/LandingPageNavbar";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Landing = () => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
@@ -57,7 +57,7 @@ const Landing = () => {
           <Link className="flex justify-center md:justify-start" to="/login">
             <Button
               className={cn(
-                "inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
+                "text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none font-montserrat"
               )}
             >
               Get Started Today

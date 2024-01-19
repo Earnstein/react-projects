@@ -5,7 +5,7 @@ import User from "../models/schema/user.mongo.js";
 import { createToken } from "../utils/auth.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
-// Middleware for handling HTTP GET request to fetch all users
+
 async function httpGetAllUsers(req: Request, res: Response, next: NextFunction) {
   try {
     // Retrieve a list of all users from the database
@@ -21,7 +21,7 @@ async function httpGetAllUsers(req: Request, res: Response, next: NextFunction) 
     res.status(400).json({ message: "Error", error: error.message });
   }
 }
-
+// Coontroller for handling HTTP POST request to log in user
 async function httpUserSignUp(req: Request, res: Response, next: NextFunction) {
   try {
     const { name, email, password } = req.body;
@@ -45,7 +45,7 @@ async function httpUserSignUp(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-// Middleware for handling HTTP POST request to log in an existing user
+// Coontroller for handling HTTP POST request to log in user
 async function httpUserLogin(req: Request, res: Response, next: NextFunction) {
   try {
     const { email, password } = req.body;
@@ -98,7 +98,7 @@ async function httpUserLogin(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-// Middleware for handling HTTP POST request to log in an existing user
+// Coontroller for handling HTTP POST request to log in an existing user
 async function httpVerifyUser(req: Request, res: Response, next: NextFunction) {
   try {
 

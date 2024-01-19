@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { Formik } from "formik";
 import Input from "./Input";
-import Button from "../Button";
+import { Button } from "../ui/button";
+
+
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -116,6 +118,7 @@ const RegisterForm = () => {
               </span>
             </p>
           </div>
+          
         </form>
       )}
     </Formik>

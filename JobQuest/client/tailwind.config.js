@@ -1,21 +1,74 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  mode: "jit",
+// eslint-disable-next-line no-undef
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+  ],
+  prefix: "",
   theme: {
-    fontSize: {
-      xs: ["0.7em", "8px"],
-      sm: ["0.875rem", "12px"],
-      base: ["clamp(0.875rem, 1.5vw, 1.5rem)", "19.5px"],
-      lg: ["clamp(1.5rem, 2vw, 2.5rem)", "21.94px"],
-      xl: ["clamp(1.25rem, 2.5vw, 2.5rem)", "24.38px"],
-      "2xl": ["clamp(1.5rem, 3vw, 3rem)", "29.26px"],
-      "3xl": ["clamp(2rem, 3vw, 5rem)", "30px"],
-      "normal": ["16px", "20px"],
-      "large": ["20px", "24px"],
-      "6xl":["64px", "56px"]
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        xs: "480px",
+        ss: "620px",
+        sm: "768px",
+        md: "1030px",
+        wide: "1440px",
+      },
     },
     extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      }, 
+      fontSize: {
+        xs: ["0.7em", "8px"],
+        sm: ["0.875rem", "12px"],
+        base: ["clamp(0.875rem, 1.5vw, 1.5rem)", "19.5px"],
+        lg: ["clamp(1.5rem, 2vw, 2.5rem)", "21.94px"],
+        xl: ["clamp(1.25rem, 2.5vw, 2.5rem)", "24.38px"],
+        "2xl": ["clamp(1.5rem, 3vw, 3rem)", "29.26px"],
+        "3xl": ["clamp(2rem, 3vw, 5rem)", "30px"],
+        "normal": ["16px", "20px"],
+        "large": ["20px", "24px"],
+        "6xl":["64px", "56px"]
+      },
       fontFamily: {
         palanquin: ["Palanquin", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
@@ -33,59 +86,26 @@ export default {
           "0 20px 25px -5px rgba(0, 0, 0, 0.1),  0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       },
       borderRadius: {
-        sm: "0.25rem",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      colors: {
-        indigo: {
-          100: "#e2d9f3",
-          200: "#c5b3e6",
-          300: "#a98eda",
-          400: "#8c68cd",
-          500: "#6f42c1",
-          600: "#59359a",
-          700: "#432874",
-          800: "#2c1a4d",
-          900: "#160d27",
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        blue: {
-          100: "#cce5ff",
-          200: "#99caff",
-          300: "#66b0ff",
-          400: "#3395ff",
-          500: "#007bff",
-          600: "#0062cc",
-          700: "#004a99",
-          800: "#003166",
-          900: "#001933",
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
-        grey : {
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-        },
-        "background": "#f5f1fc",
-        "grey-50": "#f8sfafc",
-        "black": "#222",
-        "white": "#fff",
-        "red-light": "#f8d7da",
-        "red-dark": "#842029",
-        "green-light": "#d1e7dd",
-        "green-dark": "#0f5132",
       },
-      screens: {
-        xs: "480px",
-        ss: "620px",
-        sm: "768px",
-        md: "1030px",
-        wide: "1440px",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
+  // eslint-disable-next-line no-undef
+  plugins: [require("tailwindcss-animate")],
+}

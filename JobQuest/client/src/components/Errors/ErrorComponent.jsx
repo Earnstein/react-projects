@@ -1,6 +1,7 @@
-import Button from "@/components/Button";
+
 import { cn } from "@/utils";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const ErrorComponent = () => {
   return (
