@@ -28,7 +28,7 @@ const Recorder = ({ handleStop }) => {
       status === "recording" ? "animate-pulse" : ""
     }`}
           >
-            <BsMic size={48}/>
+            <BsMic size={34}/>
           </button>
           <p className="text-white font-light
            font-palanquin text-2xl">{status}</p>

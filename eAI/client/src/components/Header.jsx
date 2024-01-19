@@ -29,7 +29,7 @@ const Header = ({ setMessages }) => {
       hover:text-green-300 ${isResetting && "animate-pulse"}
       
       `}>
-        <HiOutlineRefresh size={30}/>
+        <HiOutlineRefresh size={28}/>
       </button>
     </header>
   );
