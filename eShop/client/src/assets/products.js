@@ -1,4 +1,4 @@
-import { airPodImg, alexaImg, cameraImg, mouseImg, phoneImg, playstationImg } from "."
+import { airPodImg, alexaImg, cameraImg, mouseImg, phoneImg, playstationImg } from "@/assets/index.js"
 
 const products = [
   {
@@ -81,19 +81,6 @@ const products = [
   },
   {
     _id: '7',
-    name: 'Amazon Echo Dot 3rd Generation',
-    image: alexaImg,
-    description:
-      'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
-    brand: 'Amazon',
-    category: 'Electronics',
-    price: 29.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    _id: '8',
     name: 'Amazon Echo Dot 3rd Generation',
     image: alexaImg,
     description:

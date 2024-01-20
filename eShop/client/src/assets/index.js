@@ -1,11 +1,10 @@
-import airPodImg from "./images/airpods.jpg";
-import alexaImg from "./images/alexa.jpg";
-import cameraImg from "./images/camera.jpg";
-import mouseImg from "./images/mouse.jpg";
-import phoneImg from "./images/phone.jpg";
-import playstationImg from "./images/playstation.jpg";
-import sampleImg from "./images/sample.jpg";
-
+import airPodImg from "@/assets/images/airpods.png";
+import alexaImg from "./images/alexa.png";
+import cameraImg from "./images/camera.png";
+import mouseImg from "./images/mouse.png";
+import phoneImg from "./images/phone.png";
+import playstationImg from "./images/playstation.png";
+import sampleImg from "./images/sample.png";
 
 export {
     airPodImg,
@@ -14,5 +13,5 @@ export {
     mouseImg,
     phoneImg,
     playstationImg,
-    sampleImg
+    sampleImg,
 }
