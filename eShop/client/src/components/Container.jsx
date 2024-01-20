@@ -1,6 +1,8 @@
+import { cn } from "@/lib/utils"
+
 const Container = ({children}) => {
   return (
-    <section className="mx-auto w-5/6">
+    <section className={cn("mx-auto max-w-7xl w-full")}>
         {children}
     </section>
   )
