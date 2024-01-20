@@ -12,14 +12,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        xs: "480px",
-        ss: "620px",
-        sm: "768px",
-        md: "1030px",
-        "2xl": "1440px",
-      },
+      padding: "2rem"
     },
     extend: {
       colors: {
@@ -86,6 +79,13 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      screens: {
+        xs: "480px",
+        ss: "620px",
+        sm: "768px",
+        md: "1000px",
+        lg: "1400px"
       },
     },
   },
