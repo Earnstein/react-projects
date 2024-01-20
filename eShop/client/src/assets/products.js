@@ -1,4 +1,4 @@
-import { airPodImg, alexaImg, cameraImg, mouseImg, phoneImg, playstationImg } from "."
+import { airPodImg, alexaImg, cameraImg, mouseImg, phoneImg, playstationImg } from "../assets/index.js"
 
 const products = [
   {
