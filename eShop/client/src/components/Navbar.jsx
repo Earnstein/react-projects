@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <header className="flex items-center h-16 border-b bg-white dark:bg-background shadow-sm fixed top-0 right-0 w-full z-10">
       <Container>
-        <div className="flex justify-between items-center px-8">
+        <div className="flex justify-between items-center">
           {/* LOGO */}
           <Link to={"/"} className="flex items-center gap-1">
             <FaShopify className="hidden sm:block w-10 h-10 rounded-full" />
@@ -23,7 +23,7 @@ const Navbar = () => {
           <nav className="hidden lg:flex lg:items-center md:space-x-4 font-palanquin font-medium transition-colors">
             {Links.map((link) => (
               <Button
-                className={cn("hover:scale-90 transition-all duration-500 ")}
+                className={cn("hover:scale-90 transition-all duration-500 text-xs sm:text-sm")}
                 key={link.label}
                 variant="ghost"
               >
@@ -33,12 +33,12 @@ const Navbar = () => {
           </nav>
 
           {/* CTA */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-1 items-center">
             <Link to={"/cart"}>
               <Button
                 variant="ghost"
                 className={cn(
-                  "px-5 py-2.5 text-sm font-medium font-palanquin transition-all duration-100"
+                  "px-5 py-2.5 text-xs font-medium font-palanquin transition-all duration-100"
                 )}
               >
                 <ShoppingCart className="mr-2" />
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <Button
                   
                   className={cn(
-                    "px-5 py-2.5 text-sm font-medium font-palanquin"
+                    "px-5 py-2.5 text-xs font-medium font-palanquin"
                   )}
                 >
                   <FaUser className="mr-2" /> Sign up
