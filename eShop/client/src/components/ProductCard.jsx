@@ -14,13 +14,13 @@ const ProductCard = ({ image, name, price, id }) => {
       className="card group relative bg-gray-900 dark:bg-background rounded-2xl
     before:absolute before:top-[-60%] before:w-full before:h-full before:bg-muted-foreground dark:before:bg-muted-foreground before:skew-y-[-10deg]
     transition before:transition before:duration-500 overflow-hidden
-    hover:before:top-[-70%] hover:before:skew-y-[30deg] h-[380px]"
+    hover:before:top-[-70%] hover:before:skew-y-[30deg] h-[350px] sm:h-96"
     >
       <CardTitle className="relative w-full flex justify-center items-center z-[1]">
         <img
           src={image}
           alt="image"
-          className="max-w-[100%] transition-all duration-500 group-hover:max-w-[90%]"
+          className="max-w-[100%] transition-all duration-500 group-hover:max-w-[80%]"
         />
       </CardTitle>
 
