@@ -5,7 +5,6 @@ import mouseImg from "./images/mouse.png";
 import phoneImg from "./images/phone.png";
 import playstationImg from "./images/playstation.png";
 import sampleImg from "./images/sample.png";
-import mouseImg2 from "../assets/mouse.jpg";
 
 export {
     airPodImg,
@@ -14,6 +13,5 @@ export {
     mouseImg,
     phoneImg,
     playstationImg,
-    sampleImg,
-    mouseImg2
+    sampleImg
 }
