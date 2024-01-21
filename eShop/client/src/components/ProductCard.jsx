@@ -21,6 +21,7 @@ const ProductCard = ({ image, name, price, id }) => {
           src={image}
           alt="image"
           className="max-w-[100%] transition-all duration-500 group-hover:max-w-[80%]"
+          loading="lazy"
         />
       </CardTitle>
 

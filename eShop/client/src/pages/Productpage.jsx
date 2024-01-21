@@ -29,12 +29,13 @@ const Productpage = () => {
                   src={product.image}
                   alt={product.name}
                   className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
+                  loading="lazy"
                 />
               </div>
             </Card>
 
             {/* PRODUCT DETAILS */}
-            <Card className="h-96 lg:h-[65vh] bg-white dark:bg-background md:col-span-1 lg:col-span-2 order-2 lg:p-8 ">
+            <Card className="h-96 lg:h-[65vh] bg-white dark:bg-background md:col-span-1 lg:col-span-2 order-2 lg:p-4">
               <CardHeader>
                 <CardTitle className=" font-playfair text-3xl sm:text-4xl pb-2 lg:pb-8 text-nowrap overflow-hidden text-ellipsis">
                   {product.name}
@@ -61,7 +62,7 @@ const Productpage = () => {
             </Card>
 
             {/* PRODUCT SUMMARY */}
-            <Card className="h-72 sm:h-96 md:h-80 bg-white dark:bg-background order-3 sm:order-1 lg:order-3 p-8 space-y-8">
+            <Card className="h-72 sm:h-96 lg:h-80 bg-white dark:bg-background order-3 sm:order-1 lg:order-3 p-6 space-y-8">
               <CardTitle className="flex justify-between items-center">
                 <span className="font-normal text-accent-foreground  text-xl sm:text-2xl font-playfair">
                   Price:
