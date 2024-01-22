@@ -1,4 +1,3 @@
-import products from "@/assets/products";
 import Container from "@/components/Container";
 import Rating from "@/components/Rating";
 import { Button } from "@/components/ui/button";
@@ -11,10 +10,31 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { getProduct } from "@/hooks/request";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 const Productpage = () => {
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+
+  const {
+    isError,
+    isPending,
+    data: product,
+  } = useQuery({
+    queryKey: ["product"],
+    queryFn: () => getProduct(productId),
+  });
+  if (isPending) {
+    return <h1>PENDING</h1>;
+  }
+
+  if (isError) {
+    return <h1>Error</h1>;
+  }
+
+  if (isPending) {
+    return <h1>Pending</h1>;
+  }
   console.log(product);
   return (
     <section className="mt-24">
@@ -28,7 +48,7 @@ const Productpage = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
+                  className="absolute inset-0 object-cover h-full w-full"
                   loading="lazy"
                 />
               </div>
@@ -54,8 +74,8 @@ const Productpage = () => {
               </CardContent>
 
               <CardFooter>
-                <p className="font-palanquin">
-                  <span className="font-bold">Description:</span>{" "}
+                <p className="font-palanquin max-xs:text-xs">
+                  <span className="font-bold ">Description:</span>{" "}
                   {product.description}
                 </p>
               </CardFooter>
@@ -82,7 +102,7 @@ const Productpage = () => {
               </CardDescription>
               <Separator />
               <Button disabled={product.countInStock === 0}>
-                <Link to='/cart'>Add to cart</Link>
+                <Link to="/cart">Add to cart</Link>
               </Button>
             </Card>
           </div>

@@ -1,8 +1,25 @@
 import Container from "@/components/Container";
 import ProductCard from "@/components/ProductCard";
-import products from "@/assets/products";
+import { getProducts } from "@/hooks/request";
+import { useQuery } from "@tanstack/react-query";
 
 const Homepage = () => {
+  const {
+    isError,
+    isPending,
+    data: products,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => getProducts(),
+  });
+  if (isPending) {
+    return <h1>PENDING</h1>;
+  }
+
+  if (isError) {
+    return <h1>Error</h1>;
+  }
+
   return (
     <section className="mt-12">
       <Container>
