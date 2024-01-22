@@ -1,5 +1,5 @@
 import express from "express";
-import productRouter from "./product.route.js";
+import productRouter from "./products/product.route.js";
 
 const api = express.Router();
 
