@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema(
     },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
     rating: {
-      type: String,
+      type: Number,
       required: true,
     },
     numReviews: {
@@ -52,6 +52,7 @@ const productSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 
 const Product = mongoose.model("Product", productSchema);
 
