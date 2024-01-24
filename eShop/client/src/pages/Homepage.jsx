@@ -1,25 +1,15 @@
 import Container from "@/components/Container";
+import ErrorMessage from "@/components/ErrorMessage";
+import  { LoadingComponent } from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
-import { getProducts } from "@/hooks/request";
-import { useQuery } from "@tanstack/react-query";
+import { useGetProductsQuery } from "@/hooks/Products";
+import useMediaQuery from "@/hooks/useMediaQuery";
+
 
 const Homepage = () => {
-  const {
-    isError,
-    isPending,
-    data: products,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getProducts(),
-  });
-  if (isPending) {
-    return <h1>PENDING</h1>;
-  }
-
-  if (isError) {
-    return <h1>Error</h1>;
-  }
-
+  const isSmallScreens = useMediaQuery("(max-width: 600px)")
+  const { isError, isLoading, data: products, error } = useGetProductsQuery();
+ 
   return (
     <section className="mt-12">
       <Container>
@@ -27,16 +17,19 @@ const Homepage = () => {
           Latest products.
         </h1>
         <div className="py-4 px-8">
-          <div className="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {products.map((product) => (
-              <ProductCard
-                key={product._id}
-                id={product._id}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-              />
-            ))}
+          <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {isLoading && <LoadingComponent num={isSmallScreens ? 1 : 4} />}
+            {isError && <ErrorMessage variant={"destructive"} title={error?.name} message={error?.message || "Something went wrong... Retry"}/>}
+            {products &&
+              products.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  id={product.slug}
+                  image={product.image}
+                  name={product.name}
+                  price={product.price}
+                />
+              ))}
           </div>
         </div>
       </Container>
