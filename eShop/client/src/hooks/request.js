@@ -1,10 +1,11 @@
+import { BASE_URL, PRODUCTS_URL } from "@/constants.js";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5000/api/v3/";
+axios.defaults.baseURL = BASE_URL;
 
 // FETCH A SINGLE PRODUCT , RETURN AS JSON
 const getProduct = async (productId) => {
-    const response = await axios.get(`/product/${productId}`);
+    const response = await axios.get(`${PRODUCTS_URL}/${productId}`);
     if (response.status !== 200) {
         throw new Error("Unable to fetch product.")
     }
@@ -17,7 +18,7 @@ const getProduct = async (productId) => {
 // FETCH ALL PRODUCT, RETURN AS JSON
 const getProducts = async () => {
     try {
-        const response = await axios.get("/product");
+        const response = await axios.get(`${PRODUCTS_URL}`);
         if (response.status !== 200) {
           throw new Error("Unable to fetch products");
         }
