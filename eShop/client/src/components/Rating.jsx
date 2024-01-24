@@ -22,9 +22,9 @@ const Rating = ({ rating }) => {
   };
 
   return (
-    <div className="flex justify-start items-center gap-2 mt-6">
+    <span className="flex justify-start items-center gap-2 mt-6">
       {renderStars()} <span className="font-palanquin tracking-tight">{rating} reviews</span>
-    </div>
+    </span>
   );
 };
 
