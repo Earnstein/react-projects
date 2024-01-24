@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+// order items schema
 const orderItemsSchema = new mongoose.Schema({
   name: { type: String, required: true },
   qty: { type: Number, required: true },
@@ -12,6 +14,8 @@ const orderItemsSchema = new mongoose.Schema({
   },
 });
 
+
+// order schema
 const orderSchema = new mongoose.Schema(
   {
     user: {
@@ -67,7 +71,7 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
-    paidAt: {
+    deliveredAt: {
       type: Date,
     },
   },

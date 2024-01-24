@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 const productSchema = new mongoose.Schema(
   {
@@ -6,6 +7,9 @@ const productSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+    },
+    slug: {
+      type: String,
     },
     name: {
       type: String,
@@ -52,6 +56,29 @@ const productSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+
+
+// productSchema.pre("insertMany", async function (next, docs) {
+//   try {
+//     await Promise.all(
+//       docs.map(async (doc) => {
+//         const slug = slugify(doc.name, {
+//           replacement: "-",
+//           remove: undefined,
+//           lower: true,
+//           strict: true,
+//           locale: "vi",
+//           trim: true,
+//         });
+//         doc.slug = slug;
+//       })
+//     );
+//     next(null, docs);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 
 const Product = mongoose.model("Product", productSchema);
