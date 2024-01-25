@@ -15,6 +15,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider } from "react-redux";
 import store, { persistor } from "./states/store.js";
 import { PersistGate } from "redux-persist/integration/react";
+import Cartpage from "./pages/Cartpage.jsx";
+
+
 
 // REACT ROUTER SETUP
 const router = createBrowserRouter(
@@ -22,6 +25,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index="true" path="/" element={<Homepage />} />
       <Route path="/product/:id" element={<Productpage />} />
+      <Route path="/cart" element={<Cartpage/>}/>
     </Route>
   )
 );

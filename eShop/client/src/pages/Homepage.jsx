@@ -13,7 +13,7 @@ const Homepage = () => {
   return (
     <section className="mt-12">
       <Container>
-        <h1 className="font-palanquin dark:text-muted-foreground text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h1 className="font-playfair dark:text-muted-foreground text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Latest products.
         </h1>
         <div className="py-4 px-8">

@@ -13,29 +13,21 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useGetProductQuery } from "@/hooks/Products";
-import { addToCart } from "@/states/slices";
 import { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useDispatch }  from "react-redux";
-
-
+import Cart from "@/components/Cart";
+import { alexaImg } from "@/assets";
 
 const Productpage = () => {
   const [qty, setQty] = useState(1);
   const { id: productId } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
+  
   const {
     error,
     isError,
     isLoading,
     data: product,
   } = useGetProductQuery(productId);
-
-  const addToCartHandler = () => {
-    dispatch(addToCart({...product, qty}));
-    navigate("/")
-  }
 
   return (
     <section className="mt-24">
@@ -51,13 +43,13 @@ const Productpage = () => {
 
         {/* PRODUCT DETAIL SECTION */}
         {product && (
-          <section className="flex flex-col gap-4 p-4">
+          <section className="flex  gap-4 p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:grid-cols-4 md:gap-6">
               {/* PRODUCT IMAGE */}
               <Card className="h-64 sm:h-96 sm:col-span-2 lg:col-span-1 bg-accent dark:bg-background order-1 sm:order-3 lg:order-1 relative">
                 <div className="relative h-full w-full">
                   <img
-                    src={`.${product.image}`}
+                    src={alexaImg}
                     alt={product.name}
                     className="absolute inset-0 object-cover h-full w-full"
                     loading="lazy"
@@ -93,7 +85,7 @@ const Productpage = () => {
               </Card>
 
               {/* PRODUCT SUMMARY */}
-              <Card className="h-72 sm:h-96 lg:h-80 bg-white dark:bg-background order-3 sm:order-1 lg:order-3 p-3 space-y-6">
+              <Card className="h-80 sm:h-96 lg:h-80 bg-white dark:bg-background order-3 sm:order-1 lg:order-3 p-3 space-y-6">
                 <CardTitle className="flex justify-between items-center">
                   <span className="font-normal text-accent-foreground  text-xl sm:text-2xl font-playfair">
                     Price:
@@ -113,37 +105,21 @@ const Productpage = () => {
                   </span>
                 </CardDescription>
 
-                {product.countInStock > 0 && (
-                  <>
-                    <Separator />
-                    <p className="flex justify-between items-center">
-                      <span className="font-normal text-accent-foreground text-sm sm:text-2xl  font-playfair">
-                        Qty:
-                      </span>
-                      <span className="font-normal text-accent-foreground text-sm sm:text-2xl font-playfair">
-                        1.23
-                      </span>
-                    </p>
-                  </>
-                )}
-                <Separator />
-                <Button
-                  disabled={product.countInStock === 0}
-                  onClick={addToCartHandler}
-                >
-                  Add to cart
-                </Button>
+                
+                <Cart product={product}/>
+                
               </Card>
             </div>
 
             {/* CTA */}
-            <Link to="/">
-              <Button className="z-2 px-8 py-2 self-start">
+            
+          </section>
+        )}
+        <Link to="/">
+              <Button className="z-2 px-8 py-2 self-start inline ml-4">
                 Continue shopping
               </Button>
             </Link>
-          </section>
-        )}
       </Container>
     </section>
   );

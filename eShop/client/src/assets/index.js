@@ -1,4 +1,4 @@
-import airPodImg from "@/assets/images/airpods.png";
+import airPodImg from "./images/airpods.png";
 import alexaImg from "./images/alexa.png";
 import cameraImg from "./images/camera.png";
 import mouseImg from "./images/mouse.png";
