@@ -22,6 +22,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        grad: "hsl(var(--gradient)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -58,6 +59,22 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        palanquin: ["Palanquin", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        opensans: ["Open Sans", "sans-serif"],
+        playfair: ["Playfair Display", "sans-serif"],
+      },
+      boxShadow: {
+        "shadow-1":
+          " 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+        "shadow-2":
+          "0 4px 6px -1px rgba(0, 0, 0, 0.1),  0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "shadow-3":
+          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "shadow-4":
+          "0 20px 25px -5px rgba(0, 0, 0, 0.1),  0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -71,6 +88,13 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      screens: {
+        xs: "480px",
+        ss: "620px",
+        sm: "768px",
+        md: "1030px",
+        wide: "1440px",
       },
     },
   },
