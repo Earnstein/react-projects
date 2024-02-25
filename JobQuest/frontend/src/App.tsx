@@ -4,9 +4,12 @@ import {
   DashboardPage,
   ErrorPage,
   HomePage,
+  JobsPage,
   LandingPage,
+  ProfilePage,
   SignInPage,
   SignUpPage,
+  StatsPage,
 } from "@/pages/index.ts";
 import { ThemeProvider } from "./components/theme-provider";
 
@@ -21,12 +24,26 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "admin",
-        element: <AdminPage />,
-      },
-      {
         path: "dashboard",
         element: <DashboardPage />,
+        children: [
+          {
+            path: "admin",
+            element: <AdminPage />,
+          },
+          {
+            index: true,
+            element: <JobsPage />,
+          },
+          {
+            path: "stats",
+            element: <StatsPage />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+        ],
       },
     ],
   },
