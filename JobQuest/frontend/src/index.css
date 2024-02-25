@@ -102,3 +102,17 @@
     @apply before:absolute before:top-[-100%] before:right-[0] before:w-[1px] before:h-full before:bg-muted-foreground before:transition-all before:duration-500 before:hover:right-0 group-hover:before:top-0  after:absolute  after:bottom-[-100%]  after:left-[0]  after:w-[1px]  after:h-full  after:bg-muted-foreground  after:transition-all  after:duration-500  after:hover:right-0 group-hover:after:bottom-0
   }
 }
+
+@layer utilities {
+  .input-style {
+    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  }
+
+  .label-style {
+    @apply block text-muted-foreground font-opensans font-semibold mb-2 capitalize;
+  }
+  
+  .padding {
+    @apply px-4 py-20 md:px-8;
+  }
+}
