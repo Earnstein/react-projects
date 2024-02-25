@@ -2,10 +2,14 @@ import LandingImg from "@/assets/images/LandIt.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Navbar from "@/components/navbar";
 
 const LandingPage = () => {
   return (
+   <>
+    <Navbar/>
     <section id="#Landingpage" className="h-full w-full flex flex-1">
+        
       <div className="container w-full h-full  md:mt-20">
         <div className="max-w-8xl w-full mx-auto sm:py-8">
           <div className="flex flex-col-reverse justify-center md:flex-row md:justify-between items-center gap-8">
@@ -63,6 +67,7 @@ const LandingPage = () => {
         </div>
       </div>
     </section>
+   </>
   );
 };
 
