@@ -2,7 +2,6 @@ import logo from "@/assets/images/logo.png";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
-import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,23 +22,18 @@ const Navbar = () => {
             <>
               <NavLink to="/signin">
                 <li>
-                  <Button
-                    variant="outline"
-                    className={cn("group special-button-effect rounded-none")}
-                    size="sm"
-                  >
-                    <span className={cn("special-span-effect")}>Login</span>
+                  <Button variant="outline" size="sm">
+                    Login
                   </Button>
                 </li>
               </NavLink>
               <NavLink to="/signup">
                 <li>
                   <Button
-                    variant="outline"
-                    className={cn("group special-button-effect rounded-none")}
+                    className="font-palanquin text-secondary bg-accent-foreground"
                     size="sm"
                   >
-                    <span className={cn("special-span-effect")}>Register</span>
+                    Register
                   </Button>
                 </li>
               </NavLink>
