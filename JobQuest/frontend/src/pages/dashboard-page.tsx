@@ -32,7 +32,7 @@ const DashboardPage = () => {
         <Sidebar/>
         <div className="flex-1">
           <Navbar/>
-          <div className="flex-1">
+          <div>
             <Outlet />
           </div>
         </div>
