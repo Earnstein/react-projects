@@ -1,25 +1,29 @@
 import { navLinks } from "@/constants";
 import { NavLink } from "react-router-dom";
-import { cn } from "@/utils";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-const NavLinks = () => {
+interface NavLink  {
+  onOpenChange?: (open: boolean) => void
+}
+const NavLinks = ({onOpenChange}: NavLink) => {
   return (
-    <div className="mt-20 flex flex-col gap-4">
+    <div className="mt-10 flex flex-col gap-4">
       {navLinks.map((link) => (
         <motion.div
           key={link.title}
-          whileHover={{ translateX: 20, color: "#fff" }}
+          whileHover={{ translateX: 20}}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className={cn(
-            " text-gray-500 hover:bg-indigo-500 hover:rounded-md gap-8 heading font-palanquin"
+            "text-muted-foreground dark:text-white/80 gap-y-8 font-palanquin"
           )}
         >
           <NavLink
             to={link.path}
-            className={cn("flex items-center py-4 px-8 gap-8")}
+            className={cn("flex items-center text-xl py-4 px-8 gap-8")}
+            onClick={() => {onOpenChange?.(false)}}
           >
-            <span className={cn("text-sm")}>{link.icon}</span>
+            <link.icon />
             <span>{link.title}</span>
           </NavLink>
         </motion.div>

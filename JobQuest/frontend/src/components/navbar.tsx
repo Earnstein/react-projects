@@ -5,6 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import { useDashBoardContext } from "@/hooks/useDashboardContext";
 import { MenuIcon } from "lucide-react";
 import MobileNavbar from "./mobile-navbar";
+import LogOutButton from "./drop-down";
 
 const Navbar = () => {
   const location = useLocation();
@@ -30,9 +31,6 @@ const Navbar = () => {
                   className="hidden md:block w-8 h-8"
                   onClick={data.toggleSidebar}
                 />
-                <h4 className="hidden sm:inline-block font-playfair text-accent-foreground text-3xl">
-                  LandIt
-                </h4>
               </div>
             </div>
           </>
@@ -60,8 +58,9 @@ const Navbar = () => {
               </NavLink>
             </>
           ) : (
-            <h4>dashboard links</h4>
+            <LogOutButton/>
           )}
+          
           <ModeToggle />
         </ul>
       </div>

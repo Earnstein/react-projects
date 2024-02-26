@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
+  AddJobPage,
   AdminPage,
   DashboardPage,
   ErrorPage,
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <ProfilePage />,
+          },
+          {
+            path: "all-jobs",
+            element: <AddJobPage />,
           },
         ],
       },

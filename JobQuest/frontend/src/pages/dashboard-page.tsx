@@ -29,8 +29,8 @@ const DashboardPage = () => {
  }}>
      <div className="w-full h-full">
       <main className={cn("flex")}>
-        <Sidebar showSidebar={showSidebar}/>
-        <div className="grow">
+        <Sidebar/>
+        <div className="flex-1">
           <Navbar/>
           <div>
             <Outlet />
