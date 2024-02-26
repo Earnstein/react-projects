@@ -11,6 +11,7 @@ import SignUpPage from "@/pages/sign-up-page";
 import StatsPage from "@/pages/stats-page";
 import NotFoundPage from "@/components/Error/not-found-page";
 import ErrorPage from "@/pages/error-page"
+import AddJobPage from "@/pages/add-job-page";
 export {
     AdminPage,
     DashboardPage,
@@ -24,5 +25,6 @@ export {
     SignUpPage,
     StatsPage,
     NotFoundPage,
-    ErrorPage
+    ErrorPage,
+    AddJobPage
 }
