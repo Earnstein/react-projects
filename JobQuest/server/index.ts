@@ -1,10 +1,16 @@
-import app from "./src/app.ts";
+import app from "./src/app";
+import { mongoConnect } from "./src/utils/mongo";
 
-const PORT = process.env.PORT || 6002;
-Bun.serve({
-    fetch: app.fetch,
-    port: PORT,
-    hostname: "localhost"
-});
+const PORT =  6002;
 
-console.log(`Listening on port : ${PORT}`);
+try {
+  await mongoConnect()
+    Bun.serve({
+        fetch: app.fetch,
+        port: PORT,
+        hostname: "localhost",
+      });
+      console.log(`Listening on Port: ${PORT}`.green.underline);
+} catch (error) {
+    
+}
