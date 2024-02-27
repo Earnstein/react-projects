@@ -1,35 +1,30 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
-import userRouter from "./routes/user";
+import api from "./routes";
+import { cors } from "hono/cors";
+import { prettyJSON } from "hono/pretty-json";
+import { secureHeaders } from "hono/secure-headers";
+
 
 const app = new Hono();
 
+app.use(prettyJSON({space: 4}))
+app.use(secureHeaders())
+app.use(cors())
+app.use(logger())
+app.route("/api/v1", api)
+
+app.notFound((c) => {
+    return c.json({
+        message: "Not found"
+    }, 404)
+})
 
 app.onError((err, c) => {
     console.error(err)
-    return c.text("ERROR")
+    return c.json({
+        message: "Internal server error"
+    }, 500)
 })
-app.get('/', (c)=> c.json({
-    message: "Hello world"
-}));
-
-app.get("/earnstein", (C) => {
-    return C.json({
-        message: "welcome to earnstein"
-    })
-})
-
-app.get("/earnstei", (C) => {
-    return C.json({
-        message: "wlcome to earnstei",
-        path : C.req.path
-    })
-})
-app.post("/create",(c)=> c.text("Post end point"))
-
-
-
-app.use(logger())
-app.route("/user", userRouter)
 
 export default app;
