@@ -7,14 +7,16 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "client": "cd frontend && npm run dev",
+    "client": "cd frontend && bun run dev",
     "server": "cd server && bun --hot index.ts",
-    "watch": "concurrently \"bun run server\" \"bun run client\""
+    "watch": "concurrently \"bun run server\" \"bun run client\" "
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "hono": "^4.0.7",
+    "mongoose": "^8.2.0",
     "nanoid": "^5.0.6"
   }
 }
