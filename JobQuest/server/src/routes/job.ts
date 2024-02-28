@@ -1,14 +1,11 @@
 import { Hono } from "hono";
-import { httpCreateJob, httpGetAllJob, httpGetJob } from "../controllers/job";
+import { httpCreateJob, httpDeleteAllJob, httpDeleteJob, httpEditAJob, httpEditJob, httpGetAllJob, httpGetJob } from "../controllers/job";
 
 
 const jobRouter = new Hono();
 
-jobRouter.post("/create-job", httpCreateJob)
-
-jobRouter.get("/all-jobs", httpGetAllJob);
-
-jobRouter.get("/get-job/:id", httpGetJob)
+jobRouter.route("/").post(httpCreateJob).get(httpGetAllJob).delete(httpDeleteAllJob)
+jobRouter.route("/:id").get(httpGetJob).patch(httpEditJob).put(httpEditAJob).delete(httpDeleteJob)
 
 
 export default jobRouter;
