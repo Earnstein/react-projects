@@ -3,9 +3,8 @@ import jobRouter from "./job";
 import userRouter from "./user";
 const api = new Hono();
 
-
-
-api.route("/user", userRouter);
 api.route("/job", jobRouter)
+api.route("/user", userRouter)
+
 
 export default api;
