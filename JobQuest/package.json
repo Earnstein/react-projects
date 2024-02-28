@@ -3,13 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest",
-    "concurrently": "^8.2.2"
+    "@types/bun": "latest"
   },
   "scripts": {
     "client": "cd frontend && bun run dev",
     "server": "cd server && bun --hot index.ts",
-    "watch": "concurrently \"bun run server\" \"bun run client\" "
+    "watch": "bun run server & bun run client "
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
