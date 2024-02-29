@@ -10,7 +10,7 @@ const LandingPage = () => {
     <Navbar/>
     <section id="#Landingpage" className="h-full w-full flex flex-1">
         
-      <div className="container w-full h-full  md:mt-20">
+      <div className="container w-full h-full mt-20">
         <div className="max-w-8xl w-full mx-auto sm:py-8">
           <div className="flex flex-col-reverse justify-center md:flex-row md:justify-between items-center gap-8">
             {/* HERO TEXTS */}
