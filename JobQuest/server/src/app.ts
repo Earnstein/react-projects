@@ -5,6 +5,7 @@ import { prettyJSON } from "hono/pretty-json";
 import { secureHeaders } from "hono/secure-headers";
 import { config } from "dotenv";
 import api from "./routes";
+import { NotFound, Unauthenticated, Unauthorized, BadRequest } from './middleware/error';
 config()
 
 const app = new Hono();
@@ -22,12 +23,15 @@ app.notFound((c) => {
 })
 
 app.onError((err, c) => {
-   if(err instanceof Error){
+   if (err instanceof NotFound 
+    || err instanceof BadRequest
+    || err instanceof Unauthenticated
+    || err instanceof Unauthorized) {
     const message = err.message;
-    console.error(`Error message: ${err.message}`.red.underline)
+    const statusCode = err.statusCode
     return c.json({
         message: message
-    }, 404)
+    }, statusCode)
    }
     return c.json({
         message: "Internal server error"
