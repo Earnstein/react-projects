@@ -2,7 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const AdminPage = () => {
   return (
-    <div className="relative flex h-[100vh] w-full">
+    <div className="relative flex h-[80vh] w-full">
       <div>
         <div className="p-10 bg-pink-700">
           Lore mus fugit quidem eveniet dignissimos impedit, deserunt quaerat!
