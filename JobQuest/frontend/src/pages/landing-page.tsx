@@ -10,9 +10,9 @@ const LandingPage = () => {
     <Navbar/>
     <section id="#Landingpage" className="h-full w-full flex flex-1">
         
-      <div className="container w-full h-full mt-20">
+      <div className="container w-full h-full mt-32 sm:mt-20">
         <div className="max-w-8xl w-full mx-auto sm:py-8">
-          <div className="flex flex-col-reverse justify-center md:flex-row md:justify-between items-center gap-8">
+          <div className="flex flex-col justify-center md:flex-row md:justify-between items-center gap-8">
             {/* HERO TEXTS */}
           <motion.div
           initial="hidden"
@@ -56,7 +56,7 @@ const LandingPage = () => {
               hidden: { opacity: 0, x: 50 },
               visible: { opacity: 1, x: 0 },
             }}
-             className="relative h-80 w-80 sm:h-[500px] sm:w-[600px]">
+             className="relative h-80 w-80 xs:h-[450px] xs:w-[450px] sm:h-[500px] sm:w-[600px]">
               <img
                 src={LandingImg}
                 alt="landing"
