@@ -4,9 +4,9 @@ import { NotFound } from '../middleware/error';
 import Job from "../models/job";
 
 // POST: CREATE NEW JOB
+
 async function httpCreateJob(c: Context) {
   const body = await c.req.json();
-
 
   const job = new Job({
    ...body
@@ -76,7 +76,7 @@ async function httpGetJob(c: Context) {
     updatedAt: 0,
   });
   if (!job) {
-    return c.json({ message: "Job does not exist" }, 401);
+    throw new NotFound("Job does not exist")
   }
   return c.json({ message: "success",status: "ok", data: job }, StatusCodes.OK);
 }
@@ -101,11 +101,11 @@ async function httpEditJob(c: Context) {
         __v: 0,
         createdAt: 0,
         updatedAt: 0,
-      },
+      }
     }
   );
   if (!job) {
-    return c.json({ message: "Job does not exist" }, 401);
+    throw new NotFound("Job does not exist")
   }
   return c.json({ message: "success",status: "ok", data: job }, StatusCodes.OK);
 }
@@ -114,11 +114,8 @@ async function httpEditJob(c: Context) {
 
 async function httpEditAJob(c: Context) {
   const body = await c.req.json();
-
   const id = c.req.param("id");
-  if (!body) {
-    throw new Error("Missing property");
-  }
+  
   if (!id) {
     return c.json({ message: "Provide Job Id" }, 401);
   }
@@ -138,7 +135,7 @@ async function httpEditAJob(c: Context) {
     }
   );
   if (!job) {
-    throw new Error("Job does not exist");
+    throw new NotFound("Job does not exist")
   }
   return c.json({ message: "success",status: "ok", data: job });
 }
@@ -160,7 +157,7 @@ async function httpDeleteJob(c: Context) {
     },
   });
   if (!job) {
-    throw new Error("Job does not exist");
+    throw new NotFound("Job does not exist");
   }
   return c.json({ message: "deleted", status: "ok", data: job }, StatusCodes.OK);
 }
@@ -175,4 +172,4 @@ async function httpDeleteAllJob(c: Context) {
 }
 
 
-export { httpCreateJob, httpGetAllJob, httpGetJob, httpEditJob, httpEditAJob, httpDeleteJob,httpDeleteAllJob };
+export { httpCreateJob, httpGetAllJob, httpGetJob, httpEditJob, httpEditAJob, httpDeleteJob, httpDeleteAllJob };
