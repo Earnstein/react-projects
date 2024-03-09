@@ -5,14 +5,11 @@ import Job from "../models/job";
 
 // POST: CREATE NEW JOB
 async function httpCreateJob(c: Context) {
-  const { position, company } = await c.req.json();
+  const body = await c.req.json();
 
-  if (!company || !position) {
-    throw new NotFound("Missing property");
-  }
+
   const job = new Job({
-    position: position,
-    company: company,
+   ...body
   });
   await job.save();
   const newJob = await Job.findById(
@@ -36,6 +33,7 @@ async function httpCreateJob(c: Context) {
 }
 
 //GET: FETCH ALL JOB
+
 async function httpGetAllJob(c: Context) {
   const allJobs = await Job.find(
     {},
@@ -82,7 +80,6 @@ async function httpGetJob(c: Context) {
   }
   return c.json({ message: "success",status: "ok", data: job }, StatusCodes.OK);
 }
-
 
 // PATCH: EDIT JOB BY ID
 
@@ -168,6 +165,7 @@ async function httpDeleteJob(c: Context) {
   return c.json({ message: "deleted", status: "ok", data: job }, StatusCodes.OK);
 }
 
+// DELETE: DELETE ALL JOB 
 async function httpDeleteAllJob(c: Context) { 
   const job = await Job.deleteMany({});
   if (job.deletedCount === 0) {
