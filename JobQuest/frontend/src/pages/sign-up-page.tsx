@@ -17,7 +17,7 @@ const SignUpPage = () => {
       <div className="w-full flex flex-1 md:flex-[0.4] items-center justify-center px-4">
         <div className="w-full max-w-sm md:max-w-xl shadow-2xl padding rounded-md">
           <div className="mb-8">
-            <h2 className="sm:text-4xl text-center text-3xl title font-playfair">
+            <h2 className="sm:text-3xl text-center text-2xl title font-playfair">
               Sign Up
             </h2>
           </div>

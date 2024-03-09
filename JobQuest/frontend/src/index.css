@@ -95,7 +95,7 @@
 
 @layer components {
   .container{
-    max-width: 1600px;
+    max-width: 1500px;
     margin: 0 auto;
   }
   .special-button-effect{

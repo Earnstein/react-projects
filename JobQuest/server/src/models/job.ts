@@ -1,17 +1,7 @@
-import { Schema, Document, model } from "mongoose";
+import { Schema, model,Document  } from "mongoose";
+import { jobStatus, jobType } from "../constants/types";
 
-enum jobStatus {
-  interview = "interview",
-  declined = "declined",
-  pending = "pending"
-}
-
-enum jobType {
-  fullTime = "full-time",
-  partTime = "part-time",
-  internship = "internship"
-}
-interface Job extends Document {
+export interface Job extends Document {
   company: string,
   position: string,
   jobStatus: string,

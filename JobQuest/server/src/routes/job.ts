@@ -1,14 +1,12 @@
 import { Hono } from "hono";
-import { httpCreateJob, httpGetAllJob, httpGetJob } from "../controllers/job";
+import { httpCreateJob, httpDeleteAllJob, httpDeleteJob, httpEditAJob, httpEditJob, httpGetAllJob, httpGetJob } from "../controllers/job";
+import { zValidator } from "@hono/zod-validator";
+import { JobSchema, patchSchema } from "../middleware";
 
 
 const jobRouter = new Hono();
 
-jobRouter.post("/create-job", httpCreateJob)
-
-jobRouter.get("/all-jobs", httpGetAllJob);
-
-jobRouter.get("/get-job/:id", httpGetJob)
-
+jobRouter.route("/").post(zValidator("json", JobSchema), httpCreateJob).get(httpGetAllJob).delete(httpDeleteAllJob)
+jobRouter.route("/:id").get(httpGetJob).patch(zValidator("json", patchSchema), httpEditJob).put(zValidator("json", JobSchema), httpEditAJob).delete(httpDeleteJob)
 
 export default jobRouter;
