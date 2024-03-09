@@ -1,7 +1,8 @@
-import { nanoid } from "nanoid";
+import { type Job_Sort_By } from './types';
 
-export let jobs = [
-    {id: nanoid(), company: "granularx", position: "frontend"},
-    {id: nanoid(), company: "apple", position: "solution architect"},
-    
-]
+export const JobSortBy: Job_Sort_By = {
+    NEWEST: "newest",
+    OLDEST: "oldest",
+    ASCENDING: "a-z",
+    DESCENDING: "z-a",
+}
