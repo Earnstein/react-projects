@@ -6,6 +6,7 @@ import { secureHeaders } from "hono/secure-headers";
 import { config } from "dotenv";
 import api from "./routes";
 import { NotFound, Unauthenticated, Unauthorized, BadRequest } from './middleware/error';
+import { MongooseError } from "mongoose";
 config()
 
 const app = new Hono();
@@ -32,6 +33,13 @@ app.onError((err, c) => {
     return c.json({
         message: message
     }, statusCode)
+   }
+
+   if( err instanceof MongooseError && err.name === "CastError"){
+    return c.json({
+        message: "Invalid Id",
+        id: c.req.param("id")
+    }, 404)
    }
     return c.json({
         message: "Internal server error"
