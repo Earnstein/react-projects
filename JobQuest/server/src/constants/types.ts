@@ -7,7 +7,8 @@ export enum jobStatus {
 export enum jobType {
   fullTime = "full-time",
   partTime = "part-time",
-  internship = "internship"
+  internship = "internship",
+  remote = "remote"
 }
 
 export interface Job_Sort_By {
