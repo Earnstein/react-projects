@@ -1,7 +1,7 @@
 import type { Context } from "hono";
-import Job from "../models/job";
 import { StatusCodes } from "http-status-codes";
 import { NotFound } from '../middleware/error';
+import Job from "../models/job";
 
 // POST: CREATE NEW JOB
 async function httpCreateJob(c: Context) {
@@ -84,22 +84,18 @@ async function httpGetJob(c: Context) {
 }
 
 
-
 // PATCH: EDIT JOB BY ID
+
 async function httpEditJob(c: Context) {
-  const { position, company } = await c.req.json();
+  const body = await c.req.json();
   const id = c.req.param("id");
-  if (!company && !position) {
-    throw new Error("Missing property");
-  }
   if (!id) {
     return c.json({ message: "Provide Job Id" }, 401);
   }
   const job = await Job.findByIdAndUpdate(
     id,
     {
-      position: position,
-      company: company,
+      ...body
     },
     {
       returnDocument: "after",
@@ -120,11 +116,11 @@ async function httpEditJob(c: Context) {
 // PUT: EDIT ALL JOB FIELD
 
 async function httpEditAJob(c: Context) {
-  const { position, company } = await c.req.json();
-  const id = c.req.param("id");
+  const body = await c.req.json();
 
-  if (!company || !position) {
-    throw new Error("Provide both company and position value");
+  const id = c.req.param("id");
+  if (!body) {
+    throw new Error("Missing property");
   }
   if (!id) {
     return c.json({ message: "Provide Job Id" }, 401);
@@ -132,8 +128,7 @@ async function httpEditAJob(c: Context) {
   const job = await Job.findByIdAndUpdate(
     id,
     {
-      position: position,
-      company: company,
+      ...body
     },
     {
       returnDocument: "after",
@@ -150,7 +145,6 @@ async function httpEditAJob(c: Context) {
   }
   return c.json({ message: "success",status: "ok", data: job });
 }
-
 
 // DELETE: DELETE A JOB BY ID
 
