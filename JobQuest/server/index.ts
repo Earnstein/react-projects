@@ -1,7 +1,7 @@
 import app from "./src/app";
 import { mongoConnect } from "./src/utils/mongo";
 
-const PORT =  6002;
+const PORT = 6002 || Bun.env.PORT || 8000;
 
 try {
   await mongoConnect()
