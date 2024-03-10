@@ -1,28 +1,21 @@
 import type { Context } from "hono";
 import { StatusCodes } from "http-status-codes";
-import { NotFound } from '../middleware/error';
-import Job from "../models/job";
+import { BadRequest, NotFound } from "../middleware/error";
+import {
+  createJob,
+  deleteAllJob,
+  deleteJob,
+  editJob,
+  editJobById,
+  getAllJob,
+  getJobById,
+} from "../mongo/user";
 
 // POST: CREATE NEW JOB
 
 async function httpCreateJob(c: Context) {
   const body = await c.req.json();
-
-  const job = new Job({
-   ...body
-  });
-  await job.save();
-  const newJob = await Job.findById(
-    {
-      _id: job._id,
-    },
-    {
-      _id: 1,
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    }
-  );
+  const newJob = await createJob(body);
   return c.json(
     {
       message: "created",
@@ -35,15 +28,7 @@ async function httpCreateJob(c: Context) {
 //GET: FETCH ALL JOB
 
 async function httpGetAllJob(c: Context) {
-  const allJobs = await Job.find(
-    {},
-    {
-      _id: 1,
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    }
-  );
+  const allJobs = await getAllJob();
   if (allJobs.length != 0) {
     return c.json(
       {
@@ -67,18 +52,16 @@ async function httpGetAllJob(c: Context) {
 async function httpGetJob(c: Context) {
   const id = c.req.param("id");
   if (!id) {
-    return c.json({ message: "Provide Job Id" }, 401);
+    throw new BadRequest("Provide Job Id");
   }
-  const job = await Job.findById(id, {
-    _id: 1,
-    __v: 0,
-    createdAt: 0,
-    updatedAt: 0,
-  });
+  const job = await getJobById(id);
   if (!job) {
-    throw new NotFound("Job does not exist")
+    throw new NotFound("Job does not exist");
   }
-  return c.json({ message: "success",status: "ok", data: job }, StatusCodes.OK);
+  return c.json(
+    { message: "success", status: "ok", data: job },
+    StatusCodes.OK
+  );
 }
 
 // PATCH: EDIT JOB BY ID
@@ -87,27 +70,16 @@ async function httpEditJob(c: Context) {
   const body = await c.req.json();
   const id = c.req.param("id");
   if (!id) {
-    return c.json({ message: "Provide Job Id" }, 401);
+    throw new BadRequest("Provide Job Id");
   }
-  const job = await Job.findByIdAndUpdate(
-    id,
-    {
-      ...body
-    },
-    {
-      returnDocument: "after",
-      select: {
-        _id: 1,
-        __v: 0,
-        createdAt: 0,
-        updatedAt: 0,
-      }
-    }
-  );
+  const job = await editJobById(id, body);
   if (!job) {
-    throw new NotFound("Job does not exist")
+    throw new NotFound("Job does not exist");
   }
-  return c.json({ message: "success",status: "ok", data: job }, StatusCodes.OK);
+  return c.json(
+    { message: "success", status: "ok", data: job },
+    StatusCodes.OK
+  );
 }
 
 // PUT: EDIT ALL JOB FIELD
@@ -115,29 +87,15 @@ async function httpEditJob(c: Context) {
 async function httpEditAJob(c: Context) {
   const body = await c.req.json();
   const id = c.req.param("id");
-  
+
   if (!id) {
     return c.json({ message: "Provide Job Id" }, 401);
   }
-  const job = await Job.findByIdAndUpdate(
-    id,
-    {
-      ...body
-    },
-    {
-      returnDocument: "after",
-      select: {
-        _id: 1,
-        __v: 0,
-        createdAt: 0,
-        updatedAt: 0,
-      },
-    }
-  );
+  const job = await editJob(id, body);
   if (!job) {
-    throw new NotFound("Job does not exist")
+    throw new NotFound("Job does not exist");
   }
-  return c.json({ message: "success",status: "ok", data: job });
+  return c.json({ message: "success", status: "ok", data: job });
 }
 
 // DELETE: DELETE A JOB BY ID
@@ -145,31 +103,36 @@ async function httpEditAJob(c: Context) {
 async function httpDeleteJob(c: Context) {
   const id = c.req.param("id");
   if (!id) {
-    throw new Error("Provide Job Id");
+    throw new BadRequest("Provide Job Id");
   }
-  const job = await Job.findByIdAndDelete(id,{
-    returnDocument: "after",
-    select: {
-      _id: 1,
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    },
-  });
+  const job = await deleteJob(id);
   if (!job) {
     throw new NotFound("Job does not exist");
   }
-  return c.json({ message: "deleted", status: "ok", data: job }, StatusCodes.OK);
+  return c.json(
+    { message: "deleted", status: "ok", data: job },
+    StatusCodes.OK
+  );
 }
 
-// DELETE: DELETE ALL JOB 
-async function httpDeleteAllJob(c: Context) { 
-  const job = await Job.deleteMany({});
+// DELETE: DELETE ALL JOB
+async function httpDeleteAllJob(c: Context) {
+  const job = await deleteAllJob();
   if (job.deletedCount === 0) {
-    throw new Error("The job list is Empty");
+    throw new BadRequest("The job list is Empty");
   }
-  return c.json({ message: "deleted", status: "ok", data: job }, StatusCodes.OK);
+  return c.json(
+    { message: "deleted", status: "ok", data: job },
+    StatusCodes.OK
+  );
 }
 
-
-export { httpCreateJob, httpGetAllJob, httpGetJob, httpEditJob, httpEditAJob, httpDeleteJob, httpDeleteAllJob };
+export {
+  httpCreateJob,
+  httpGetAllJob,
+  httpGetJob,
+  httpEditJob,
+  httpEditAJob,
+  httpDeleteJob,
+  httpDeleteAllJob,
+};
