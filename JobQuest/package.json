@@ -8,7 +8,7 @@
   "scripts": {
     "client": "cd frontend && bun run dev",
     "server": "cd server && bun --hot index.ts",
-    "watch": "bun run server & bun run client "
+    "dev": "bun run server & bun run client "
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
