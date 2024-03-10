@@ -4,7 +4,7 @@ import userRouter from "./user";
 const api = new Hono();
 
 api.route("/job", jobRouter)
-api.route("/user", userRouter)
+api.route("/auth", userRouter)
 
 
 export default api;
