@@ -4,9 +4,7 @@
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
-    "colorts": "^0.1.63",
-    "concurrently": "^8.2.2",
-    "dotenv": "^16.4.5"
+    "colorts": "^0.1.63"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
