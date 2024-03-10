@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
-import { config } from "dotenv"
 import 'colorts/lib/string'
-config()
 
-const MONGO_URL = process.env.MONGO_URL!
+const MONGO_URL = Bun.env.MONGO_URL!
 
 mongoose.connection.once("open", () => {
   console.log("Mongodb connection is ready!...".green.underline);
