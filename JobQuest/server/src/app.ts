@@ -3,7 +3,6 @@ import { logger } from "hono/logger";
 import { cors } from "hono/cors";
 import { prettyJSON } from "hono/pretty-json";
 import { secureHeaders } from "hono/secure-headers";
-import { config } from "dotenv";
 import api from "./routes";
 import {
   NotFound,
@@ -12,7 +11,7 @@ import {
   BadRequest,
 } from "./middleware/error";
 import { MongooseError } from "mongoose";
-config();
+
 
 const app = new Hono();
 
