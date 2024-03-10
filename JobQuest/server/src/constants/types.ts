@@ -11,6 +11,11 @@ export enum jobType {
   remote = "remote"
 }
 
+export enum userRoleType {
+  user = "user",
+  admin = "admin"
+}
+
 export interface Job_Sort_By {
     NEWEST: string,
     OLDEST: string,
