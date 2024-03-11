@@ -10,6 +10,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@hono/oauth-providers": "^0.3.1",
     "hono": "^4.0.7",
     "http-status-codes": "^2.3.0",
     "mongoose": "^8.2.0"
