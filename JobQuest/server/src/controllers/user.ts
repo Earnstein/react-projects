@@ -2,10 +2,19 @@ import type { Context } from "hono";
 import { StatusCodes } from "http-status-codes";
 import { BadRequest, Unauthenticated } from "../middleware/error";
 import User from "../models/user";
-import jwt from "hono/jwt";
+import { sign } from "hono/jwt";
+import type { ObjectId } from "mongoose";
+import { getCookie, getSignedCookie, setCookie, setSignedCookie, deleteCookie } from 'hono/cookie'
 
 
-// POST: CREATE NEW JOB
+interface Payload {
+  userId: ObjectId,
+  role: string,
+  exp: Number,
+  iat: Number
+}
+
+// POST: CREATE NEW USER
 
 async function httpSignUp(c: Context) {
   const body = await c.req.json();
@@ -39,7 +48,7 @@ async function httpSignUp(c: Context) {
   );
 }
 
-// POST: CREATE NEW JOB
+// POST: SIGN IN USER
 
 async function httpSignIn(c: Context) {
   const body = await c.req.json();
@@ -54,16 +63,22 @@ async function httpSignIn(c: Context) {
   throw new Unauthenticated("Invalid password");
  }
 
-//  const token = await jwt.sign(
-//   existingUser._id,
-//   Bun.env.JWT_SECRET!,{
-//     ex
-//   }
-//  )
+ const payload: Payload = {
+  userId: existingUser._id,
+  role: existingUser.role,
+  exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+  iat: Math.floor(Date.now() / 1000)
+}
+
+  const token = await sign(payload, Bun.env.JWT_SECRET!)
+  setCookie(c, 'auth_token', token, {
+    httpOnly: true,
+    expires: new Date(Date.now()  +  1000 * 60 * 60 * 24)
+  })
   return c.json(
     {
-      message: "created",
-      user: existingUser,
+      message: "Success, user logged in",
+      token:token
     },
     StatusCodes.OK
   );
