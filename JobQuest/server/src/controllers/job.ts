@@ -1,6 +1,6 @@
 import type { Context } from "hono";
 import { StatusCodes } from "http-status-codes";
-import { BadRequest, NotFound } from "../middleware/error";
+import { BadRequest, NotFound, Unauthorized } from "../middleware/error";
 import {
   createJob,
   deleteAllJob,
@@ -9,13 +9,14 @@ import {
   editJobById,
   getAllJob,
   getJobById,
-} from "../mongo/user";
+} from "../mongo/job";
 
 // POST: CREATE NEW JOB
 
 async function httpCreateJob(c: Context) {
+  const { userId } = c.get("jwtPayload");
   const body = await c.req.json();
-  const newJob = await createJob(body);
+  const newJob = await createJob(body, userId);
   return c.json(
     {
       message: "created",
@@ -28,14 +29,16 @@ async function httpCreateJob(c: Context) {
 //GET: FETCH ALL JOB
 
 async function httpGetAllJob(c: Context) {
-  const allJobs = await getAllJob();
-  if (allJobs.length != 0) {
+  const { role, userId } = c.get("jwtPayload");
+  const allJobs = await getAllJob(role, userId);
+
+  if (allJobs?.length !== 0) {
     return c.json(
       {
         message: "ok",
         data: allJobs,
       },
-      StatusCodes.NO_CONTENT
+      StatusCodes.OK
     );
   }
   return c.json(
@@ -43,7 +46,7 @@ async function httpGetAllJob(c: Context) {
       message: "ok",
       data: "Your job list is Empty",
     },
-    StatusCodes.OK
+    StatusCodes.NO_CONTENT
   );
 }
 
@@ -51,13 +54,27 @@ async function httpGetAllJob(c: Context) {
 
 async function httpGetJob(c: Context) {
   const id = c.req.param("id");
+  const { role, userId } = c.get("jwtPayload");
   if (!id) {
     throw new BadRequest("Provide Job Id");
   }
+  if (role === "admin") {
+    const job = await getJobById(id);
+    return c.json(
+      { message: "success", status: "ok", data: job },
+      StatusCodes.OK
+    );
+  }
   const job = await getJobById(id);
+
   if (!job) {
     throw new NotFound("Job does not exist");
   }
+
+  if (job.createdBy != userId) {
+    throw new Unauthorized("Permission denied!");
+  }
+
   return c.json(
     { message: "success", status: "ok", data: job },
     StatusCodes.OK
@@ -89,7 +106,7 @@ async function httpEditAJob(c: Context) {
   const id = c.req.param("id");
 
   if (!id) {
-    return c.json({ message: "Provide Job Id" }, 401);
+    throw new BadRequest("Provide Job Id");
   }
   const job = await editJob(id, body);
   if (!job) {
