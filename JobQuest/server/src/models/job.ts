@@ -1,12 +1,14 @@
-import { Schema, model,Document  } from "mongoose";
+import { Schema, model,Document, type ObjectId  } from "mongoose";
 import { jobStatus, jobType } from "../constants/types";
+import mongoose from 'mongoose';
 
-export interface Job extends Document {
+interface Job extends Document {
   company: string,
   position: string,
   jobStatus: string,
   jobType: string,
-  jobLocation: string
+  jobLocation: string,
+  createdBy: ObjectId
 }
 
 const JobSchema = new Schema<Job>(
@@ -33,6 +35,11 @@ const JobSchema = new Schema<Job>(
       type: String,
       default: "Nigeria",
     },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     timestamps: true,
