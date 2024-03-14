@@ -4,7 +4,7 @@ import { BadRequest, Unauthenticated } from "../middleware/error";
 import User from "../models/user";
 import { sign } from "hono/jwt";
 import type { ObjectId } from "mongoose";
-import { getCookie, getSignedCookie, setCookie, setSignedCookie, deleteCookie } from 'hono/cookie'
+import { setCookie } from 'hono/cookie'
 
 
 interface Payload {
@@ -77,8 +77,7 @@ async function httpSignIn(c: Context) {
   })
   return c.json(
     {
-      message: "Success, user logged in",
-      token:token
+      message: "Success, user logged in"
     },
     StatusCodes.OK
   );
@@ -118,7 +117,7 @@ async function httpGetAllUsers(c: Context) {
 async function httpDeleteAllUsers(c: Context) { 
   const user = await User.deleteMany({});
   if (user.deletedCount === 0) {
-    throw new Error("The user list is Empty");
+    throw new BadRequest("The user list is Empty");
   }
   return c.json({ message: "deleted", status: "ok", data: user }, StatusCodes.OK);
 }
