@@ -5,13 +5,13 @@ import { prettyJSON } from "hono/pretty-json";
 import { secureHeaders } from "hono/secure-headers";
 import api from "./routes";
 import {
+  BadRequest,
+  NoContent,
   NotFound,
   Unauthenticated,
-  Unauthorized,
-  BadRequest,
+  Unauthorized
 } from "./middleware/error";
 import { MongooseError } from "mongoose";
-
 
 const app = new Hono();
 
@@ -36,16 +36,19 @@ app.onError((err, c) => {
   }
 
   if (
+    err instanceof NoContent ||
     err instanceof NotFound ||
     err instanceof BadRequest ||
     err instanceof Unauthenticated ||
     err instanceof Unauthorized
   ) {
     const message = err.message;
+    const errorName = err.name;
     const statusCode = err.statusCode;
     return c.json(
       {
         message: message,
+        status: errorName,
       },
       statusCode
     );
