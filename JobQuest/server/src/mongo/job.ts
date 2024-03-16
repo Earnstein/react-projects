@@ -1,5 +1,6 @@
 import type { ObjectId } from "mongoose";
 import Job from "../models/job";
+import { NoContent } from '../middleware/error';
 
 export interface BodyType {
   company: string;
@@ -45,41 +46,24 @@ const createJob = async (body: BodyType, createdBy: string) => {
   return newJob;
 };
 
-const getAllJob = async (role: string, userId: ObjectId) => {
-  if (role === "admin") {
-    const allJobs = Job.find(
-      {},
-      {
-        __v: 0,
-        updatedAt: 0,
-        createdAt: 0,
-      }
-    )
-      .populate({
-        path: "createdBy",
-        select: "-_id -__v -password -updatedAt -createdAt",
-      })
-      .exec();
-    return allJobs;
+const getAllJob = async (userId: ObjectId) => {
+  const allJobs = await Job.find(
+    { createdBy: userId },
+    {
+      __v: 0,
+      updatedAt: 0,
+      createdAt: 0,
+    }
+  )
+    .populate({
+      path: "createdBy",
+      select: "-_id -__v -password -updatedAt -createdAt",
+    })
+    .exec();
+  if (allJobs?.length === 0) {
+    throw new NoContent("The job list is Empty");
   }
-
-  if (role === "user") {
-    const allJobs = await Job.find(
-      { createdBy: userId },
-      {
-        __v: 0,
-        updatedAt: 0,
-        createdAt: 0,
-      }
-    )
-      .populate({
-        path: "createdBy",
-        select: "-_id -__v -password -updatedAt -createdAt",
-      })
-      .exec();
-
-    return allJobs;
-  }
+  return allJobs;
 };
 
 const getJobById = async (id: string) => {
@@ -141,8 +125,12 @@ const deleteJob = async (id: string) => {
   });
   return job;
 };
-const deleteAllJob = async () => {
-  const job = await Job.deleteMany({});
+
+const deleteAllJob = async (userId: ObjectId) => {
+  const job = await Job.deleteMany({ createdBy: userId });
+  if (job.deletedCount === 0) {
+    throw new NoContent("The job list is Empty");
+  }
   return job;
 };
 
