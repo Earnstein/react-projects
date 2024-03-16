@@ -1,31 +1,10 @@
 import type { ObjectId } from "mongoose";
 import Job from "../models/job";
 import { NoContent } from '../middleware/error';
+import type { JobBody, Patch, Put } from "../constants/types";
 
-export interface BodyType {
-  company: string;
-  position: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
-}
-export interface Patch {
-  company?: string;
-  position?: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
-}
 
-export interface Put {
-  company: string;
-  position: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
-}
-
-const createJob = async (body: BodyType, createdBy: string) => {
+const createJob = async (body: JobBody, createdBy: string) => {
   const job = new Job({
     ...body,
     createdBy: createdBy,
