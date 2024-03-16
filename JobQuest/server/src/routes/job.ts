@@ -11,6 +11,7 @@ import {
   httpGetJob,
 } from "../controllers/job";
 import { StatusCodes } from "http-status-codes";
+import { validateUser } from "../middleware/auth";
 
 const jobRouter = new Hono();
 
@@ -29,13 +30,14 @@ jobRouter
 
 jobRouter
   .route("/:id")
-  .get(httpGetJob)
+  .get(validateUser, httpGetJob)
   .patch(
     zValidator("json", patchSchema, (result, c) => {
       if (!result.success) {
         return c.json({ error: result.error.issues }, StatusCodes.BAD_REQUEST);
       }
     }),
+    validateUser,
     httpEditJob
   )
   .put(
@@ -44,8 +46,9 @@ jobRouter
         return c.json({ error: result.error.issues }, StatusCodes.BAD_REQUEST);
       }
     }),
+    validateUser,
     httpEditAJob
   )
-  .delete(httpDeleteJob);
+  .delete(validateUser, validateUser, httpDeleteJob);
 
 export default jobRouter;
