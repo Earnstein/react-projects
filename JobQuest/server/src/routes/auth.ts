@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { httpSignIn, httpSignUp } from "../controllers/user";
+import { httpLogout, httpSignIn, httpSignUp } from "../controllers/auth";
 import { zValidator } from "@hono/zod-validator";
 import { signUpSchema, signInSchema } from "../middleware";
 import { StatusCodes } from "http-status-codes";
@@ -25,7 +25,11 @@ authRouter
       }
     }),
     httpSignIn
-  );
+  ).get(
+    "/logout",
+    httpLogout
+  )
+  ;
 
 
 export default authRouter;
