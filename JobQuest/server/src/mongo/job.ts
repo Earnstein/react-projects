@@ -1,7 +1,7 @@
 import type { ObjectId } from "mongoose";
 import Job from "../models/job";
 import { NoContent } from "../middleware/error";
-import type { JobBody, Patch, Put } from "../constants/types";
+import type { JobBody, JobPatch, JobPut } from "../constants/types";
 
 const createJob = async (body: JobBody, createdBy: string) => {
   const job = new Job({
@@ -46,7 +46,6 @@ const getAllJob = async (userId: ObjectId) => {
 
 const getJobById = async (id: string) => {
   const job = await Job.findById(id, {
-    _id: 1,
     __v: 0,
     createdAt: 0,
     updatedAt: 0,
@@ -54,7 +53,7 @@ const getJobById = async (id: string) => {
   return job;
 };
 
-const editJobById = async (id: string, body: Patch) => {
+const editJobById = async (id: string, body: JobPatch) => {
   const job = await Job.findByIdAndUpdate(
     id,
     {
@@ -73,7 +72,7 @@ const editJobById = async (id: string, body: Patch) => {
   return job;
 };
 
-const editJob = async (id: string, body: Put) => {
+const editJob = async (id: string, body: JobPut) => {
   const job = await Job.findByIdAndUpdate(
     id,
     {
