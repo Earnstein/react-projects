@@ -11,7 +11,7 @@ import {
   getAllJobs,
   getJobById,
 } from "../mongo/job";
-import { Unauthorized } from "../middleware/error";
+
 
 // POST: CREATE NEW JOB
 
@@ -111,7 +111,8 @@ async function httpGetAllJobs(c: Context) {
   );
 }
 
-// DELETE: DELETE ALL JOB
+// DELETE: DELETE ALL JOB - ADMIN
+
 async function httpDeleteAllJobs(c: Context) {
   const job = await deleteAllJobs();
   return c.json(
