@@ -1,8 +1,7 @@
 import type { ObjectId } from "mongoose";
 import Job from "../models/job";
-import { NoContent } from '../middleware/error';
+import { NoContent } from "../middleware/error";
 import type { JobBody, Patch, Put } from "../constants/types";
-
 
 const createJob = async (body: JobBody, createdBy: string) => {
   const job = new Job({
@@ -113,12 +112,43 @@ const deleteAllJob = async (userId: ObjectId) => {
   return job;
 };
 
+// ADMIN FUNCTIONS
+const getAllJobs = async () => {
+  const allJobs = await Job.find(
+    {},
+    {
+      __v: 0,
+      updatedAt: 0,
+      createdAt: 0,
+    }
+  )
+    .populate({
+      path: "createdBy",
+      select: "-_id -__v -password -updatedAt -createdAt",
+    })
+    .exec();
+  if (allJobs?.length === 0) {
+    throw new NoContent("The job list is Empty");
+  }
+  return allJobs;
+};
+
+const deleteAllJobs = async () => {
+  const job = await Job.deleteMany({});
+  if (job.deletedCount === 0) {
+    throw new NoContent("The job list is Empty");
+  }
+  return job;
+};
+
 export {
   createJob,
-  getAllJob,
   deleteAllJob,
   getJobById,
   editJobById,
   editJob,
   deleteJob,
+  getAllJob,
+  getAllJobs,
+  deleteAllJobs,
 };
