@@ -1,5 +1,5 @@
 import User from "../models/user";
-import type { SignInType, UserBody } from "../constants/types";
+import type { SignInType, UserBody, UserPatch } from "../constants/types";
 import { BadRequest, NoContent, Unauthenticated } from "../middleware/error";
 
 const findUser = async (email: string) => {
@@ -48,6 +48,31 @@ export const findExistingUser = async (body: SignInType) => {
   }
 
   return existingUser;
+};
+
+export const getUserById = async (id: String) => {
+  const user = await User.findById(id);
+  return user;
+}
+
+
+export const editUserById = async (id: string, body: UserPatch) => {
+  const user = await User.findByIdAndUpdate(
+    id,
+    {
+      ...body,
+    },
+    {
+      returnDocument: "after",
+      select: {
+        __v: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      },
+    }
+  );
+
+  return user;
 };
 
 export const findAllUsers = async () => {
