@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
-import { JobSchema, patchSchema } from "../middleware";
+import { JobSchema, jobPatchSchema } from "../middleware";
 import {
   httpCreateJob,
   httpDeleteAllJob,
@@ -28,19 +28,15 @@ jobRouter
     httpCreateJob
   )
   .get(httpGetAllJob)
-  .delete(httpDeleteAllJob);
-
-
-jobRouter
-  .route("/admin")
-  .get(validateAdmin, httpGetAllJobs)
-  .delete(validateAdmin, httpDeleteAllJobs);
+  .delete(httpDeleteAllJob)
+  .get("/admin", validateAdmin, httpGetAllJobs)
+  .delete("/admin", validateAdmin, httpDeleteAllJobs);
 
 jobRouter
   .route("/:id")
   .get(validateUser, httpGetJob)
   .patch(
-    zValidator("json", patchSchema, (result, c) => {
+    zValidator("json", jobPatchSchema, (result, c) => {
       if (!result.success) {
         return c.json({ error: result.error.issues }, StatusCodes.BAD_REQUEST);
       }
