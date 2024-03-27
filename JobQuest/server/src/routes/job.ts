@@ -4,14 +4,16 @@ import { JobSchema, patchSchema } from "../middleware";
 import {
   httpCreateJob,
   httpDeleteAllJob,
+  httpDeleteAllJobs,
   httpDeleteJob,
   httpEditAJob,
   httpEditJob,
   httpGetAllJob,
+  httpGetAllJobs,
   httpGetJob,
 } from "../controllers/job";
 import { StatusCodes } from "http-status-codes";
-import { validateUser } from "../middleware/auth";
+import { validateAdmin, validateUser } from "../middleware/auth";
 
 const jobRouter = new Hono();
 
@@ -27,6 +29,12 @@ jobRouter
   )
   .get(httpGetAllJob)
   .delete(httpDeleteAllJob);
+
+
+jobRouter
+  .route("/admin")
+  .get(validateAdmin, httpGetAllJobs)
+  .delete(validateAdmin, httpDeleteAllJobs);
 
 jobRouter
   .route("/:id")
@@ -49,6 +57,6 @@ jobRouter
     validateUser,
     httpEditAJob
   )
-  .delete(validateUser, validateUser, httpDeleteJob);
+  .delete(validateUser, httpDeleteJob);
 
 export default jobRouter;
