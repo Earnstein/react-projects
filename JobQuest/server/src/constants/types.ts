@@ -40,7 +40,7 @@ export interface JobBody {
   jobType?: string;
   jobLocation?: string;
 }
-export interface Patch {
+export interface JobPatch {
   company?: string;
   position?: string;
   jobStatus?: string;
@@ -48,7 +48,7 @@ export interface Patch {
   jobLocation?: string;
 }
 
-export interface Put {
+export interface JobPut {
   company: string;
   position: string;
   jobStatus?: string;
@@ -62,6 +62,14 @@ export interface UserBody {
   lastName: string;
   email: string;
   password: string;
+  location?: string;
+}
+
+export interface UserPatch {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
   location?: string;
 }
 
