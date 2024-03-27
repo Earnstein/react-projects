@@ -68,7 +68,7 @@ export const findAllUsers = async () => {
 };
 
 export const deleteAllUsers = async () => {
-  const user = await User.deleteMany({});
+  const user = await User.deleteMany({role: {$ne : "admin"}});
   if (user.deletedCount === 0) {
     throw new NoContent("The user list is Empty");
   }
