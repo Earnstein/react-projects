@@ -17,7 +17,9 @@ const app = new Hono();
 
 app.use(prettyJSON({ space: 4 }));
 app.use(secureHeaders());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+}));
 app.use(logger());
 app.route("/api/v1", api);
 
