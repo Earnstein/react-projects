@@ -5,8 +5,9 @@ import {
   deleteAllUsers,
   getUserById,
   editUserById,
+  userStats,
 } from "../mongo/user";
-
+import { jobStats } from "../mongo/job";
 
 //GET: FETCH ALL USERS
 
@@ -21,6 +22,20 @@ async function httpGetAllUsers(c: Context) {
   );
 }
 
+//  GET: USER AND JOB STATS
+
+async function httpGetStats(c: Context) {
+  const users = await userStats();
+  const jobs = await jobStats();
+  const data = {
+    job: jobs,
+    users: users
+  }
+  return c.json(
+    { message: "success", status: "ok", data},
+    StatusCodes.OK
+  );
+}
 
 // GET: FETCH CURRENT USER BY ID
 
@@ -37,8 +52,7 @@ async function httpGetUser(c: Context) {
 
 async function httpEditUser(c: Context) {
   const body = await c.req.json();
-  console.log(body)
-  const { userId }= c.get("jwtPayload");
+  const { userId } = c.get("jwtPayload");
   const user = await editUserById(userId, body);
   return c.json(
     { message: "success", status: "ok", data: user },
@@ -53,4 +67,10 @@ async function httpDeleteAllUsers(c: Context) {
   return c.json({ message: "deleted", data: user }, StatusCodes.OK);
 }
 
-export { httpGetAllUsers, httpDeleteAllUsers, httpGetUser, httpEditUser};
+export {
+  httpGetAllUsers,
+  httpDeleteAllUsers,
+  httpGetUser,
+  httpEditUser,
+  httpGetStats,
+};
