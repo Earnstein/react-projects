@@ -4,9 +4,9 @@ import { FaWpforms }  from 'react-icons/fa';
 import { ImProfile }  from 'react-icons/im';
 
 export const navLinks = [
-    { title: "add job", path: ".", icon: FaWpforms },
-    { title: "all jobs", path: "all-jobs", icon: MdQueryStats},
-    { title: "stats", path: "stats", icon: IoBarChartSharp},
-    { title: "profile", path: "profile", icon: ImProfile},
-    { title: "admin", path: "admin", icon: MdAdminPanelSettings},
+    { title: "Add", path: "add", icon: FaWpforms },
+    { title: "Jobs", path: "all-jobs", icon: MdQueryStats},
+    { title: "Stats", path: "stats", icon: IoBarChartSharp},
+    { title: "Profile", path: "profile", icon: ImProfile},
+    { title: "Admin", path: "admin", icon: MdAdminPanelSettings},
 ];
