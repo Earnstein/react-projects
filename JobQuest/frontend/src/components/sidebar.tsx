@@ -1,14 +1,13 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import NavLinks from "@/components/Navlinks";
-import { useDashBoardContext } from "@/hooks/useDashboardContext";
+import { useDashboard } from "@/hooks/useDashboard";
 
 const Sidebar = () => {
-  const { showSidebar } = useDashBoardContext();
-
+  const { showSidebar} =  useDashboard();
   return (
     <>
-      {showSidebar && (
+      {!showSidebar && (
         <motion.aside
           initial="hidden"
           whileInView="visible"
@@ -18,13 +17,15 @@ const Sidebar = () => {
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-          className={cn("hidden md:flex md:basis-1/6 border-e min-h-screen pt-20")}
+          className={cn("hidden md:flex md:basis-1/6 border-e min-h-screen pt-4")}
         >
+          
           <div
             className={cn(
               "relative flex flex-col min-w-full duration-300 ease-out"
             )}
           >
+            
             <NavLinks />
           </div>
         </motion.aside>
