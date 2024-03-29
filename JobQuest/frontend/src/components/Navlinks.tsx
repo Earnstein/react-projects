@@ -8,25 +8,30 @@ interface NavLink  {
 }
 const NavLinks = ({onOpenChange}: NavLink) => {
   return (
-    <div className="mt-10 flex flex-col gap-4">
+    <div className="flex flex-col gap-y-2 mt-4 md:mt-0">
       {navLinks.map((link) => (
-        <motion.div
-          key={link.title}
-          whileHover={{ translateX: 20}}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className={cn(
-            "text-muted-foreground dark:text-white/80 gap-y-8 font-palanquin"
-          )}
-        >
-          <NavLink
-            to={link.path}
-            className={cn("flex items-center text-xl py-4 px-8 gap-8")}
-            onClick={() => {onOpenChange?.(false)}}
-          >
-            <link.icon />
-            <span>{link.title}</span>
-          </NavLink>
-        </motion.div>
+       <motion.div
+       whileHover={{ translateX: 5}}
+       transition={{ duration: 0.25, ease: "easeInOut" }}
+       key={link.title}
+       className={cn(
+         "text-muted-foreground dark:text-white/80 px-3 font-palanquin"
+       )}
+     >
+       <NavLink
+         to={link.path}
+         onClick={() => {onOpenChange?.(false)}}
+         className={({ isActive }) =>
+         [
+           "flex items-center text-lg py-2 px-2 gap-8",
+           isActive ? "bg-teal-500 text-white font-bold rounded-md" : "",
+         ].join(" ")
+       }
+       >
+         <link.icon />
+         <span>{link.title}</span>
+       </NavLink>
+     </motion.div>
       ))}
     </div>
   );
