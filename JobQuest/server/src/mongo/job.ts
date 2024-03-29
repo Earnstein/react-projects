@@ -46,6 +46,7 @@ const getAllJob = async (userId: ObjectId) => {
 
 const getJobById = async (id: string) => {
   const job = await Job.findById(id, {
+
     __v: 0,
     createdAt: 0,
     updatedAt: 0,
@@ -140,6 +141,12 @@ const deleteAllJobs = async () => {
   return job;
 };
 
+
+const jobStats =async () => {
+  const jobs = Job.countDocuments()
+  return jobs
+}
+
 export {
   createJob,
   deleteAllJob,
@@ -150,4 +157,5 @@ export {
   getAllJob,
   getAllJobs,
   deleteAllJobs,
+  jobStats
 };
