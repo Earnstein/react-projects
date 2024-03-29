@@ -3,6 +3,7 @@ import {
   httpDeleteAllUsers,
   httpEditUser,
   httpGetAllUsers,
+  httpGetStats,
   httpGetUser,
 } from "../controllers/user";
 import { zValidator } from "@hono/zod-validator";
@@ -15,6 +16,7 @@ userRouter
   .route("/")
   .get(validateAdmin, httpGetAllUsers)
   .delete(validateAdmin, httpDeleteAllUsers)
+  .get("stats", validateAdmin, httpGetStats)
   .get("/current", httpGetUser)
   .patch(
     "/edituser",
