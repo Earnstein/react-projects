@@ -100,3 +100,8 @@ export const deleteAllUsers = async () => {
 
   return user;
 };
+
+export const userStats =async () => {
+  const users = User.countDocuments()
+  return users
+}
