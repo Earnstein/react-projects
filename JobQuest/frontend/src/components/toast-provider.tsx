@@ -3,7 +3,7 @@ import { Toaster  } from 'sonner'
 
 const  ToastProvider = () => {
   return (
-    <Toaster richColors position='top-right' />
+    <Toaster richColors position='bottom-right' />
   )
 }
 
