@@ -35,6 +35,7 @@ async function httpSignIn(c: Context) {
   setCookie(c, "auth_token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    secure: Bun.env.NODE_ENV! === "production"
   });
   return c.json(
     {
