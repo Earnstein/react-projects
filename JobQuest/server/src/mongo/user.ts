@@ -23,9 +23,9 @@ export const createUser = async (body: UserBody) => {
       _id: user._id,
     },
     {
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
+      _id:0,
+      firstName: 1,
+      lastName: 1
     }
   );
 
@@ -51,7 +51,16 @@ export const findExistingUser = async (body: SignInType) => {
 };
 
 export const getUserById = async (id: String) => {
-  const user = await User.findById(id);
+  const user = await User.findById(
+    {
+      _id: id,
+    },
+    {
+      _id:0,
+      firstName: 1,
+      lastName: 1
+    }
+  );
   return user;
 }
 
@@ -65,9 +74,9 @@ export const editUserById = async (id: string, body: UserPatch) => {
     {
       returnDocument: "after",
       select: {
-        __v: 0,
-        createdAt: 0,
-        updatedAt: 0,
+        _id:0,
+      firstName: 1,
+      lastName: 1
       },
     }
   );
@@ -79,10 +88,9 @@ export const findAllUsers = async () => {
   const users = await User.find(
     {},
     {
-      _id: 1,
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
+      _id:0,
+      firstName: 1,
+      lastName: 1
     }
   );
   if (users.length === 0) {
