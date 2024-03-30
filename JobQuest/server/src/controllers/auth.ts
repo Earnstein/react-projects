@@ -12,8 +12,7 @@ async function httpSignUp(c: Context) {
   const newUser = await createUser(body);
   return c.json(
     {
-      message: "created",
-      job: newUser,
+      message: "created"
     },
     StatusCodes.CREATED
   );
