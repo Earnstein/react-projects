@@ -1,5 +1,6 @@
 import jobLogo from "@/assets/images/job.jpg";
 import SignupForm from "@/components/sign-up-form";
+import { Card, CardContent } from "@/components/ui/card";
 
 const SignUpPage = () => {
   return (
@@ -15,15 +16,17 @@ const SignUpPage = () => {
 
       {/* Form Section */}
       <div className="w-full flex flex-1 md:flex-[0.4] items-center justify-center px-4">
-        <div className="w-full max-w-sm md:max-w-xl shadow-2xl padding rounded-md">
-          <div className="mb-8">
+        <Card className="w-full max-w-sm md:max-w-xl shadow-2xl padding rounded-md">
+        <CardContent>
+        <div className="mb-8">
             <h2 className="sm:text-3xl text-center text-2xl title font-playfair">
               Sign Up
             </h2>
           </div>
 
           <SignupForm />
-        </div>
+        </CardContent>
+        </Card>
       </div>
     </div>
   );
