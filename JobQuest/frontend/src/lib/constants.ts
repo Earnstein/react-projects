@@ -31,3 +31,5 @@ export const loginSchema = z.object({
   email: z.string().email("Enter a valid email"),
   password: z.string().trim(),
 });
+
+export const BASE_URL  = "http://localhost:5000/api/v1/"
