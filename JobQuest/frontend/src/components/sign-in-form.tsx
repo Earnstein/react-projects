@@ -9,33 +9,43 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
-import google from "@/assets/images/google.svg";
-
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { userSignIn } from "@/lib/requests";
+import { SignIn } from "@/constants/types";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 const initialValuesLogin = {
   email: "",
   password: "",
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["sign-in"],
+    mutationFn: (body: SignIn) => userSignIn(body),
+    onSuccess: () => {
+      toast.success("success!");
+      navigate("/dashboard/add");
+    },
+    onError: (error: any) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: initialValuesLogin,
   });
 
-  const isLoading = form.formState.isSubmitting;
-
   const onSubmitHandler = async (values: z.infer<typeof loginSchema>) => {
-    try {
-      console.log(values);
-      form.reset();
-    } catch (error) {
-      console.error("Form submission", error);
-    }
+    mutate(values);
+    form.reset();
   };
 
   return (
@@ -58,7 +68,7 @@ const SignInForm = () => {
                       className={cn(
                         "focus:border-indigo-300 focus:border-1 shadow-sm placeholder:font-palanquin"
                       )}
-                      disabled={isLoading}
+                      disabled={isPending}
                       placeholder="Email"
                       {...field}
                     />
@@ -82,7 +92,7 @@ const SignInForm = () => {
                       className={cn(
                         "focus:border-indigo-300 focus:border-1 shadow-sm placeholder:font-palanquin"
                       )}
-                      disabled={isLoading}
+                      disabled={isPending}
                       type="password"
                       placeholder="Password"
                       {...field}
@@ -95,30 +105,24 @@ const SignInForm = () => {
           </div>
 
           <div className="col-span-6 font-montserrat space-y-4">
-            <p className="text-end text-gray-700 text-sm w-full">
+            <p className="text-end text-muted-foreground text-sm w-full">
               Not registered?{" "}
-              <span className="underline font-medium text-blue-400">
+              <span className="underline font-medium text-white">
                 <Link to="/signup">Sign up</Link>
               </span>
             </p>
             <Button
-              className={cn(
-                "w-full text-lg border rounded-sm font-medium transition-all duration-250 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 active:text-indigo-500"
-              )}
+              className="w-full px-2 py-3 text-sm border shrink-0 rounded-sm text-white font-palanquin font-bold"
+              disabled={isPending}
               type="submit"
             >
-              Login
-            </Button>
-
-            <Button
-              className={cn(
-                "flex justify-center items-center gap-4 justify-self-center w-full bg-white text-blue-500 font-bold font-palanquin rounded focus:outline-none focus:shadow-outline hover:bg-white/20 shadow-md"
+              {isPending ? (
+                <>
+                  please wait <Loader2 className="h-4 w-4 ms-2 animate-spin" />
+                </>
+              ) : (
+                <>Login </>
               )}
-            >
-              <img src={google} alt="googleImg" />
-              <span className="text-secondary-foreground font-semibold font-opensans">
-                Continue with Google
-              </span>
             </Button>
           </div>
         </form>
