@@ -1,7 +1,7 @@
 import app from "./src/app";
 import { mongoConnect } from "./src/utils/mongo";
 
-const PORT = 6002 || Bun.env.PORT || 8000;
+const PORT = Bun.env.PORT || 8000;
 
 try {
   await mongoConnect()
@@ -12,5 +12,5 @@ try {
       });
       console.log(`Listening on Port: ${PORT}`.green.underline);
 } catch (error) {
-    
+  console.log(`Error connecting server: ${error}`.red.underline);
 }
