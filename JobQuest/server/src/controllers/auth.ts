@@ -9,7 +9,8 @@ import { createUser, findExistingUser } from "../mongo/user";
 
 async function httpSignUp(c: Context) {
   const body = await c.req.json();
-  const newUser = await createUser(body);
+  
+  await createUser(body);
   return c.json(
     {
       message: "created"
@@ -34,7 +35,7 @@ async function httpSignIn(c: Context) {
   const token = await sign(payload, Bun.env.JWT_SECRET!);
   setCookie(c, "auth_token", token, {
     httpOnly: true,
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
     secure: Bun.env.NODE_ENV! === "production"
   });
   return c.json(
@@ -50,6 +51,7 @@ async function httpLogout(c: Context) {
   setCookie(c, "auth_token", "", {
     httpOnly: true,
     expires: new Date(Date.now()),
+    secure: Bun.env.NODE_ENV! === "production"
   });
   return c.json(
     {
