@@ -20,7 +20,7 @@ import { useGetUser } from "@/hooks/useGetUser";
 
 const LogOutButton = () => {
   const navigate = useNavigate();
-  const {logout } = useDashboard();
+  const { logout } = useDashboard();
 
   const { mutate } = useMutation({
     mutationKey: ["logout"],
@@ -38,6 +38,7 @@ const LogOutButton = () => {
   });
   
   const  { data } = useGetUser()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -46,7 +47,9 @@ const LogOutButton = () => {
           className="px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500"
         >
           <User2 className="w-4 h-4 mr-2" />{" "}
-          <span className="text-sm font-palanquin">{data?.firstName.charAt(0)} {data?.lastName.charAt(0)}</span>{" "}
+          <span className="text-sm font-palanquin">
+            {data?.data?.firstName ? `${data?.data?.firstName}` : ""}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
