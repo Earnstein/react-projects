@@ -3,6 +3,7 @@ import { BASE_URL } from "@/lib/constants";
 import { SignIn, SignUp } from "@/constants/types";
 
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.withCredentials = true;
 
 // SIGN UP
 export const userSignup = async (body: SignUp) => {
