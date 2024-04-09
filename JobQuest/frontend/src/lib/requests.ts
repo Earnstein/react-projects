@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
-import { SignIn, SignUp } from "@/constants/types";
+import { JobBody, SignIn, SignUp } from "@/constants/types";
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.withCredentials = true;
@@ -30,6 +30,12 @@ export const userLogout = async () => {
 // GET CURRENT USER
 export const getUser = async () => {
   const response = await axios.get("user/current");
+  const data = await response.data;
+  return data;
+}
+
+export const addJob = async (body: JobBody) => {
+  const response = await axios.post("job", body);
   const data = await response.data;
   return data;
 }
