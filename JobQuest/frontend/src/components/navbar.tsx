@@ -1,10 +1,10 @@
 import logo from "@/assets/images/logo.png";
 import { NavLink, useLocation } from "react-router-dom";
-import { Button } from "./ui/button";
-import { ModeToggle } from "./mode-toggle";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/mode-toggle";
 import { MenuIcon } from "lucide-react";
-import MobileNavbar from "./mobile-navbar";
-import LogOutButton from "./drop-down";
+import MobileNavbar from "@/components/mobile-navbar";
+import LogOutButton from "@/components/drop-down";
 import { useDashboard } from "@/hooks/useDashboard";
 
 const Navbar = () => {
