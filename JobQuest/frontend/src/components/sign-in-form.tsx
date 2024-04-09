@@ -70,6 +70,8 @@ const SignInForm = () => {
                       )}
                       disabled={isPending}
                       placeholder="Email"
+                      autoComplete="email"
+                      type="email"
                       {...field}
                     />
                   </FormControl>
@@ -95,6 +97,7 @@ const SignInForm = () => {
                       disabled={isPending}
                       type="password"
                       placeholder="Password"
+                      autoComplete="current-password"
                       {...field}
                     />
                   </FormControl>
