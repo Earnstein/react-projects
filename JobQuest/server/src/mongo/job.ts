@@ -13,13 +13,8 @@ const createJob = async (body: JobBody, createdBy: string) => {
     {
       _id: job._id,
     },
-    {
-      _id: 1,
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    }
-  );
+  ).select("-__v -_id -createdBy -createdAt -updatedAt");
+
 
   return newJob;
 };
@@ -32,8 +27,7 @@ const getAllJob = async (userId: ObjectId) => {
       updatedAt: 0,
       createdAt: 0,
     }
-  )
-    .populate({
+  ).populate({
       path: "createdBy",
       select: "-_id -__v -password -updatedAt -createdAt",
     })
