@@ -14,6 +14,9 @@ import {
 } from "@/pages/index.ts";
 import { ThemeProvider } from "./components/theme-provider";
 
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,8 +36,7 @@ const router = createBrowserRouter([
             element: <AdminPage />,
           },
           {
-            index: true,
-            path:"add",
+            path: "all-jobs",
             element: <JobsPage />,
           },
           {
@@ -46,7 +48,8 @@ const router = createBrowserRouter([
             element: <ProfilePage />,
           },
           {
-            path: "all-jobs",
+            index: true,
+            path: "add-job",
             element: <AddJobPage />,
           },
         ],
