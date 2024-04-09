@@ -1,5 +1,21 @@
 import * as z from "zod";
 
+export const BASE_URL  = "http://localhost:5000/api/v1/"
+
+
+enum jobStatus {
+  interview = "interview",
+  declined = "declined",
+  pending = "pending"
+}
+
+enum jobType {
+  fullTime = "full-time",
+  partTime = "part-time",
+  internship = "internship",
+  remote = "remote"
+}
+
 export const registerSchema = z
   .object({
     firstName: z
@@ -32,4 +48,44 @@ export const loginSchema = z.object({
   password: z.string().trim(),
 });
 
-export const BASE_URL  = "http://localhost:5000/api/v1/"
+export const addJobSchema = z.object({
+  position: z.string().min(1,  "Position is required").max(20, "Maximum of 20 characters allowed"),
+  company:  z.string().min(1, "Company is required").max(20,  "Maximum of 20 characters allowed"),
+  jobStatus: z.string().min(1),
+  jobType:  z.string().min(1),
+  jobLocation: z.string().min(1, "Job location is required").optional(),
+})
+
+export const jobStatusOptions = [
+  {
+      value: jobStatus.interview,
+      label: "Interview"
+  },
+  {
+      value: jobStatus.declined,
+      label: "Declined"
+  },
+  {
+      value: jobStatus.pending,
+      label: "Pending"
+  },
+]
+
+export const jobTypeOptions = [
+  {
+    value: jobType.fullTime,
+    label: "Full-time"
+  },
+  {
+    value: jobType.partTime,
+    label: "Part-time"
+  },
+  {
+    value: jobType.remote,
+    label:"Remote"
+  },
+  {
+    value: jobType.internship,
+    label: "Internship"
+  }
+]
