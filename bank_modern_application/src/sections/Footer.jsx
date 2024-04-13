@@ -59,10 +59,11 @@ const Footer = () => {
           ))}
         </div>
       </div>
-              
-      
-      <div className="w-full flex justify-between items-center
-      md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3E45]">
+
+      <div
+        className="w-full flex justify-between items-center
+      md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3E45]"
+      >
         <p
           className="font-poppins font-normal text-center
           text-[18px] leading-[27px] text-white"
@@ -77,9 +78,7 @@ const Footer = () => {
               alt={social.id}
               className={`w-[20px] h-[21px] object-contain 
                 cursor-pointer  ${
-                  index !== socialMedia.length - 1 ?
-                   "mr-6" 
-                  : "mr-0"
+                  index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
                 }`}
             />
           ))}

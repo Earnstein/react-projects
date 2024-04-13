@@ -53,21 +53,32 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className={`flex-1 flex ${styles.flexCenter} 
-      md:my-0 my-8 relative`}>
-        <img src={robot} alt="billing" 
-        className="w-[95%] h-[95%] relative z-[5]" />
-        <div className="absolute z-0 w-[40%] h-[35%] 
-        top-0 pink__gradient"/>
-         <div className="absolute z-1 w-[80%] h-[80%] 
-        bottom-40 rounded-full white__gradient"/>
-         <div className="absolute right-20 bottom-20 z-0 
-         w-[50%] h-[50%] blue__gradient"/>
+      <div
+        className={`flex-1 flex ${styles.flexCenter} 
+      md:my-0 my-8 relative`}
+      >
+        <img
+          src={robot}
+          alt="billing"
+          className="w-[95%] h-[95%] relative z-[5]"
+        />
+        <div
+          className="absolute z-0 w-[40%] h-[35%] 
+        top-0 pink__gradient"
+        />
+        <div
+          className="absolute z-1 w-[80%] h-[80%] 
+        bottom-40 rounded-full white__gradient"
+        />
+        <div
+          className="absolute right-20 bottom-20 z-0 
+         w-[50%] h-[50%] blue__gradient"
+        />
       </div>
 
       <div className={`${styles.flexCenter} ss:hidden mt-4`}>
-            <GetStarted/>
-         </div>
+        <GetStarted />
+      </div>
     </section>
   );
 };
