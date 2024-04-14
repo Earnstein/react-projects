@@ -1,6 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
-import { JobBody, SignIn, SignUp } from "@/constants/types";
+import { SignIn, SignUp } from "@/constants/types";
+import { addJobSchema } from "@/lib/constants";
+import * as z from "zod";
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.withCredentials = true;
@@ -34,7 +36,7 @@ export const getUser = async () => {
   return data;
 }
 
-export const addJob = async (body: JobBody) => {
+export const addJob = async (body: z.infer<typeof addJobSchema>) => {
   const response = await axios.post("job", body);
   const data = await response.data;
   return data;
