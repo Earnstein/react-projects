@@ -17,7 +17,7 @@
 @layer base {
   :root {
     --gradient: linear-gradient(to top left,#93a5cf,#e4efe9);
-    --background: 223 97% 98.28%;
+    --background: 0 0% 98.28%;
     --foreground: 223 4% 0.56%;
 
     --muted: 223 4% 91.4%;
@@ -52,7 +52,7 @@
   .dark {
     --gradient: #40E0D0;
 
-    --background: 185 46.8% 4.48%;
+    --background: 0 0% 0%;
     --foreground: 185 7.199999999999999% 97.8%;
 
     --muted: 185 36% 16.8%;
@@ -96,7 +96,6 @@
 @layer components {
   .container{
     max-width: 1500px;
-    margin: 0 auto;
   }
 }
 
