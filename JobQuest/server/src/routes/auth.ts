@@ -25,7 +25,7 @@ authRouter
       }
     }),
     httpSignIn
-  ).get(
+  ).post(
     "/logout",
     httpLogout
   )
