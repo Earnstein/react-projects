@@ -1,20 +1,7 @@
+import { jobStatus, jobType } from "@/constants/types";
 import * as z from "zod";
 
 export const BASE_URL  = "http://localhost:5000/api/v1/"
-
-
-enum jobStatus {
-  interview = "interview",
-  declined = "declined",
-  pending = "pending"
-}
-
-enum jobType {
-  fullTime = "full-time",
-  partTime = "part-time",
-  internship = "internship",
-  remote = "remote"
-}
 
 export const registerSchema = z
   .object({
@@ -54,6 +41,12 @@ export const addJobSchema = z.object({
   jobStatus: z.string().min(1),
   jobType:  z.string().min(1),
   jobLocation: z.string().min(1, "Job location is required").optional(),
+})
+
+export const editJobSchema = z.object({
+  position: z.string().min(1,  "Position is required").max(20, "Maximum of 20 characters allowed"),
+  company:  z.string().min(1, "Company is required").max(20,  "Maximum of 20 characters allowed"),
+  jobStatus: z.string().min(1)
 })
 
 export const jobStatusOptions = [
