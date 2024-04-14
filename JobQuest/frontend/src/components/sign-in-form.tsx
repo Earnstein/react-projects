@@ -31,7 +31,7 @@ const SignInForm = () => {
     mutationFn: (body: SignIn) => userSignIn(body),
     onSuccess: () => {
       toast.success("success!");
-      navigate("/dashboard/add");
+      navigate("/dashboard/add-job");
     },
     onError: (error: any) => {
       toast.error(error?.response?.data?.message);
@@ -70,7 +70,6 @@ const SignInForm = () => {
                       )}
                       disabled={isPending}
                       placeholder="Email"
-                      autoComplete="email"
                       type="email"
                       {...field}
                     />
@@ -97,7 +96,6 @@ const SignInForm = () => {
                       disabled={isPending}
                       type="password"
                       placeholder="Password"
-                      autoComplete="current-password"
                       {...field}
                     />
                   </FormControl>
