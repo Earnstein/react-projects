@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "@/lib/constants";
+import { BASE_URL, editJobSchema } from "@/lib/constants";
 import { SignIn, SignUp } from "@/constants/types";
 import { addJobSchema } from "@/lib/constants";
 import * as z from "zod";
@@ -46,6 +46,12 @@ export const allJob =async () => {
   const response = await axios.get("job");
   const data = await response.data;
   return data
+}
+
+export const editJob = async (id:string, body: z.infer<typeof editJobSchema>) => {
+  const response = await axios.patch(`job/${id}`, body);
+  const data = await response.data;
+  return data;
 }
 
 export const deleteJob = async (id: string) => {
