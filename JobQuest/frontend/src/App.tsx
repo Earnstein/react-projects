@@ -12,10 +12,7 @@ import {
   SignUpPage,
   StatsPage,
 } from "@/pages/index.ts";
-import { ThemeProvider } from "./components/theme-provider";
-
-
-
+import { ThemeProvider } from "@/components/theme-provider";
 
 const router = createBrowserRouter([
   {
