@@ -9,12 +9,9 @@ const createJob = async (body: JobBody, createdBy: string) => {
     createdBy: createdBy,
   });
   await job.save();
-  const newJob = await Job.findById(
-    {
-      _id: job._id,
-    },
-  ).select("-__v -_id -createdBy -createdAt -updatedAt");
-
+  const newJob = await Job.findById({
+    _id: job._id,
+  }).select("-__v -_id -createdBy -createdAt -updatedAt");
 
   return newJob;
 };
@@ -25,13 +22,9 @@ const getAllJob = async (userId: ObjectId) => {
     {
       __v: 0,
       updatedAt: 0,
-      createdAt: 0,
+      createdBy: 0,
     }
-  ).populate({
-      path: "createdBy",
-      select: "-_id -__v -password -updatedAt -createdAt",
-    })
-    .exec();
+  );
   if (allJobs?.length === 0) {
     throw new NoContent("The job list is Empty");
   }
@@ -40,7 +33,6 @@ const getAllJob = async (userId: ObjectId) => {
 
 const getJobById = async (id: string) => {
   const job = await Job.findById(id, {
-
     __v: 0,
     createdAt: 0,
     updatedAt: 0,
@@ -135,11 +127,10 @@ const deleteAllJobs = async () => {
   return job;
 };
 
-
-const jobStats =async () => {
-  const jobs = Job.countDocuments()
-  return jobs
-}
+const jobStats = async () => {
+  const jobs = Job.countDocuments();
+  return jobs;
+};
 
 export {
   createJob,
@@ -151,5 +142,5 @@ export {
   getAllJob,
   getAllJobs,
   deleteAllJobs,
-  jobStats
+  jobStats,
 };
