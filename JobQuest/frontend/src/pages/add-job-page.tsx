@@ -49,7 +49,8 @@ const AddJobPage = () => {
   };
 
   return (
-    <Card className="mt-8 mx-8 py-6 sm:py-8 rounded-sm">
+   <div>
+     <Card className="container mt-8 mx-auto py-6 sm:py-8 rounded-sm">
       <Form {...form}>
         <CardHeader>
           <CardTitle className="font-playfair text-2xl/relaxed">Add Job</CardTitle>
@@ -70,7 +71,7 @@ const AddJobPage = () => {
                       className={
                         "focus:border-teal-300 focus:border-1 shadow-sm placeholder:font-palanquin"
                       }
-                      placeholder="devops"
+                      placeholder="Devops"
                       autoComplete="position"
                       {...field}
                       disabled={isPending}
@@ -202,6 +203,7 @@ const AddJobPage = () => {
         </form>
       </Form>
     </Card>
+   </div>
   );
 };
 
