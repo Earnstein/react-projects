@@ -14,6 +14,11 @@
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: transparent;
+}
+
 @layer base {
   :root {
     --gradient: linear-gradient(to top left,#93a5cf,#e4efe9);
