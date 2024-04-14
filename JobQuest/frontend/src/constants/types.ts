@@ -11,23 +11,11 @@ export enum jobType {
   remote = "remote"
 }
 
-export enum userRoleType {
-  user = "user",
-  admin = "admin"
-}
-
 export interface Job_Sort_By {
     NEWEST: string,
     OLDEST: string,
     ASCENDING: string,
     DESCENDING: string
-}
-
-export interface Payload {
-  userId: string;
-  role: string;
-  exp: Number;
-  iat: Number;
 }
 
 export interface JobBody {
@@ -40,19 +28,9 @@ export interface JobBody {
   createdAt: Date;
 }
 export interface JobPatch {
-  company?: string;
-  position?: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
-}
-
-export interface JobPut {
-  company: string;
   position: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
+  company: string;
+  jobStatus: string;
 }
 
 
