@@ -31,11 +31,13 @@ export interface Payload {
 }
 
 export interface JobBody {
+  _id: string;
   company: string;
   position: string;
-  jobStatus?: string;
-  jobType?: string;
-  jobLocation?: string;
+  jobStatus: string;
+  jobType: string;
+  jobLocation: string;
+  createdAt: Date;
 }
 export interface JobPatch {
   company?: string;
