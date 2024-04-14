@@ -22,7 +22,7 @@ export const userSignIn = async (body: SignIn) => {
 
 // LOGOUT
 export const userLogout = async () => {
-  const response = await axios.get("auth/logout");
+  const response = await axios.post("auth/logout");
   const data = await response.data;
   return data;
 };
@@ -38,4 +38,16 @@ export const addJob = async (body: JobBody) => {
   const response = await axios.post("job", body);
   const data = await response.data;
   return data;
+}
+
+export const allJob =async () => {
+  const response = await axios.get("job");
+  const data = await response.data;
+  return data
+}
+
+export const deleteJob = async (id: string) => {
+  const response = await axios.delete(`job/${id}`);
+  const data = await response.data;
+  return data
 }
