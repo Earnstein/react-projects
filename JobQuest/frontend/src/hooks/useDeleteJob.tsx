@@ -11,8 +11,9 @@ export const useDeleteJob = () => {
         toast.info("deleting...")
     },
     onSuccess: () => {
-        toast.success("Job deleted successfully");
         queryClient.invalidateQueries()
+        toast.dismiss();
+        toast.success("Job deleted successfully");
     },
     onError: (error: any) => {
         toast.error(error?.response?.data?.message);
