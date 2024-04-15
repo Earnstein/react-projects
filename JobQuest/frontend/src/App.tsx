@@ -12,7 +12,13 @@ import {
   SignUpPage,
   StatsPage,
 } from "@/pages/index.ts";
+import { loader as dashboardLoader } from "@/pages/dashboard-page";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -27,6 +33,7 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <DashboardPage />,
+        loader: dashboardLoader(queryClient),
         children: [
           {
             path: "admin",
@@ -66,9 +73,12 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
+    <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="light" storageKey="theme">
       <RouterProvider router={router} />
     </ThemeProvider>
+    <ReactQueryDevtools initialIsOpen={false}/>
+    </QueryClientProvider>
   );
 };
 
