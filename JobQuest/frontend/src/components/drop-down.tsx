@@ -12,6 +12,7 @@ import {
 import { useDashboard } from "@/hooks/useDashboard";
 import { useGetUser } from "@/hooks/useGetUser";
 import { useLogOut } from "@/hooks/useLogOut";
+import { Link } from 'react-router-dom';
 
 
 const LogOutButton = () => {
@@ -39,8 +40,10 @@ const LogOutButton = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
+            <Link to={"/dashboard/profile"}>
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
