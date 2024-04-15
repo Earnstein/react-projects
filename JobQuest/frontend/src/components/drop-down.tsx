@@ -1,5 +1,4 @@
 import { LogOut, User, User2 } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,31 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useDashboard } from "@/hooks/useDashboard";
-import { useMutation } from "@tanstack/react-query";
-import { userLogout } from "@/lib/requests";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { useGetUser } from "@/hooks/useGetUser";
+import { useLogOut } from "@/hooks/useLogOut";
 
 
 const LogOutButton = () => {
-  const navigate = useNavigate();
   const { logout } = useDashboard();
 
-  const { mutate } = useMutation({
-    mutationKey: ["logout"],
-    mutationFn: userLogout,
-    onMutate: () => {
-      toast.info("Logging Out..");
-    },
-    onSuccess: () => {
-      toast.success("User signed out!");
-      navigate("/");
-    },
-    onError: (error: any) => {
-      toast.error(error?.response?.data?.message);
-    },
-  });
+  const { mutate } = useLogOut()
   
   const  { data } = useGetUser()
 
