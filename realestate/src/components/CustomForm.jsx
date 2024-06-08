@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import * as yup from "yup";
 
@@ -16,7 +16,7 @@ const CustomForm = () => {
   };
   return (
     <div>
-      <h4>Send a message</h4>
+      <h4 className="title fw-bold mb-3" >Send a message</h4>
       <p>
         Fields marked with an <span className="text-danger">*</span> are
         required
@@ -41,13 +41,14 @@ const CustomForm = () => {
         }) => (
           <Form noValidate  onSubmit={handleSubmit}>
             <Form.Group
-              className="mb-3 rounded-0"
+              className="mb-4 rounded-0"
               controlId="validationFormik01"            >
-              <Form.Label className="title fw-bold">
+              <Form.Label as="h5" className="title fw-bold mb-3">
                 Name <span className="text-danger star text-center">*</span>
               </Form.Label>
               <Form.Control 
               type="text" 
+              name="name"
                 placeholder="Name" 
                 value={values.name}
                 onChange={handleChange}
@@ -60,15 +61,16 @@ const CustomForm = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group
-              className="mb-3 rounded-0"
+              className="mb-4 rounded-0"
               controlId="exampleForm.ControlInput1"
             >
-              <Form.Label  className="title fw-bold">
+              <Form.Label as="h5" className="title fw-bold mb-3">
                 Email <span className="text-danger star text-center">*</span>
               </Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter your email"
+                name="email"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -81,13 +83,14 @@ const CustomForm = () => {
             </Form.Group>
 
             <Form.Group
-              className="mb-3 rounded-0"
+              className="mb-4 rounded-0"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label className="title fw-bold">
+              <Form.Label as="h5" className="title fw-bold mb-3">
                 Message <span className="text-danger star text-center">*</span>
               </Form.Label>
-              <Form.Control as="textarea" rows={6} 
+              <Form.Control as="textarea" rows={8}
+              name="message"
               value={values.message}
               onChange={handleChange}
               isValid={touched.message && !errors.message}
