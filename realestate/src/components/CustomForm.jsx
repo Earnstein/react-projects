@@ -16,7 +16,7 @@ const CustomForm = () => {
   };
   return (
     <div>
-      <h4 className="title fw-bold mb-3" >Send a message</h4>
+      <h4 className="title fw-bold mb-lg-3 mb-1" >Send a message</h4>
       <p>
         Fields marked with an <span className="text-danger">*</span> are
         required
