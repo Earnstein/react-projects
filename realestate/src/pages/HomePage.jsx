@@ -1,10 +1,14 @@
-import { Row, Col} from "react-bootstrap";
+import { Row, Col, Container} from "react-bootstrap";
 import CustomCard from "../components/CustomCard";
 import { CARDS } from "../constants";
 import CustomForm from "../components/CustomForm";
+import Hero from "../components/Hero";
 const HomePage = () => {
   return (
-    <Row className="py-5">
+   <>
+     <Hero/>
+    <Container>
+      <Row className="py-5">
       <Col xs="12" lg="8">
         <Row>
           <h5 className="mb-1 title">Giovanetti Shalman Associates</h5>
@@ -109,6 +113,8 @@ const HomePage = () => {
         <CustomForm />
       </Col>
     </Row>
+    </Container>
+   </>
   );
 };
 

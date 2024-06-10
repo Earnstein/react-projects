@@ -62,7 +62,7 @@ const Footer = () => {
       <div className="text-start py-lg-3 py-2 footer-2">
         <Container>
           <p className="title-sm text-white">
-            © {currentYear} Giovanetti Shulman Associates |
+            © {currentYear} Ampitude Associates Consulting Engineers |
           </p>
         </Container>
       </div>

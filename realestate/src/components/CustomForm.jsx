@@ -15,8 +15,8 @@ const CustomForm = () => {
     resetForm();
   };
   return (
-    <div>
-      <h4 className="title fw-bold mb-lg-3 mb-1" >Send a message</h4>
+    <div className="mt-md-0 mt-4">
+      <h4 className="title fw-bold mb-lg-3 mb-2" >Send a message</h4>
       <p>
         Fields marked with an <span className="text-danger">*</span> are
         required

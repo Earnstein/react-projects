@@ -14,6 +14,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import SustainPage from "./pages/SustainPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import HRPage from "./pages/HRpage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/sustain" element={<SustainPage/>}></Route>
       <Route path="/projects" element={<ProjectPage />}></Route>
       <Route path="/contact" element={<ContactPage />}></Route>
+      <Route path="/hr" element={<HRPage />}></Route>
     </Route>
   )
 );

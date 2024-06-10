@@ -1,9 +1,10 @@
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import CustomForm from "../components/CustomForm";
 
 const AboutPage = () => {
   return (
-    <Row className="py-5">
+   <Container>
+     <Row className="py-5">
       <Col xs="12" lg="8">
         <Row>
           <h5 className="title fw-bold">The Company</h5>
@@ -66,6 +67,7 @@ const AboutPage = () => {
         <CustomForm />
       </Col>
     </Row>
+   </Container>
   );
 };
 
