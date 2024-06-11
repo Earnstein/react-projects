@@ -1,88 +1,41 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import team1 from "../assets/images/team1.jpg";
-import CustomForm from '../components/CustomForm';
-
-const teamsData = [
-  {
-    id: 1,
-    image: team1,
-    fbLink: 'https://www.facebook.com',
-    twitterLink: 'https://www.twitter.com',
-    linkedinLink: 'https://www.linkedin.com',
-    name: 'Gabriel Hart',
-    designation: 'CEO',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
-  },
-  {
-    id: 2,
-    image: team1,
-    fbLink: 'https://www.facebook.com',
-    twitterLink: 'https://www.twitter.com',
-    linkedinLink: 'https://www.linkedin.com',
-    name: 'David Antony',
-    designation: 'Manager',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
-  },
-  {
-    id: 3,
-    image: team1,
-    fbLink: 'https://www.facebook.com',
-    twitterLink: 'https://www.twitter.com',
-    linkedinLink: 'https://www.linkedin.com',
-    name: 'Nicholas Perry',
-    designation: 'UX Designer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
-  },
-  {
-    id: 4,
-    image: team1,
-    fbLink: 'https://www.facebook.com',
-    twitterLink: 'https://www.twitter.com',
-    linkedinLink: 'https://www.linkedin.com',
-    name: 'Sarah Wills',
-    designation: 'Developer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui facilis, totam maiores.'
-  }
-];
+import { Row, Col, Container } from "react-bootstrap";
+import React from "react";
+import { sectionLinks } from "../constants";
+import CustomForm from "../components/CustomForm";
+import useMediaQuery from "../utils/useMediaQuery";
 
 const ContactPage = () => {
+  const isBigScreen = useMediaQuery("(min-width: 1060px)");
+
+  const renderSection = (title, links) => (
+    <Col xs="12" md="4" className="text-sm-start py-3">
+      <h4 style={{ fontSize: isBigScreen ? "20px" : "16px" }}>{title}</h4>
+      <ul className="nav flex-column">
+        {links.map((link) => (
+          <li key={link} className="nav-item mb-0 title-sm">
+            <span href={link} className="nav-link p-0">
+              {link}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </Col>
+  );
   return (
-    <>
-      <Container>
-        <div className="title-holder">
-          <h2>Our teams</h2>
-          <div className="subtitle">some of our experts</div>
-        </div>
-        <Row>
-          <Col xs="12" lg="8">
-            <Row>
-              {
-                teamsData.map(team => (
-                  <Col xs={12} sm={6} md={4} key={team.id}>
-                    <div className='team-card'>
-                      <div className='image'>
-                        <Image src={team.image} fluid />
-                      </div>
-                      <div className='content'>
-                        <h3>{team.name}</h3>
-                        <span className='designation'>{team.designation}</span>
-                        <p>{team.description}</p>
-                      </div>
-                    </div>
-                  </Col>
-                ))
-              }
-            </Row>
-          </Col>
-          <Col xs="12" lg="4">
-            <CustomForm />
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container>
+      <Row className="py-5">
+        <Col xs="12" lg="6">
+          {["Pennsylvania Location", "Florida Location"].map((sectionTitle) => (
+            <React.Fragment key={sectionTitle}>
+              {renderSection(sectionTitle, sectionLinks[sectionTitle])}
+            </React.Fragment>
+          ))}
+        </Col>
+        <Col xs="12" lg="6">
+          <CustomForm />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -13,10 +13,6 @@ import X from "../assets/twitter.png";
 
 export const CARDS =  [
     {
-        title: "Hard Rock Tampa",
-        image: Tampa
-    },
-    {
         title: "Seminole Hard Rock Hollywood Hotel & Casino",
         image: SemiLogo
     },
@@ -27,6 +23,10 @@ export const CARDS =  [
     {
         title: "MGM Springfield",
         image: MgmLogo
+    },
+    {
+        title: "Hard Rock Tampa",
+        image: Tampa
     },
    
 ]

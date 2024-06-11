@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, Image, Col } from "react-bootstrap";
-import Logo from "../assets/GSA-logo-Horiz.png";
+import Logo from "../assets/images/LogoWhite.svg";
 import useMediaQuery from "../utils/useMediaQuery";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -13,12 +13,26 @@ const Header = () => {
             <LinkContainer to={"/"}>
               <Navbar.Brand>
                 <Col xs={6} md={6}>
-                  <Image
-                    src={Logo}
-                    alt="logo"
-                    fluid
-                    style={{ maxWidth: isBigScreen ? "300px" : "270px" }}
-                  />
+                  <div className="flex-item">
+                    <Image
+                      src={Logo}
+                      alt="logo"
+                      fluid
+                      style={{
+                        maxWidth: isBigScreen ? "80px" : "50px",
+                        color: "#000",
+                      }}
+                    />
+                    {isBigScreen ? (
+                      <h5 className="text-white-50">
+                        Amplitude Associates <br /> Consulting Engineers{" "}
+                      </h5>
+                    ) : (
+                      <h6 className="text-white-50">
+                        Amplitude Associates <br /> Consulting Engineers{" "}
+                      </h6>
+                    )}
+                  </div>
                 </Col>
               </Navbar.Brand>
             </LinkContainer>
@@ -36,6 +50,9 @@ const Header = () => {
                 </LinkContainer>
                 <LinkContainer to={"/projects"}>
                   <Nav.Link className="link">PROJECTS</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to={"/teams"}>
+                  <Nav.Link className="link">TEAMS</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to={"/contact"}>
                   <Nav.Link className="link">CONTACT</Nav.Link>

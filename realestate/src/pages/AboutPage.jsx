@@ -13,15 +13,15 @@ const AboutPage = () => {
             <h3 className="mb-1 title fw-bold">What we’re made of</h3>
             <strong>At Our Core…</strong>
             <p>
-              GSA provides engineering services for projects with MEP/FP/LV
+              AACE provides engineering services for projects with MEP/FP/LV
               construction cost ranging from $15,000 to $450 million and with
               general construction cost ranging from $1 million to $2.5 billion.
             </p>
             <div className="flex-item">
-              <a className="presentation" href="#">
+              <a className="presentation" href="../assets/amplitude.pdf" download="AACE.pdf">
                 Presentation
               </a>
-              <a className="download" href="#">
+              <a className="download" target="_blank" href="../assets/amplitude.pdf">
                 Download
               </a>
             </div>
@@ -32,29 +32,29 @@ const AboutPage = () => {
               The Blue Print of Our success
             </h3>
             <ul>
-              <li>GSA was formed in 1982. </li>
+              <li>AACE was formed in 1985. </li>
               <li>
-                GSA maintains its experience in what we know best, MEP/FP LV
+                AACE maintains its experience in what we know best, MEP/FP LV
                 engineering and design
               </li>
               <li>
-                GSA maintains an engineering staff of 40 to 50 engineers,
+                AACE maintains an engineering staff of 40 to 50 engineers,
                 designers and CAD staff.{" "}
               </li>
               <li>
-                GSA provides engineering services for projects with MEP/FP/LV
+                AACE provides engineering services for projects with MEP/FP/LV
                 construction cost ranging from $15,000 to $450,000,000 and with
                 general construction cost ranging from $1,000,000 to
                 $2,500,000,000.
               </li>
               <li>
-                GSA supports the architectural and interior design concepts,
+                AACE supports the architectural and interior design concepts,
                 which have been approved by the client. As engineers, we look
                 for inventive methods and solutions to maintain the integrity of
                 the design.
               </li>
               <li>
-                GSA’s officers and principals of the firm are actively involved
+                AACE’s officers and principals of the firm are actively involved
                 with all projects and to provide personal attention to the
                 client’s needs so that the client’s project requirements are met
                 without over or under design, and within the agreed budget.

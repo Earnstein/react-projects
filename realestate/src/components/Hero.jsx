@@ -1,25 +1,27 @@
 import Carousel from "react-bootstrap/Carousel";
 import Tampa from "../assets/tampa.jpg";
-
+import Img10 from "../assets/images/img10.jpg"
+import { NavLink } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 var heroData = [
   {
     id: 1,
-    image: Tampa,
-    title: 'The perfect design for your website',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab suscipit dicta nulla. Consequuntur obcaecati officiis, labore doloribus non tempore impedit consequatur ab dolor. Explicabo quam repellendus vero omnis, nisi odio!',
+    image: Img10,
+    title: 'Engineering Innovation, Delivering Solutions',
+    description: 'At Amplitude Associates, we drive innovation and deliver solutions to complex engineering.!',
     link: 'https://www.google.com'
   },
   {
     id: 2,
     image: Tampa,
-    title: 'Start Your Future Financial Plan',
+    title: 'Transforming Ideas into Reality',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab suscipit dicta nulla. Consequuntur obcaecati officiis, labore doloribus non tempore impedit consequatur ab dolor. Explicabo quam repellendus vero omnis, nisi odio!',
     link: 'https://www.facebook.com'
   },
   {
     id: 3,
     image: Tampa,
-    title: 'Enjoy the Difference',
+    title: 'Engineering solutions Tailored to your needs.',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab suscipit dicta nulla. Consequuntur obcaecati officiis, labore doloribus non tempore impedit consequatur ab dolor. Explicabo quam repellendus vero omnis, nisi odio!',
     link: 'https://www.twitter.com'
   }
@@ -37,12 +39,14 @@ const Hero = () => {
                  className="d-block w-100"
                  src={hero.image}
                  alt={"slide " + hero.id}
-                 style={{height:"24rem"}}
+                 style={{height:"14rem"}}
                />
                <Carousel.Caption>
                  <h2>{hero.title}</h2>
                  <p>{hero.description}</p>
-                 <a className="btn btn-primary" href={hero.link}>Learn More <i className="fas fa-chevron-right"></i></a>
+                  <LinkContainer to={"/contact"}>
+                  <NavLink className="btn btn-primary" href={hero.link}>Learn More <i className="fas fa-chevron-right"></i></NavLink>
+          </LinkContainer>
                </Carousel.Caption>             
              </Carousel.Item>
            );

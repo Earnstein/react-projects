@@ -73,6 +73,10 @@ strong {
   column-gap: 8px;
 }
 
+.justify-center{
+    justify-content: center;
+}
+
 .download {
   background: #3b3b3b;
   color: white;
@@ -90,11 +94,17 @@ strong {
   font-weight: 500;
 }
 
+.notfound {
+  font-size: 16rem;
+}
 @media only screen and (max-width: 600px) {
   .title-sm {
     font-size: 12px !important;
   }
   .star {
     font-size: small;
+  }
+  .notfound {
+    font-size: 8rem;
   }
 }

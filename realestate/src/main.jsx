@@ -15,17 +15,24 @@ import SustainPage from "./pages/SustainPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import HRPage from "./pages/HRpage.jsx";
+import TeamPage from "./pages/Team.jsx";
+import NotFoundPage from "./components/NotFoundPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomePage />}></Route>
-      <Route path="/about" element={<AboutPage/>}></Route>
-      <Route path="/sustain" element={<SustainPage/>}></Route>
+      <Route path="/about" element={<AboutPage />}></Route>
+      <Route path="/sustain" element={<SustainPage />}></Route>
       <Route path="/projects" element={<ProjectPage />}></Route>
       <Route path="/contact" element={<ContactPage />}></Route>
       <Route path="/hr" element={<HRPage />}></Route>
+      <Route path="/teams" element={<TeamPage />}></Route>
     </Route>
+    <Route path="*" element={< NotFoundPage />}></Route>
+    </>
+
   )
 );
 ReactDOM.createRoot(document.getElementById("root")).render(

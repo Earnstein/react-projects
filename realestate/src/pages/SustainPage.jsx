@@ -12,7 +12,7 @@ const SustainPage = () => {
             <div className="mt-1">
               <h6 className="mb-1 title fw-bold">Your Partner in Success</h6>
               <p>
-                At GSA, we have the responsibility to be environmentally sound
+                At AACE, we have the responsibility to be environmentally sound
                 in our design with regards to impact, efficiency and
                 sustainability. Our consulting engineers have the knowledge and
                 supporting technologies to assist clients in creating
@@ -20,13 +20,13 @@ const SustainPage = () => {
                 <br />
                 <br />
                 Please take a moment to review a comprehensive presentation
-                about GSA’s services and success…
+                about AACE’s services and success…
               </p>
               <div className="flex-item">
-                <a className="presentation" href="#">
+                <a className="presentation" href="../assets/amplitude.pdf" download="AACE.pdf">
                   Presentation
                 </a>
-                <a className="download" href="#">
+                <a className="download" href="../assets/amplitude.pdf" download="AACE.pdf">
                   Download
                 </a>
               </div>
