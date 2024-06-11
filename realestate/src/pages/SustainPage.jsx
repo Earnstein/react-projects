@@ -23,10 +23,10 @@ const SustainPage = () => {
                 about AACE’s services and success…
               </p>
               <div className="flex-item">
-                <a className="presentation" href="../assets/amplitude.pdf" download="AACE.pdf">
+                <a className="presentation" target="_blank" href="../assets/amplitude.pdf" download="AACE.pdf">
                   Presentation
                 </a>
-                <a className="download" href="../assets/amplitude.pdf" download="AACE.pdf">
+                <a className="download" target="_blank" href="../assets/amplitude.pdf" download="AACE.pdf">
                   Download
                 </a>
               </div>
