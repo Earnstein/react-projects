@@ -1,6 +1,6 @@
 import { Row, Col, Container } from "react-bootstrap";
 import CustomCard from "../components/CustomCard";
-import { CARDS } from "../constants";
+import { PROJECTS } from "../constants";
 import CustomForm from "../components/CustomForm";
 
 const HomePage = () => {
@@ -105,7 +105,7 @@ const HomePage = () => {
         </Col>
         <Col xs="12" lg="4">
           <h5 className="mb-3 title">RECENT PROJECTS</h5>
-          {CARDS.map((product) => (
+          {PROJECTS.map((product) => (
             <CustomCard
               key={product.title}
               title={product.title}

@@ -11,7 +11,7 @@ import X from "../assets/twitter.png";
 
 
 
-export const CARDS =  [
+export const PROJECTS =  [
     {
         title: "Seminole Hard Rock Hollywood Hotel & Casino",
         image: SemiLogo

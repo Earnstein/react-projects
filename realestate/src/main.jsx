@@ -17,6 +17,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 import HRPage from "./pages/HRpage.jsx";
 import TeamPage from "./pages/Team.jsx";
 import NotFoundPage from "./components/NotFoundPage.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
         <Route path="/contact" element={<ContactPage />}></Route>
         <Route path="/hr" element={<HRPage />}></Route>
         <Route path="/teams" element={<TeamPage />}></Route>
+        <Route path="/project/:name" element={<ProductPage />}></Route>
       </Route>
       <Route path="*" element={<NotFoundPage />}></Route>
     </>
