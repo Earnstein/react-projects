@@ -32,17 +32,13 @@ export const PROJECTS =  [
 ]
 
 export const sectionLinks = {
-    "Pennsylvania Location": [
-      "Pennsylvania Location",
-      "370 Reed Road, Suite 300 ",
-      "Broomall PA 19008",
-      "Telephone: (610) 328-7700",
-      "Facsimile: (610) 328-7705",
+    "Missoula Location": [
+      "10475 Mill Creek Rd, Missoula, MT 59803",
+      "Telephone: +1 (405) 995-2717",
     ],
-    "Florida Location": [
-      "500 N.E. Third Ave.",
-      "Ft. Lauderdale FL 33301",
-      "Telephone: (954) 861-3380",
+    "Hickory Location": [
+      "3064 12th Ave SE. Hickory, NC 28602",
+      "Telephone: +1 (405) 995-2717",
     ],
   };
 

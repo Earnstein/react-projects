@@ -25,7 +25,7 @@ const ContactPage = () => {
     <Container>
       <Row className="py-5">
         <Col xs="12" lg="6">
-          {["Pennsylvania Location", "Florida Location"].map((sectionTitle) => (
+          {["Missoula Location", "Hickory Location"].map((sectionTitle) => (
             <React.Fragment key={sectionTitle}>
               {renderSection(sectionTitle, sectionLinks[sectionTitle])}
             </React.Fragment>

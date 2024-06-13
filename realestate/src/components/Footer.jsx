@@ -1,6 +1,7 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import React from "react";
 import { FooterImages, sectionLinks } from "../constants";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,7 +26,7 @@ const Footer = () => {
       <div style={{ backgroundColor: "#333" }}>
         <Container className="px-2 py-5">
           <Row>
-            {["Pennsylvania Location", "Florida Location"].map(
+            {["Missoula Location", "Hickory Location"].map(
               (sectionTitle) => (
                 <React.Fragment key={sectionTitle}>
                   {renderSection(sectionTitle, sectionLinks[sectionTitle])}
@@ -37,13 +38,13 @@ const Footer = () => {
               <div>
                 <div className="img-flex">
                   {FooterImages.map((image) => (
-                    <a href="#" key={image.title}>
+                    <Link to="/contact" key={image.title}>
                       <Image
                         src={image.image}
                         fluid
                         style={{ maxHeight: "auto", maxWidth: "50px" }}
                       />
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <h5 className="mt-4 text-white" style={{ fontSize: "16px" }}>
