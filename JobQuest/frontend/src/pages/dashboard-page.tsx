@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLogOut } from "@/hooks/useLogOut";
-import { getUser } from "@/lib/requests";
+import { allJob, getUser } from "@/lib/requests";
 import { QueryClient } from "@tanstack/react-query";
 
 const currentUser = {
@@ -16,6 +16,11 @@ const currentUser = {
 
 export const loader = (queryClient: QueryClient) => async () => {
   try {
+    await queryClient.prefetchQuery({
+      queryKey: ["jobs"],
+      queryFn: allJob,
+      staleTime: 60000,
+  });
     const query = await queryClient.ensureQueryData(currentUser);
     return query;
   } catch (error) {

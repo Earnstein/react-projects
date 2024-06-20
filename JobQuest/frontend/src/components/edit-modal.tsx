@@ -154,7 +154,7 @@ const EditModal = ({ id }: EditProp) => {
                 <Button
                   type="submit"
                   className="w-full col-span-1"
-                  disabled={isPending}
+                  disabled={!form.formState.isValid || isPending}
                 >
                   Save Changes
                 </Button>

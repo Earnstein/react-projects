@@ -69,7 +69,7 @@ const AddJobPage = () => {
                   <FormControl>
                     <Input
                       className={
-                        "focus:border-teal-300 focus:border-1 shadow-sm placeholder:font-palanquin"
+                        "focus:border-teal-300 focus:border-1 font-palanquin shadow-sm placeholder:font-palanquin"
                       }
                       placeholder="Devops"
                       autoComplete="position"
@@ -92,7 +92,7 @@ const AddJobPage = () => {
                   <FormControl>
                     <Input
                       className={
-                        "focus:border-teal-300 focus:border-1 shadow-sm placeholder:font-palanquin rounded-sm"
+                        "focus:border-teal-300 focus:border-1 font-palanquin shadow-sm placeholder:font-palanquin rounded-sm"
                       }
                       placeholder="Google"
                       autoComplete="company"
@@ -119,7 +119,7 @@ const AddJobPage = () => {
                     disabled={isPending}
                   >
                     <FormControl>
-                      <SelectTrigger className="rounded-sm focus:border-teal-300 focus:border-1 focus:ring-0">
+                      <SelectTrigger className="rounded-sm focus:border-teal-300 focus:border-1 font-palanquin focus:ring-0">
                         <SelectValue defaultValue={field.value} />
                       </SelectTrigger>
                     </FormControl>
@@ -149,7 +149,7 @@ const AddJobPage = () => {
                     defaultValue={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger className="rounded-sm focus:border-teal-300 focus:border-1 focus:ring-0">
+                      <SelectTrigger className="rounded-sm focus:border-teal-300 focus:border-1 font-palanquin focus:ring-0">
                         <SelectValue defaultValue={field.value} />
                       </SelectTrigger>
                     </FormControl>
@@ -176,9 +176,9 @@ const AddJobPage = () => {
                   <FormControl>
                     <Input
                       className={
-                        "focus:border-teal-300 focus:border-1 shadow-sm placeholder:font-palanquin rounded-sm"
+                        "focus:border-teal-300 focus:border-1 font-palanquin shadow-sm placeholder:font-palanquin rounded-sm"
                       }
-                      placeholder="remote"
+                      placeholder="Canada"
                       autoComplete="location"
                       {...field}
                       disabled={isPending}

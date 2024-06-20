@@ -8,13 +8,14 @@ import { cn } from "@/lib/utils";
 import DeleteModal from "@/components/delete-modal";
 import EditModal from "@/components/edit-modal";
 import { Briefcase, MapPin, PieChart } from "lucide-react";
-import Empty from '@/components/empty';
+import Empty from "@/components/empty";
+import dayjs from "dayjs";
 
 const JobCards = () => {
   const { data, isLoading } = useGetJobs();
 
-  if (!data) {
-    return <Empty />
+  if (data === "") {
+    return <Empty />;
   }
 
   return (
@@ -23,7 +24,7 @@ const JobCards = () => {
         {isLoading && <JobLoader />}
         {!isLoading && (
           <>
-            {data?.data?.map((job: JobBody) => (
+            {data.data.map((job: JobBody) => (
               <div
                 key={job._id}
                 className={cn(
@@ -79,28 +80,24 @@ const JobCards = () => {
 
                   <div className="space-y-3 py-6 rounded-b-[--card-border-radius]">
                     <p className="flex items-center font-palanquin capitalize text-gray-700 dark:text-gray-300">
-                      <PieChart className="h-4 w-4 mr-2" />{" "}
+                      <PieChart className="h-4 w-4 mr-2" />
                       {job.jobStatus.toLocaleLowerCase()}
                     </p>
 
                     <p className="flex items-center font-palanquin capitalize text-gray-700 dark:text-gray-300">
-                      <Briefcase className="h-4 w-4 mr-2" />{" "}
+                      <Briefcase className="h-4 w-4 mr-2" />
                       {job.jobType.toLocaleLowerCase()}
                     </p>
 
                     <p className="flex items-center font-palanquin capitalize text-gray-700 dark:text-gray-300">
-                      <MapPin className="h-4 w-4 mr-2" />{" "}
+                      <MapPin className="h-4 w-4 mr-2" />
                       {job.jobLocation.toLocaleLowerCase()}
                     </p>
                   </div>
 
                   <div className="space-y-2 xs:flex xs:items-center xs:justify-between -mb-8 py-4 border-t border-gray-200 dark:border-gray-800">
                     <p className="text-xs text-gray-700 dark:text-gray-300">
-                      {new Date(job.createdAt).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {dayjs(job.createdAt).format("DD MMM, YYYY")}
                     </p>
                     <div className="flex gap-2">
                       <EditModal id={job._id} />
